@@ -167,13 +167,13 @@
                 <div class="block-27">
                   <ul>
                     <c:if test="${page != 1}">
-                        <li class="lt"><a href="car?page=${page - 1}&car_name=${name}&color=${color}&district_id=${district_id}&car_brand_id=${car_brand_id}&car_type_id=${car_type_id}&seats=${seat}&transmission=${transmission}&priceFrom=${priceFrom}&priceTo=${priceTo}">&lt;</a></li>
+                        <li><a href="car?page=${page - 1}&car_name=${name}&color=${color}&district_id=${district_id}&car_brand_id=${car_brand_id}&car_type_id=${car_type_id}&seats=${seat}&transmission=${transmission}&priceFrom=${priceFrom}&priceTo=${priceTo}">&lt;</a></li>
                     </c:if>
                     <c:forEach begin="1" end="${totalPages}" var="i">
                             <li class="link ${i == page ? "active" : ""}"><a href="car?page=${i}&car_name=${name}&color=${color}&district_id=${district_id}&car_brand_id=${car_brand_id}&car_type_id=${car_type_id}&seats=${seat}&transmission=${transmission}&priceFrom=${priceFrom}&priceTo=${priceTo}">${i}</a></li>
                     </c:forEach>
                     <c:if test="${page != totalPages && totalItems != 0}">
-                        <li class="gt"><a href="car?page=${page + 1}&car_name=${name}&color=${color}&district_id=${district_id}&car_brand_id=${car_brand_id}&car_type_id=${car_type_id}&seats=${seat}&transmission=${transmission}&priceFrom=${priceFrom}&priceTo=${priceTo}">&gt;</a></li>
+                        <li><a href="car?page=${page + 1}&car_name=${name}&color=${color}&district_id=${district_id}&car_brand_id=${car_brand_id}&car_type_id=${car_type_id}&seats=${seat}&transmission=${transmission}&priceFrom=${priceFrom}&priceTo=${priceTo}">&gt;</a></li>
                     </c:if>
                   </ul>
                 </div>
