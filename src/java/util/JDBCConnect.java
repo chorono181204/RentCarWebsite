@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 public class JDBCConnect {
     static final String DB_URL = "jdbc:mysql://localhost:3306/RentCar";
     static final String USER = "root";
-    static final String PASS = "Cheaternumber2";
+    static final String PASS = "123456";
 
 	public static Connection getConnection() {
    
