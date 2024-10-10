@@ -8706,6 +8706,7 @@ h1, h2, h3, h4, h5,
         color: rgba(0, 0, 0, 0.3); }
     .car-wrap .text h2 {
       font-size: 20px;
+      height: 60px;
       font-weight: 500; }
       .car-wrap .text h2 a {
         color: #000000; }
@@ -9554,7 +9555,8 @@ textarea.form-control {
   .block-27 ul li {
     display: inline-block;
     margin-bottom: 4px;
-    font-weight: 400; }
+    font-weight: 400; 
+  }
     .block-27 ul li a, .block-27 ul li span {
       color: #1089ff;
       text-align: center;
