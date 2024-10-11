@@ -175,6 +175,10 @@
                     <c:if test="${page != totalPages && totalItems != 0}">
                         <li><a href="car?page=${page + 1}&car_name=${name}&color=${color}&district_id=${district_id}&car_brand_id=${car_brand_id}&car_type_id=${car_type_id}&seats=${seat}&transmission=${transmission}&priceFrom=${priceFrom}&priceTo=${priceTo}">&gt;</a></li>
                     </c:if>
+                    <c:if test="${totalItems == 0}">
+                        <div class="notFound" style="font-size: 25px;
+                                                    font-weight: 500;">Không tìm thấy xe!</div>
+                    </c:if>
                   </ul>
                 </div>
               </div>
