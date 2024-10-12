@@ -23,6 +23,11 @@
             .car-wrap .text h2 {
                 height: 90px;
             }
+            
+            .row .brandAndPrice span {
+                width: 100%;
+                text-align: center;
+            }
 }
    </style>
   <body>
