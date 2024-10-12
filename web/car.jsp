@@ -146,7 +146,9 @@
                 <c:forEach var="item" items="${cars}">  
                     <div class="col-md-4">
                             <div class="car-wrap rounded ftco-animate">
-                                    <div class="img rounded d-flex align-items-end" style="background-image: url(images/Car_Images/${item.image});">
+                                    <div class="img rounded d-flex align-items-end" style="
+                                         background-image: url(images/Car_Images/${item.image});
+                                         background-size: contain;">
                                     </div>
                                     <div class="text">
                                             <h2 class="mb-0"><a href="car-single.html">${item.name}</a></h2>
