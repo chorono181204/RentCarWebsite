@@ -1,0 +1,128 @@
+
+.ftco-section .container .row {
+    justify-content: center;
+}
+
+.car-wrap .text h2 {
+    height: 60px;
+}
+
+
+.col .block-27 ul li , .col .block-27 ul li span {
+    color: #1089ff;
+    text-align: center;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    border: 1px solid #e6e6e6;
+    cursor: pointer;
+}
+
+.col .block-27 ul li.active , .col .block-27 ul li.active span {
+    background: #1089ff;
+    color: #fff;
+    border: 1px solid transparent; 
+}
+
+.col .block-27 ul li a {
+    text-decoration: none;
+    border: none;
+}
+
+.col .block-27 ul li a:hover {
+    background: #1089ff;
+    color: #fff;
+    border: 1px solid transparent;
+    transition: .5s;
+}
+
+.filter input {
+    width: 200px;
+}
+
+.filter .select__box {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.search__bar {
+    height: 45px;
+    display: flex;
+    cursor: pointer;
+    padding: 10px 20px;
+    align-items: center;
+    border-radius: 30px;
+    border: 1px solid grey;
+}
+
+.search__bar input {
+    outline:none;
+    border: none;
+    font-weight: 500;
+    background: transparent;
+    font-size: 18px;
+    
+}
+
+.select__box select, .select__box .select__box--item input {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    padding: 10px 10px;
+    width: 200px;
+    background: white;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    border: 0;
+    font-size: 18px;
+    color: grey;
+    outline: none;
+}
+
+.select__box .select__box--item input {
+    height: 42px;
+}
+
+
+.select__box .select__box--item label {
+    font-size: 18px;
+    width: 115px;
+    font-weight: 400;
+    margin-right: 5px;
+}
+
+.filter button.submit {
+    background: transparent;
+    border: 2px solid grey;
+    outline: none;
+    border-radius: 20px;
+    height: 45px;
+    width: 170px;
+    font-size: 18px;
+    color: gray;
+}
+
+.filter button.submit:hover {
+    color: white;
+    background-color: #4e99e5;
+    transition: .5s;
+    border: none;
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+    .row .car-wrap .text p.d-block .carDetails {
+        line-height: 40px;
+    }
+    
+    .row .car-wrap .txt .brandAndPrice {
+        flex-wrap: wrap;
+        align-item: center;
+        justify-content: center;
+    }
+}
+
+
+@media screen and (max-width: 1200px) {
+    .select__box {
+        justify-content: center;
+    }
+}

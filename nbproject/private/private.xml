@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+        <file>
+            <url>web/css/style.css</url>
+            <bookmark id="1">
+                <name/>
+                <line>9562</line>
+                <key/>
+            </bookmark>
+        </file>
+    </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/E:/WorkSpace2/RentCarWebsite/web/admin/user.jsp</file>
             <file>file:/E:/WorkSpace2/RentCarWebsite/src/java/controller/HomeController.java</file>
             <file>file:/E:/WorkSpace2/RentCarWebsite/src/java/controller/admin/AdminLoginController.java</file>
@@ -35,6 +45,16 @@
             <file>file:/E:/WorkSpace2/RentCarWebsite/web/public/menu.jsp</file>
             <file>file:/E:/WorkSpace2/RentCarWebsite/src/java/controller/LogoutController.java</file>
             <file>file:/E:/WorkSpace2/RentCarWebsite/web/services.jsp</file>
+=======
+            <file>file:/Users/developer/RentCarWebsite/src/java/util/StringUtil.java</file>
+            <file>file:/Users/developer/RentCarWebsite/src/java/dao/CarBrandDao.java</file>
+            <file>file:/Users/developer/RentCarWebsite/src/java/dao/CarDao.java</file>
+            <file>file:/Users/developer/RentCarWebsite/src/java/service/CarService.java</file>
+            <file>file:/Users/developer/RentCarWebsite/web/car.jsp</file>
+            <file>file:/Users/developer/RentCarWebsite/web/css/custom.css</file>
+            <file>file:/Users/developer/RentCarWebsite/src/java/controller/CarController.java</file>
+            <file>file:/Users/developer/RentCarWebsite/src/java/util/JDBCConnect.java</file>
+>>>>>>> 0fdb072da8f87c83bff302dc4b870339562d09e5
         </group>
     </open-files>
 </project-private>
