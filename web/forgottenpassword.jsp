@@ -1,27 +1,18 @@
 <%
-    String name = (String) session.getAttribute("name");
-    if (name == null) {
-        name = "";
-    }
-    String username = (String) session.getAttribute("username");
-    if (username == null) {
-        username = "";
-    }
-    String email = (String) session.getAttribute("email");
+   
+    String email = (String) session.getAttribute("newemail");
     if (email == null) {
         email = "";
     }
-    String password = (String) session.getAttribute("password");
+    String password = (String) session.getAttribute("newpassword");
     if (password == null) {
         password = "";
     }
-    String confirmpassword = (String) session.getAttribute("confirmpassword");
+    String confirmpassword = (String) session.getAttribute("newconfirmpassword");
     if (confirmpassword == null) {
         confirmpassword = "";
     }
-    String dob = (String) session.getAttribute("dob");
-    if (dob == null)
-        dob = "";
+   
 %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -125,57 +116,24 @@
             <div class="row d-flex mb-5 contact-info">       	
 
                 <div class="container">
-                    <form method="POST" action="./register" id="" >
+                    <form method="POST" action="./forgottenpassword" id="" >
                         <div class="login-form-content">
-                            <span>Full name : </span>
-                            <div class="text-content-wrapper">
-                                <input name="name" type="text" placeholder="Enter your name..." class="form-control" value="<%=name%>">
-                            </div>
-                            <% String messageName = (String) request.getAttribute("messageName");
-                            %>
-                            <% if (messageName != null) {%>
-                            <div class="error">
-                                <strong> <%= messageName%> </strong>
-                            </div>
-                            <% }%>
-                            <span>Email : </span>
+                           <span>Email : </span>
                             <div class="text-content-wrapper">
                                 <input name="email" type="email" placeholder="Enter your email..." class="form-control" value="<%=email%>">
                             </div>
-                            <% String messageEmail = (String) request.getAttribute("messageEmail");
+                            <% String messageEmail = (String) request.getAttribute("messageNewEmail");
                             %>
                             <% if (messageEmail != null) {%>
                             <div class="error">
                                 <strong> <%= messageEmail%> </strong>
                             </div>
                             <% }%>
-                            <span>Date of birth : </span>
-                            <div class="text-content-wrapper">
-                                <input name="dob" type="date" placeholder="" class="form-control" value="<%=dob%>">
-                            </div>
-                            <% String messageDob = (String) request.getAttribute("messageDob");
-                            %>
-                            <% if (messageDob != null) {%>
-                            <div class="error">
-                                <strong> <%= messageDob%> </strong>
-                            </div>
-                            <% }%>
-                            <span>Username : </span>
-                            <div class="text-content-wrapper">
-                                <input name="username" type="text" placeholder="Enter your username..." class="form-control" value="<%=username%>">
-                            </div>
-                            <% String messageUsername = (String) request.getAttribute("messageUsername");
-                            %>
-                            <% if (messageUsername != null) {%>
-                            <div class="error">
-                                <strong> <%= messageUsername%> </strong>
-                            </div>
-                            <% }%>
                             <span>Password : </span>
                             <div class="text-content-wrapper">
                                 <input name="password" type="password" placeholder="Password" class="form-control" value="<%=password%>">
                             </div>
-                            <% String messagePassword = (String) request.getAttribute("messagePassword");
+                            <% String messagePassword = (String) request.getAttribute("messageNewPassword");
                             %>
                             <% if (messagePassword != null) {%>
                             <div class="error">
@@ -186,7 +144,7 @@
                             <div class="text-content-wrapper">
                                 <input name="confirmpassword" type="password" placeholder="Confirm Password" class="form-control" value="<%=confirmpassword%>" > 
                             </div>
-                            <% String messageConfirmPassword = (String) request.getAttribute("messageConfirmPassword");
+                            <% String messageConfirmPassword = (String) request.getAttribute("messageNewConfirmPassword");
                             %>
                             <% if (messageConfirmPassword != null) {%>
                             <div class="error">
@@ -194,7 +152,7 @@
                             </div>
                             <% }%>
                             <div class="login-btn-container">
-                                <button class="login-btn">Register</button>
+                                <button class="login-btn">Reset password</button>
                             </div>
                             <div class="hr"></div>             
                             <div class="create-new-account-btn-container">                
