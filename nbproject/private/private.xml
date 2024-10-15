@@ -16,10 +16,14 @@
             <file>file:/Users/developer/RentCarWebsite/src/java/dao/CarBrandDao.java</file>
             <file>file:/Users/developer/RentCarWebsite/src/java/dao/CarDao.java</file>
             <file>file:/Users/developer/RentCarWebsite/src/java/service/CarService.java</file>
+            <file>file:/Users/developer/RentCarWebsite/src/java/dao/UserDao.java</file>
+            <file>file:/Users/developer/RentCarWebsite/src/java/dao/CarTypeDao.java</file>
             <file>file:/Users/developer/RentCarWebsite/web/car.jsp</file>
             <file>file:/Users/developer/RentCarWebsite/web/css/custom.css</file>
             <file>file:/Users/developer/RentCarWebsite/src/java/controller/CarController.java</file>
             <file>file:/Users/developer/RentCarWebsite/src/java/util/JDBCConnect.java</file>
+            <file>file:/Users/developer/RentCarWebsite/src/java/util/NumberUtil.java</file>
+            <file>file:/Users/developer/RentCarWebsite/src/java/dao/DistrictDao.java</file>
         </group>
     </open-files>
 </project-private>
