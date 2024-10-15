@@ -2,7 +2,6 @@
 package controller;
 
 import DTO.CarDTO;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import dao.CarBrandDao;
 import dao.CarDao;
 import dao.CarTypeDao;
@@ -68,7 +67,7 @@ public class CarController extends HttpServlet {
         request.setAttribute("totalPages", number);
         request.setAttribute("totalItems", size);
         if(params.containsKey("car_name")) {
-            request.setAttribute("name", params.get("car_name")[0]);
+            request.setAttribute("car_name", params.get("car_name")[0]);
         }
         if(params.containsKey("color")) {
             request.setAttribute("color", params.get("color")[0]);

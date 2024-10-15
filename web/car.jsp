@@ -62,7 +62,7 @@
                 
             <!--Search Bar-->
                 <div class="search__bar">
-                     <input type="text" name="car_name" class="search" placeholder="Nhập tên xe" value="${name}">
+                     <input type="text" name="car_name" class="search" placeholder="Nhập tên xe" value="${car_name}">
                      <button type="submit" style="background: none;
                                                     border: none;
                                                     outline: none">

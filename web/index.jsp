@@ -2,7 +2,7 @@
 <html lang="en">
   <%@include file="public/header.jsp"%>
   <body>
-     <%@include file="public/indexmenu.jsp"%>
+     <%@include file="public/menu.jsp"%>
 	
     
     <div class="hero-wrap ftco-degree-bg" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">

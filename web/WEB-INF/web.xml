@@ -92,6 +92,14 @@
         <servlet-name>AdminHomeController</servlet-name>
         <servlet-class>controller.admin.AdminHomeController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TestController</servlet-name>
+        <servlet-class>controller.TestController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ForgottenPasswordController</servlet-name>
+        <servlet-class>controller.ForgottenPasswordController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -184,7 +192,14 @@
         <servlet-name>AdminHomeController</servlet-name>
         <url-pattern>/admin-home</url-pattern>
     </servlet-mapping>
-     
+    <servlet-mapping>
+        <servlet-name>TestController</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ForgottenPasswordController</servlet-name>
+        <url-pattern>/forgottenpassword</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

@@ -30,7 +30,7 @@ public class AdminCarController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-           RequestDispatcher dis=request.getRequestDispatcher("admin/car.jsp");
+           RequestDispatcher dis=request.getRequestDispatcher("admin/src/index.html");
         dis.forward(request, response);
     }
 
