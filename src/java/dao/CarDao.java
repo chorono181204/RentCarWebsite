@@ -2,6 +2,7 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -82,11 +83,11 @@ public class CarDao {
             ResultSet rs = stmt.executeQuery(sql.toString())) {
                 while(rs.next()) {
                     Car car = new Car();
-                    car.setId(rs.getLong("id_car"));
-                    car.setName(rs.getString("car_name"));
-                    car.setCarBrandId(rs.getLong("car_brand_id"));
+                    car.setId_car(rs.getLong("id_car"));
+                    car.setCar_name(rs.getString("car_name"));
+                    car.setCar_brand_id(rs.getLong("car_brand_id"));
                     car.setPrice(rs.getLong("price"));
-                    car.setImage(rs.getString("img"));
+                    car.setImg(rs.getString("img"));
                     result.add(car);
                 }
                 return result;
@@ -154,4 +155,166 @@ public class CarDao {
         }
         return null;
     }
+
+
+    public List<Car> getAll() {
+        try ( Connection connection = JDBCConnect.getConnection()) {
+            List<Car> list = new ArrayList<>();
+            String sql = "SELECT * FROM rentcar.car;";
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Car c = new Car(rs.getString("car_name"),
+                        rs.getString("fuel"),
+                        rs.getString("transmission"),
+                        rs.getString("img"),
+                        rs.getString("description"),
+                        rs.getString("color"),
+                        rs.getString("current_address"),
+                        rs.getLong("id_car"),
+                        rs.getLong("seats"),
+                        rs.getLong("luggage"),
+                        rs.getLong("rate"),
+                        rs.getLong("status"),
+                        rs.getLong("price"),
+                        rs.getLong("year_of_manufacture"),
+                        rs.getLong("car_type_id"),
+                        rs.getLong("car_brand_id"),
+                        rs.getLong("rent_id"),
+                        rs.getLong("district_id"));
+                list.add(c);
+            }
+            return list;
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    //insert car
+    public void insert(Car u) {
+        try ( Connection connection = JDBCConnect.getConnection()) {
+            String sql = "INSERT INTO car (car_name, seats, fuel, transmission, luggage, img, description, rate, status, color, price, year_of_manufacture, current_address, car_type_id, car_brand_id, rent_id, district_id) \n"
+                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement st = connection.prepareStatement(sql);
+
+            st.setString(1, u.getCar_name());
+            st.setLong(2, u.getSeats());
+            st.setString(3, u.getFuel());
+            st.setString(4, u.getTransmission());
+            st.setLong(5, u.getLuggage());
+            st.setString(6, u.getImg());
+            st.setString(7, u.getDescription());
+            st.setLong(8, u.getRate());
+            st.setLong(9, u.getStatus());
+            st.setString(10, u.getColor());
+            st.setLong(11, u.getPrice());
+            st.setLong(12, u.getYear_of_manufacture());
+            st.setString(13, u.getCurrent_address());
+            st.setLong(14, u.getCar_type_id());
+            st.setLong(15, u.getCar_brand_id());
+            st.setLong(16, u.getRent_id());
+            st.setLong(17, u.getDistrict_id());
+
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    //tim 1 car khi co id
+    public Car getCarById(long id) {
+        try ( Connection connection = JDBCConnect.getConnection()) {
+            String sql = "SELECT * FROM car WHERE id_car = ?;";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setLong(1, id);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                Car c = new Car(rs.getString("car_name"),
+                        rs.getString("fuel"),
+                        rs.getString("transmission"),
+                        rs.getString("img"),
+                        rs.getString("description"),
+                        rs.getString("color"),
+                        rs.getString("current_address"),
+                        rs.getLong("id_car"),
+                        rs.getLong("seats"),
+                        rs.getLong("luggage"),
+                        rs.getLong("rate"),
+                        rs.getLong("status"),
+                        rs.getLong("price"),
+                        rs.getLong("year_of_manufacture"),
+                        rs.getLong("car_type_id"),
+                        rs.getLong("car_brand_id"),
+                        rs.getLong("rent_id"),
+                        rs.getLong("district_id"));
+                return c;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    //delete car
+    public void delete(int id) {
+        try ( Connection connection = JDBCConnect.getConnection()) {
+            String sql = "DELETE FROM car WHERE id_car = ?";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setInt(1, id);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    //update car
+    public void update(Car u) {
+        try ( Connection connection = JDBCConnect.getConnection()) {
+            String sql = "UPDATE car\n"
+                    + "SET car_name=?, seats=?, fuel=?, transmission=?, luggage=?,img=?, description=?, rate=?, status=?, color=?, price=?, year_of_manufacture=?, current_address=?, car_type_id=?, car_brand_id=?, rent_id=?, district_id=?\n"
+                    + "WHERE id_car = ?;";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, u.getCar_name());
+            st.setLong(2, u.getSeats());
+            st.setString(3, u.getFuel());
+            st.setString(4, u.getTransmission());
+            st.setLong(5, u.getLuggage());
+            st.setString(6, u.getImg());
+            st.setString(7, u.getDescription());
+            st.setLong(8, u.getRate());
+            st.setLong(9, u.getStatus());
+            st.setString(10, u.getColor());
+            st.setLong(11, u.getPrice());
+            st.setLong(12, u.getYear_of_manufacture());
+            st.setString(13, u.getCurrent_address());
+            st.setLong(14, u.getCar_type_id());
+            st.setLong(15, u.getCar_brand_id());
+            st.setLong(16, u.getRent_id());
+            st.setLong(17, u.getDistrict_id());
+            st.setLong(18, u.getId_car());
+
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public int count() {
+        try ( Connection connection = JDBCConnect.getConnection()) {
+            int count = 0;
+            String sql = "select count(*) from car";
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+
+            if (rs.next()) {
+                count = rs.getInt(1); // Lấy kết quả của COUNT
+            }
+            return count;
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return 0;
+    }
+
 }

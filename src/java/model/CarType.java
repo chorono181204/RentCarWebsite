@@ -1,19 +1,15 @@
 
 package model;
 
-/**
- *
- * @author developer
- */
 public class CarType {
-    Long id;
+    long id;
     String type;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -24,5 +20,14 @@ public class CarType {
     public void setType(String type) {
         this.type = type;
     }
+
+    public CarType(Long id, String type) {
+        this.id = id;
+        this.type = type;
+    }
+
+    public CarType() {
+    }
+    
     
 }

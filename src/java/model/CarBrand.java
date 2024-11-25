@@ -1,22 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package model;
 
-/**
- *
- * @author developer
- */
 public class CarBrand {
-    private Long id;
+    private long id;
     private String name;
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -27,6 +20,15 @@ public class CarBrand {
     public void setName(String name) {
         this.name = name;
     }
+
+    public CarBrand(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public CarBrand() {
+    }
     
     
+
 }

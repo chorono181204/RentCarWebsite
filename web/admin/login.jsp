@@ -206,6 +206,7 @@ String username = (String) session.getAttribute("Adminusername");
         }
     </style>
     <body>
+<<<<<<< HEAD
         <div class="container">
             <div class="screen">
                 <div class="screen__content">
@@ -255,5 +256,21 @@ String username = (String) session.getAttribute("Adminusername");
                 </div>		
             </div>
         </div>
+=======
+        <h1>Đăng nhập</h1>
+        <%
+            if(request.getAttribute("error") != null){
+                String er = (String)request.getAttribute("error");
+        %>
+        <h3 style="color: red"><%= er %></h3>
+        <%
+            }
+        %>
+        <form action="${pageContext.request.contextPath}/admin-login" method="post">
+            Username:<input type="text" name="user"/><br/>
+            Password:<input type="password" name="pass"/><br/>
+            <input type="submit" value="SUBMIT"/><br/>
+        </form>
+>>>>>>> cbf9c38e23ebc147983d609d590171a08e08f53a
     </body>
 </html>

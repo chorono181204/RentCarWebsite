@@ -17,10 +17,10 @@ public class CarService {
         List<CarDTO> result = new ArrayList<>();
         for(Car item : car) {
             CarDTO carDTO = new CarDTO();
-            carDTO.setName(item.getName());
-            CarBrand carBrand = carBrandDao.findNameById(item.getCarBrandId());
+            carDTO.setName(item.getCar_name());
+            CarBrand carBrand = carBrandDao.findNameById(item.getCar_brand_id());
             carDTO.setBrand(carBrand.getName());
-            carDTO.setImage(item.getImage());
+            carDTO.setImage(item.getImg());
             carDTO.setPrice(item.getPrice());
             result.add(carDTO);
         }

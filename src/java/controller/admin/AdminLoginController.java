@@ -6,7 +6,6 @@ package controller.admin;
 
 import dao.UserDao;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,94 +20,81 @@ import model.User;
  */
 public class AdminLoginController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
       
-        
+//        request.getRequestDispatcher("admin/login.jsp").forward(request, response);
     }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         processRequest(request, response);
-         HttpSession session = request.getSession(); 
-         String sessionCheck=(String)session.getAttribute("AdminLogin");
-         if(sessionCheck!=null){
+        processRequest(request, response);
+        HttpSession session = request.getSession(); 
+        String sessionCheck=(String)session.getAttribute("AdminLogin");
+        if(sessionCheck!=null){
             response.sendRedirect("./admin-home");
-        }else{
-        RequestDispatcher dis=request.getRequestDispatcher("admin/login.jsp");
-        dis.forward(request,response);
-         }
+        }
+        else{
+            RequestDispatcher dis=request.getRequestDispatcher("admin/login.jsp");
+            dis.forward(request,response);
+        }
+        request.getRequestDispatcher("admin/login.jsp").forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         response.setContentType("text/html;charset=UTF-8");
-         HttpSession session = request.getSession();        
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();        
         String username=request.getParameter("username");
         String password=request.getParameter("password");
         session.setAttribute("Adminusername", username);
         
         User us=UserDao.loginAuth(username,password);
-       if(username==null||username.equals("")){
-              request.setAttribute("messageUsername", "Please enter your username!"); 
-        RequestDispatcher dis=request.getRequestDispatcher("admin/login.jsp");
-        dis.forward(request,response);
-       }
-       if(password==null||password.equals("")){
-              request.setAttribute("messagePassword", "Please enter your password!"); 
-        RequestDispatcher dis=request.getRequestDispatcher("admin/login.jsp");
-        dis.forward(request,response);
-       }
+        if(username==null||username.equals("")){
+               request.setAttribute("messageUsername", "Please enter your username!"); 
+         RequestDispatcher dis=request.getRequestDispatcher("admin/login.jsp");
+         dis.forward(request,response);
+        }
+        if(password==null||password.equals("")){
+               request.setAttribute("messagePassword", "Please enter your password!"); 
+         RequestDispatcher dis=request.getRequestDispatcher("admin/login.jsp");
+         dis.forward(request,response);
+        }
         if(us!=null ){
             if(UserDao.loginAuthorization(us.getId_user())){
                 response.sendRedirect("./admin-home");
-            session.setAttribute("AdminLogin","successfull");
-            }else{
-        request.setAttribute("message", "Not Authorization"); 
-        RequestDispatcher dis=request.getRequestDispatcher("admin/login.jsp");
-        dis.forward(request,response);
+                session.setAttribute("AdminLogin","successfull");
             }
-        }else{
+            else {
+                request.setAttribute("message", "Not Authorization"); 
+                RequestDispatcher dis=request.getRequestDispatcher("admin/login.jsp");
+                dis.forward(request,response);
+            }
+        }
+        else{
             request.setAttribute("message", "Username or password incorrect!"); 
-        RequestDispatcher dis=request.getRequestDispatcher("admin/login.jsp");
-        dis.forward(request,response);
+            RequestDispatcher dis=request.getRequestDispatcher("admin/login.jsp");
+            dis.forward(request,response);
         } 
+        //lay tu form: username and password
+        String u = request.getParameter("user");
+        String p = request.getParameter("pass");
+        //lay tu web.xml: username and password
+        String u_init = getServletContext().getInitParameter("user");
+        String p_init = getServletContext().getInitParameter("pass");
+        if(u.equalsIgnoreCase(u_init) && p.equals(p_init)){
+            request.getRequestDispatcher("admin/index.jsp").forward(request, response);
+        }
+        else{
+            String ms="Tài khoản hoặc mật khẩu không đúng!";
+            request.setAttribute("error", ms);
+            request.getRequestDispatcher("admin/login.jsp").forward(request, response);
+        }
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
