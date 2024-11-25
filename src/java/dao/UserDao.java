@@ -4,23 +4,25 @@
  */
 package dao;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import model.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import util.JDBCConnect;
 
 /**
  *
  * @author Hacom
  */
-public class UserDao extends DBcontext {
+public class UserDao {
 
     public List<User> getAll() {
-        List<User> list = new ArrayList<>();
-        String sql = "SELECT * FROM rentcar.user;";
-        try {
+        try ( Connection connection = JDBCConnect.getConnection()) {
+            List<User> list = new ArrayList<>();
+            String sql = "SELECT * FROM rentcar.user;";
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
@@ -33,17 +35,18 @@ public class UserDao extends DBcontext {
                         rs.getInt("status"));
                 list.add(u);
             }
+            return list;
         } catch (SQLException e) {
             System.out.println(e);
         }
-        return list;
+        return null;
     }
 
     //insert user
     public void insert(User u) {
-        String sql = "INSERT INTO user (username, password, name, date_of_bird, role) \n"
-                + "VALUES(?, ?, ?, ?, ?)";
-        try {
+        try ( Connection connection = JDBCConnect.getConnection()) {
+            String sql = "INSERT INTO user (username, password, name, date_of_bird, role) \n"
+                    + "VALUES(?, ?, ?, ?, ?)";
             PreparedStatement st = connection.prepareStatement(sql);
 
             st.setString(1, u.getUsername());
@@ -60,8 +63,8 @@ public class UserDao extends DBcontext {
 
     //tim 1 user khi co id
     public User getUserById(int id) {
-        String sql = "SELECT * FROM user WHERE id_user = ?;";
-        try {
+        try ( Connection connection = JDBCConnect.getConnection()) {
+            String sql = "SELECT * FROM user WHERE id_user = ?;";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
@@ -83,8 +86,8 @@ public class UserDao extends DBcontext {
 
     //delete user
     public void delete(int id) {
-        String sql = "DELETE FROM user WHERE id_user = ?";
-        try {
+        try ( Connection connection = JDBCConnect.getConnection()) {
+            String sql = "DELETE FROM user WHERE id_user = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, id);
             st.executeUpdate();
@@ -95,10 +98,10 @@ public class UserDao extends DBcontext {
 
     //update user
     public void update(User u) {
-        String sql = "UPDATE user\n"
-                + "SET username=?, password=?, name=?, date_of_bird=?,role=?,status=?\n"
-                + "WHERE id_user = ?;";
-        try {
+        try ( Connection connection = JDBCConnect.getConnection()) {
+            String sql = "UPDATE user\n"
+                    + "SET username=?, password=?, name=?, date_of_bird=?,role=?,status=?\n"
+                    + "WHERE id_user = ?;";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, u.getUsername());
             st.setString(2, u.getPassword());
@@ -108,27 +111,28 @@ public class UserDao extends DBcontext {
             st.setInt(6, u.getStatus());
             st.setInt(7, u.getId_user());
             st.executeUpdate();
-        } catch(SQLException e){
-            System.out.println(e);
-        }
-    }
-    
-    public int count(){
-        int count = 0;
-        String sql = "select count(*) from user";
-        try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            ResultSet rs = st.executeQuery();
-            
-            if (rs.next()) {
-                count = rs.getInt(1); // Lấy kết quả của COUNT
-            }
         } catch (SQLException e) {
             System.out.println(e);
         }
-        return count;
     }
-    
+
+    public int count() {
+        try ( Connection connection = JDBCConnect.getConnection()) {
+        int count = 0;
+        String sql = "select count(*) from user";
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+
+            if (rs.next()) {
+                count = rs.getInt(1); // Lấy kết quả của COUNT
+            }
+            return count;
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return 0;
+    }
+
 //    public String getUser(int id) {
 //        String user = "";
 //        String sql = "SELECT * FROM user WHERE id_user = ?;";
@@ -144,7 +148,6 @@ public class UserDao extends DBcontext {
 //        }
 //        return user;
 //    }
-
     public static void main(String[] args) {
         UserDao c = new UserDao();
         List<User> list = c.getAll();

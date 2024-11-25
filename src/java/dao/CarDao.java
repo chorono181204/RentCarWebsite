@@ -6,23 +6,25 @@ package dao;
 
 import com.mysql.cj.xdevapi.PreparableStatement;
 import com.mysql.cj.xdevapi.Result;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.Car;
+import util.JDBCConnect;
 
 /**
  *
  * @author pc
  */
-public class CarDao extends DBcontext {
+public class CarDao {
 
     public List<Car> getAll() {
-        List<Car> list = new ArrayList<>();
-        String sql = "SELECT * FROM rentcar.car;";
-        try {
+        try ( Connection connection = JDBCConnect.getConnection()) {
+            List<Car> list = new ArrayList<>();
+            String sql = "SELECT * FROM rentcar.car;";
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
@@ -46,17 +48,18 @@ public class CarDao extends DBcontext {
                         rs.getInt("district_id"));
                 list.add(c);
             }
+            return list;
         } catch (SQLException e) {
             System.out.println(e);
         }
-        return list;
+        return null;
     }
 
     //insert car
     public void insert(Car u) {
-        String sql = "INSERT INTO car (car_name, seats, fuel, transmission, luggage, img, description, rate, status, color, price, year_of_manufacture, current_address, car_type_id, car_brand_id, rent_id, district_id) \n"
-                + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        try {
+        try ( Connection connection = JDBCConnect.getConnection()) {
+            String sql = "INSERT INTO car (car_name, seats, fuel, transmission, luggage, img, description, rate, status, color, price, year_of_manufacture, current_address, car_type_id, car_brand_id, rent_id, district_id) \n"
+                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement st = connection.prepareStatement(sql);
 
             st.setString(1, u.getCar_name());
@@ -85,8 +88,8 @@ public class CarDao extends DBcontext {
 
     //tim 1 car khi co id
     public Car getCarById(int id) {
-        String sql = "SELECT * FROM car WHERE id_car = ?;";
-        try {
+        try ( Connection connection = JDBCConnect.getConnection()) {
+            String sql = "SELECT * FROM car WHERE id_car = ?;";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
@@ -119,8 +122,8 @@ public class CarDao extends DBcontext {
 
     //delete car
     public void delete(int id) {
-        String sql = "DELETE FROM car WHERE id_car = ?";
-        try {
+        try ( Connection connection = JDBCConnect.getConnection()) {
+            String sql = "DELETE FROM car WHERE id_car = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, id);
             st.executeUpdate();
@@ -131,10 +134,10 @@ public class CarDao extends DBcontext {
 
     //update car
     public void update(Car u) {
-        String sql = "UPDATE car\n"
-                + "SET car_name=?, seats=?, fuel=?, transmission=?, luggage=?,img=?, description=?, rate=?, status=?, color=?, price=?, year_of_manufacture=?, current_address=?, car_type_id=?, car_brand_id=?, rent_id=?, district_id=?\n"
-                + "WHERE id_car = ?;";
-        try {
+        try ( Connection connection = JDBCConnect.getConnection()) {
+            String sql = "UPDATE car\n"
+                    + "SET car_name=?, seats=?, fuel=?, transmission=?, luggage=?,img=?, description=?, rate=?, status=?, color=?, price=?, year_of_manufacture=?, current_address=?, car_type_id=?, car_brand_id=?, rent_id=?, district_id=?\n"
+                    + "WHERE id_car = ?;";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, u.getCar_name());
             st.setInt(2, u.getSeats());
@@ -162,19 +165,20 @@ public class CarDao extends DBcontext {
     }
 
     public int count() {
-        int count = 0;
-        String sql = "select count(*) from car";
-        try {
+        try ( Connection connection = JDBCConnect.getConnection()) {
+            int count = 0;
+            String sql = "select count(*) from car";
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
 
             if (rs.next()) {
                 count = rs.getInt(1); // Lấy kết quả của COUNT
             }
+            return count;
         } catch (SQLException e) {
             System.out.println(e);
         }
-        return count;
+        return 0;
     }
 
     public static void main(String[] args) {

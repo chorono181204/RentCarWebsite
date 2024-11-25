@@ -4,23 +4,25 @@
  */
 package dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import model.Contact;
+import util.JDBCConnect;
 
 /**
  *
  * @author pc
  */
-public class ContactDao extends DBcontext {
+public class ContactDao {
 
     public List<Contact> getAll() {
-        List<Contact> list = new ArrayList<>();
-        String sql = "SELECT * FROM rentcar.contact;";
-        try {
+        try ( Connection connection = util.JDBCConnect.getConnection()) {
+            List<Contact> list = new ArrayList<>();
+            String sql = "SELECT * FROM rentcar.contact;";
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
@@ -34,17 +36,18 @@ public class ContactDao extends DBcontext {
                 );
                 list.add(c);
             }
+            return list;
         } catch (SQLException e) {
             System.out.println(e);
         }
-        return list;
+        return null;
     }
-    
+
     //insert contact
     public void insert(Contact u) {
-        String sql = "INSERT INTO contact (username, email, subject, message, status, time_sent) \n"
-                + "VALUES(?, ?, ?, ?, ?, ?)";
-        try {
+        try ( Connection connection = util.JDBCConnect.getConnection()) {
+            String sql = "INSERT INTO contact (username, email, subject, message, status, time_sent) \n"
+                    + "VALUES(?, ?, ?, ?, ?, ?)";
             PreparedStatement st = connection.prepareStatement(sql);
 
             st.setString(1, u.getUsername());
@@ -62,8 +65,8 @@ public class ContactDao extends DBcontext {
 
     //tim 1 contact khi co id
     public Contact getContactById(int id) {
-        String sql = "SELECT * FROM contact WHERE id = ?;";
-        try {
+        try ( Connection connection = util.JDBCConnect.getConnection()) {
+            String sql = "SELECT * FROM contact WHERE id = ?;";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
@@ -85,8 +88,8 @@ public class ContactDao extends DBcontext {
 
     //delete Contact
     public void delete(int id) {
-        String sql = "DELETE FROM contact WHERE id = ?";
-        try {
+        try ( Connection connection = util.JDBCConnect.getConnection()) {
+            String sql = "DELETE FROM contact WHERE id = ?";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setInt(1, id);
             st.executeUpdate();
@@ -97,10 +100,10 @@ public class ContactDao extends DBcontext {
 
     //update Contact
     public void update(Contact u) {
-        String sql = "UPDATE contact\n"
-                + "SET username=?, email=?, subject=?, message=?,status=?,time_sent=?\n"
-                + "WHERE id = ?;";
-        try {
+        try ( Connection connection = util.JDBCConnect.getConnection()) {
+            String sql = "UPDATE contact\n"
+                    + "SET username=?, email=?, subject=?, message=?,status=?,time_sent=?\n"
+                    + "WHERE id = ?;";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, u.getUsername());
             st.setString(2, u.getEmail());
@@ -109,29 +112,30 @@ public class ContactDao extends DBcontext {
             st.setInt(5, u.getStatus());
             st.setString(6, u.getTime_sent());
             st.setInt(7, u.getId());
-            
+
             st.executeUpdate();
-        } catch(SQLException e){
-            System.out.println(e);
-        }
-    }
-    
-    public int count(){
-        int count = 0;
-        String sql = "select count(*) from contact";
-        try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            ResultSet rs = st.executeQuery();
-            
-            if (rs.next()) {
-                count = rs.getInt(1); // Lấy kết quả của COUNT
-            }
         } catch (SQLException e) {
             System.out.println(e);
         }
-        return count;
     }
-    
+
+    public int count() {
+        try ( Connection connection = util.JDBCConnect.getConnection()) {
+            int count = 0;
+            String sql = "select count(*) from contact";
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+
+            if (rs.next()) {
+                count = rs.getInt(1); // Lấy kết quả của COUNT
+            }
+            return count;
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return 0;
+    }
+
     public static void main(String[] args) {
         ContactDao c = new ContactDao();
         List<Contact> list = c.getAll();
