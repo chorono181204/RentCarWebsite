@@ -62,10 +62,9 @@
                 </div>
 
                 <div class="form-field">
-                    <label for="time_sent">Time Sent:</label>
-                    <input type="date" id="time_sent" name="time_sent" required />
+                    <label for="time_sent">Pick time:</label>
+                    <input type="date" id="pick_time" name="pick_time" required />
                 </div>
-
                 <div class="form-field">
                     <label for="status">Status:</label>
                     <input type="text" id="status" name="status" required />

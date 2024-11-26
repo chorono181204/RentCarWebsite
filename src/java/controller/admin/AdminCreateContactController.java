@@ -7,6 +7,10 @@ package controller.admin;
 import dao.ContactDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import javax.print.attribute.standard.DateTimeAtCompleted;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -41,7 +45,13 @@ public class AdminCreateContactController extends HttpServlet {
         String subject = request.getParameter("subject");
         String message = request.getParameter("message");
         String status_raw = request.getParameter("status");
-        String time_sent = request.getParameter("time_sent");
+      
+        // Lấy thời gian hiện tại
+        LocalDateTime currentTime = LocalDateTime.now();
+        
+        // Định dạng thời gian nếu cần
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");       
+        String time_sent= currentTime.format(formatter); ;
         Long status;
         ContactDao udb = new ContactDao();
         try{

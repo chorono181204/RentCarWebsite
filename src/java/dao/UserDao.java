@@ -48,7 +48,9 @@ public class UserDao{
                                   rs.getString("name"),
                                   rs.getString("date_of_bird"),
                                   rs.getLong("role"),
-                                  rs.getLong("status"));
+                                  rs.getLong("status"),
+                                  rs.getString("email")
+                                                        );
             }
             return null;
         }catch(Exception ex){

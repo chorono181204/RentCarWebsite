@@ -85,3 +85,15 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
+  <script>
+        // Hàm ??nh d?ng ti?n t?
+        function formatCurrency(amount, currencySymbol) {
+            return amount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+        }
+        // L?y giá tr? ti?n t? và ??nh d?ng
+      var priceElements = document.querySelectorAll('.price');
+        priceElements.forEach(function (priceElement) {
+            var price = parseFloat(priceElement.textContent);
+            priceElement.textContent = formatCurrency(price);
+        });
+    </script>

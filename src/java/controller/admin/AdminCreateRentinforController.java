@@ -74,11 +74,12 @@ public class AdminCreateRentinforController extends HttpServlet {
         String time_sent = request.getParameter("time_sent");
         String status_raw = request.getParameter("status");
         int id_user, status;
+        int id_car=1;
         RentinforDao udb = new RentinforDao();
         try{
             id_user = Integer.parseInt(id_user_raw);
             status = Integer.parseInt(status_raw);
-            Rentinfor uNew = new Rentinfor(1, customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, id_user, time_sent, status);
+            Rentinfor uNew = new Rentinfor(1, customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, id_user, time_sent, status,id_car);
             udb.insert(uNew);
             response.sendRedirect("admin-rentinfor");
         }catch(NumberFormatException e){

@@ -156,6 +156,22 @@
         <servlet-name>ForgottenPasswordController</servlet-name>
         <servlet-class>controller.ForgottenPasswordController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RentCarController</servlet-name>
+        <servlet-class>controller.RentCarController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RentInforController</servlet-name>
+        <servlet-class>controller.RentInforController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangePasswordController</servlet-name>
+        <servlet-class>controller.ChangePasswordController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RentinforDetailsController</servlet-name>
+        <servlet-class>controller.RentinforDetailsController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>HomeController</servlet-name>
         <url-pattern>/home</url-pattern>
@@ -304,9 +320,25 @@
         <servlet-name>ForgottenPasswordController</servlet-name>
         <url-pattern>/forgottenpassword</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RentCarController</servlet-name>
+        <url-pattern>/rentcar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RentInforController</servlet-name>
+        <url-pattern>/rentinfor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePasswordController</servlet-name>
+        <url-pattern>/changepassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RentinforDetailsController</servlet-name>
+        <url-pattern>/rentinfordetails</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
-            30
+            300
         </session-timeout>
     </session-config>
     <!--    <context-param>

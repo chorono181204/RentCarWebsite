@@ -52,17 +52,18 @@ public class AdminUpdateRentinforController extends HttpServlet {
         String pick_up_location = request.getParameter("pick_up_location");
         String pick_off_location = request.getParameter("pick_off_location");
         String id_user_raw = request.getParameter("id_user");
-        String time_sent = request.getParameter("time_sent");
+        String pick_time = request.getParameter("pick_time");
         String status_raw = request.getParameter("status");
         Long rent_id, id_user, status;
+        Long id_car=1L;
         RentinforDao udb = new RentinforDao();
         try{
             rent_id = Long.parseLong(rent_id_raw);
             id_user = Long.parseLong(id_user_raw);
             status = Long.parseLong(status_raw);
-            Rentinfor uNew = new Rentinfor(rent_id, customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, id_user, time_sent, status);
+            Rentinfor uNew = new Rentinfor(rent_id, customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, id_user, pick_time, status,id_car);
             udb.update(uNew);
-            response.sendRedirect("admin-rentinfor");
+            response.sendRedirect("");
         }catch(NumberFormatException e){
             System.out.println(e);
         }

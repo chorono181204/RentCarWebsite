@@ -70,7 +70,7 @@
 
                 <div class="form-field">
                     <label for="time_sent">Time Sent:</label>
-                    <input type="date" id="time_sent" name="time_sent" value="<%= u.getTime_sent()%>"  />
+                    <input type="date" id="time_sent" name="pick_time" value="<%= u.getPick_time()%>" />
                 </div>
 
                 <div class="form-field">

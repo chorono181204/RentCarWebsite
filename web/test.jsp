@@ -11,12 +11,12 @@
     <body>
        <% 
      // HttpSession session = request.getSession();
-      String s=(String)session.getAttribute("Abc");
-      String x="Thắng";
+      Integer s=(Integer)request.getAttribute("id");
+      
       %>
-        <span> <%=x %></span>
+        <span> <%=s %></span>
         <div class="text-content-wrapper">
-                    <input name="name" type="text" placeholder="Enter your name..." class="form-control" value="<%=x%>">
+                    <input name="name" type="text" placeholder="Enter your name..." class="form-control" value="<%=s%>">
                 </div>
     </body>
 </html>

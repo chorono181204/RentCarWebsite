@@ -12,7 +12,7 @@ public class Car {
     public Car() {
     }
 
-    public Car(String car_name, String fuel, String transmission, String img, String description, String color, String current_address, long id_car, long seats, long luggage, long rate, long status, long price, long year_of_manufacture, long car_type_id, long car_brand_id, long rent_id, long district_id) {
+    public Car(String car_name, String fuel, String transmission, String img, String description, String color, String current_address, long id_car, long seats, long luggage, long rate, long status, long price, long year_of_manufacture, long car_type_id, long car_brand_id,  long district_id) {
         this.car_name = car_name;
         this.fuel = fuel;
         this.transmission = transmission;
@@ -29,7 +29,6 @@ public class Car {
         this.year_of_manufacture = year_of_manufacture;
         this.car_type_id = car_type_id;
         this.car_brand_id = car_brand_id;
-        this.rent_id = rent_id;
         this.district_id = district_id;
     }
 
@@ -162,15 +161,6 @@ public class Car {
     public void setCar_brand_id(long car_brand_id) {
         this.car_brand_id = car_brand_id;
     }
-
-    public long getRent_id() {
-        return rent_id;
-    }
-
-    public void setRent_id(long rent_id) {
-        this.rent_id = rent_id;
-    }
-
     public long getDistrict_id() {
         return district_id;
     }

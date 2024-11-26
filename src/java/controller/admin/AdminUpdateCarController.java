@@ -104,10 +104,10 @@ public class AdminUpdateCarController extends HttpServlet {
             year_of_manufacture = Long.parseLong(year_of_manufacture_raw != null ? year_of_manufacture_raw : "0");
             car_type_id = Long.parseLong(car_type_id_raw != null ? car_type_id_raw : "0");
             car_brand_id = Long.parseLong(car_brand_id_raw != null ? car_brand_id_raw : "0");
-            rent_id = Long.parseLong(rent_id_raw != null ? rent_id_raw : "0");
+         
             district_id = Long.parseLong(district_id_raw != null ? district_id_raw : "0");
 
-            Car uNew = new Car(carname, fuel, transmission, filename, description, color, current_address, 1, seats, luggage, rate, status, price, year_of_manufacture, car_type_id, car_brand_id, rent_id, district_id);
+            Car uNew = new Car(carname, fuel, transmission, filename, description, color, current_address, 1, seats, luggage, rate, status, price, year_of_manufacture, car_type_id, car_brand_id,  district_id);
             CarDao udb = new CarDao();
             udb.update(uNew);
 

@@ -47,19 +47,12 @@
 
                 <label for="current_address">Current Address:</label>
                 <input type="text" id="current_address" name="current_address" required /><br/>
-
                 <label for="car_type_id">Car Type ID:</label>
                 <input type="text" id="car_type_id" name="car_type_id" required /><br/>
-
                 <label for="car_brand_id">Car Brand ID:</label>
                 <input type="text" id="car_brand_id" name="car_brand_id" required /><br/>
-
-                <label for="rent_id">Rent ID:</label>
-                <input type="text" id="rent_id" name="rent_id" required /><br/>
-
                 <label for="district_id">District ID:</label>
                 <input type="text" id="district_id" name="district_id" required /><br/>
-
                 <button type="submit">Create</button>
             </form>
         </div>

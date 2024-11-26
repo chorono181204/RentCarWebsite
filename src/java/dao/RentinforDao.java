@@ -26,7 +26,8 @@ public class RentinforDao {
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                Rentinfor c = new Rentinfor(rs.getInt("rent_id"),
+                Rentinfor c = new Rentinfor(
+                        rs.getInt("rent_id"),
                         rs.getString("customer_name"),
                         rs.getString("phone"),
                         rs.getString("email"),
@@ -36,8 +37,9 @@ public class RentinforDao {
                         rs.getString("pick_up_location"),
                         rs.getString("pick_off_location"),
                         rs.getInt("id_user"),
-                        rs.getString("time_sent"),
-                        rs.getInt("status")
+                        rs.getString("pick_time"),
+                        rs.getInt("status"),
+                        rs.getInt("id_car")                       
                 );
                 list.add(c);
             }
@@ -51,8 +53,8 @@ public class RentinforDao {
     //insert rentinfor
     public void insert(Rentinfor u) {
         try ( Connection connection = util.JDBCConnect.getConnection()) {
-            String sql = "INSERT INTO rentinfor (customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, id_user, time_sent, status) \n"
-                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO rentinfor (customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, id_user, pick_time, status,id_car) \n"
+                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
             PreparedStatement st = connection.prepareStatement(sql);
 
             st.setString(1, u.getCustomer_name());
@@ -64,9 +66,9 @@ public class RentinforDao {
             st.setString(7, u.getPick_up_location());
             st.setString(8, u.getPick_off_location());
             st.setLong(9, u.getId_user());
-            st.setString(10, u.getTime_sent());
+            st.setString(10, u.getPick_time());
             st.setLong(11, u.getStatus());
-
+            st.setLong(12, u.getId_car());
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -81,7 +83,8 @@ public class RentinforDao {
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
-                Rentinfor u = new Rentinfor(rs.getInt("rent_id"),
+                Rentinfor u = new Rentinfor(
+                        rs.getInt("rent_id"),
                         rs.getString("customer_name"),
                         rs.getString("phone"),
                         rs.getString("email"),
@@ -91,8 +94,10 @@ public class RentinforDao {
                         rs.getString("pick_up_location"),
                         rs.getString("pick_off_location"),
                         rs.getInt("id_user"),
-                        rs.getString("time_sent"),
-                        rs.getInt("status"));
+                        rs.getString("pick_time"),
+                        rs.getInt("status"),
+                        rs.getInt("id_car")                       
+                );
                 return u;
             }
         } catch (SQLException e) {
@@ -130,10 +135,9 @@ public class RentinforDao {
             st.setString(7, u.getPick_up_location());
             st.setString(8, u.getPick_off_location());
             st.setLong(9, u.getId_user());
-            st.setString(10, u.getTime_sent());
+            st.setString(10, u.getPick_time());
             st.setLong(11, u.getStatus());
             st.setLong(12, u.getRent_id());
-
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -155,5 +159,51 @@ public class RentinforDao {
             System.out.println(e);
         }
         return 0;
+    }
+    public int countByUser(long id_user){
+          try ( Connection connection = util.JDBCConnect.getConnection()) {
+            int count = 0;
+            String sql = "select count(*) from rentinfor where id_user = "+id_user+" ;";
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+
+            if (rs.next()) {
+                count = rs.getInt(1); // Lấy kết quả của COUNT
+            }
+            return count;
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return 0;
+    }
+    public List<Rentinfor> getAllByUser(long id_user) {
+        try ( Connection connection = util.JDBCConnect.getConnection()) {
+            List<Rentinfor> list = new ArrayList<>();
+            String sql = "SELECT * FROM rentcar.rentinfor WHERE id_user = "+id_user+" ;";
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Rentinfor c = new Rentinfor(
+                        rs.getInt("rent_id"),
+                        rs.getString("customer_name"),
+                        rs.getString("phone"),
+                        rs.getString("email"),
+                        rs.getString("customer_note"),
+                        rs.getString("pick_up_date"),
+                        rs.getString("pick_off_date"),
+                        rs.getString("pick_up_location"),
+                        rs.getString("pick_off_location"),
+                        rs.getInt("id_user"),
+                        rs.getString("pick_time"),
+                        rs.getInt("status"),
+                        rs.getInt("id_car")                       
+                );
+                list.add(c);
+            }
+            return list;
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
     }
 }

@@ -180,7 +180,7 @@ public class CarDao {
                         rs.getLong("year_of_manufacture"),
                         rs.getLong("car_type_id"),
                         rs.getLong("car_brand_id"),
-                        rs.getLong("rent_id"),
+                 
                         rs.getLong("district_id"));
                 list.add(c);
             }
@@ -194,7 +194,7 @@ public class CarDao {
     //insert car
     public void insert(Car u) {
         try ( Connection connection = JDBCConnect.getConnection()) {
-            String sql = "INSERT INTO car (car_name, seats, fuel, transmission, luggage, img, description, rate, status, color, price, year_of_manufacture, current_address, car_type_id, car_brand_id, rent_id, district_id) \n"
+            String sql = "INSERT INTO car (car_name, seats, fuel, transmission, luggage, img, description, rate, status, color, price, year_of_manufacture, current_address, car_type_id, car_brand_id, district_id) \n"
                     + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement st = connection.prepareStatement(sql);
 
@@ -213,9 +213,7 @@ public class CarDao {
             st.setString(13, u.getCurrent_address());
             st.setLong(14, u.getCar_type_id());
             st.setLong(15, u.getCar_brand_id());
-            st.setLong(16, u.getRent_id());
-            st.setLong(17, u.getDistrict_id());
-
+            st.setLong(16, u.getDistrict_id());
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -245,8 +243,7 @@ public class CarDao {
                         rs.getLong("price"),
                         rs.getLong("year_of_manufacture"),
                         rs.getLong("car_type_id"),
-                        rs.getLong("car_brand_id"),
-                        rs.getLong("rent_id"),
+                        rs.getLong("car_brand_id"),                      
                         rs.getLong("district_id"));
                 return c;
             }
@@ -272,7 +269,7 @@ public class CarDao {
     public void update(Car u) {
         try ( Connection connection = JDBCConnect.getConnection()) {
             String sql = "UPDATE car\n"
-                    + "SET car_name=?, seats=?, fuel=?, transmission=?, luggage=?,img=?, description=?, rate=?, status=?, color=?, price=?, year_of_manufacture=?, current_address=?, car_type_id=?, car_brand_id=?, rent_id=?, district_id=?\n"
+                    + "SET car_name=?, seats=?, fuel=?, transmission=?, luggage=?,img=?, description=?, rate=?, status=?, color=?, price=?, year_of_manufacture=?, current_address=?, car_type_id=?, car_brand_id=?, district_id=?\n"
                     + "WHERE id_car = ?;";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, u.getCar_name());
@@ -290,10 +287,8 @@ public class CarDao {
             st.setString(13, u.getCurrent_address());
             st.setLong(14, u.getCar_type_id());
             st.setLong(15, u.getCar_brand_id());
-            st.setLong(16, u.getRent_id());
-            st.setLong(17, u.getDistrict_id());
-            st.setLong(18, u.getId_car());
-
+            st.setLong(16, u.getDistrict_id());
+            st.setLong(17, u.getId_car());
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -316,5 +311,46 @@ public class CarDao {
         }
         return 0;
     }
-
+    public List<Car> getAllByTypeAndBrand(long type_id,long brand_id){
+        try ( Connection connection = JDBCConnect.getConnection()) {
+            List<Car> list = new ArrayList<>();
+            String sql = "SELECT * FROM rentcar.car WHERE car_type_id = " +type_id+" AND car_brand_id = "+brand_id+" ;";
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Car c = new Car(rs.getString("car_name"),
+                        rs.getString("fuel"),
+                        rs.getString("transmission"),
+                        rs.getString("img"),
+                        rs.getString("description"),
+                        rs.getString("color"),
+                        rs.getString("current_address"),
+                        rs.getLong("id_car"),
+                        rs.getLong("seats"),
+                        rs.getLong("luggage"),
+                        rs.getLong("rate"),
+                        rs.getLong("status"),
+                        rs.getLong("price"),
+                        rs.getLong("year_of_manufacture"),
+                        rs.getLong("car_type_id"),
+                        rs.getLong("car_brand_id"),
+                        rs.getLong("district_id"));
+                list.add(c);
+            }
+            return list;
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    public void updateStatus(long id_car){
+         try ( Connection connection = JDBCConnect.getConnection()) {
+           
+            String sql = "UPDATE rentcar.car SET status = '1' WHERE id_car = "+id_car+" ;";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
 }

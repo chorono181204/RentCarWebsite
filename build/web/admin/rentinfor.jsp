@@ -82,7 +82,7 @@
                         <td><%= x.getPick_up_location()%></td>
                         <td><%= x.getPick_off_location()%></td>
                         <td><%= x.getId_user()%></td> 
-                        <td><%= x.getTime_sent()%></td>
+                        <td><%= x.getPick_time()%></td>
                         <td><%= x.getStatus()%></td> 
                         <tD>
                             <button class="update-btn"><a href="update-rentinfor?id=<%= x.getRent_id()%>">Update</a></button>&nbsp;&nbsp;&nbsp;

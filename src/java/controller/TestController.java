@@ -46,10 +46,9 @@ public class TestController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        String name =request.getParameter("name");
+        String name =request.getParameter("id");
          response.setContentType("text/html;charset=UTF-8");
           HttpSession session = request.getSession();
-          session.setAttribute("Abc", name);
        RequestDispatcher dis=request.getRequestDispatcher("test.jsp");
         dis.forward(request, response);
     }

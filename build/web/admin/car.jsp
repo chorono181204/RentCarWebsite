@@ -54,13 +54,13 @@
                 <button class="add-btn"><a href="create-car"><h4>Add a new car</h4></a></button>
                 <table border="1px" width="90%">
                     <tr>
-                        <th>Id_car</th>
+                      
                         <th>Car name</th>
                         <th>Seats</th>
                         <th>Fuel</th>
                         <th>Transmission</th>
                         <th>Luggage</th>
-                        <th>Img</th>
+                       
                         <th>Description</th>
                         <th>Rate</th>
                         <th>Status</th>
@@ -68,23 +68,19 @@
                         <th>Price</th>
                         <th>Year</th>
                         <th>Current address</th>
-                        <!--                    <th>Car_type_id</th>
-                                            <th>Car_brand_id</th>
-                                            <th>Rent_id</th>
-                                            <th>District_id</th>-->
+                        
                         <th>Action</th>
                     </tr>
                     <% List<Car> cars = (List<Car>) request.getAttribute("data"); %>
                     <% for (Car x : cars) {
                     %>
                     <tr>
-                        <td><%= x.getId_car()%></td>
+                      
                         <td><%= x.getCar_name()%></td>
                         <td><%= x.getSeats()%></td>
                         <td><%= x.getFuel()%></td>
                         <td><%= x.getTransmission()%></td>
-                        <td><%= x.getLuggage()%></td>
-                        <td><img src="uploads/<%= x.getImg()%>" width="80px" height="80px"/></td>
+                        <td><%= x.getLuggage()%></td>                  
                         <td><%= x.getDescription()%></td>
                         <td><%= x.getRate()%></td>
                         <td><%= x.getStatus()%></td>
@@ -92,10 +88,6 @@
                         <td><%= x.getPrice()%></td>
                         <td><%= x.getYear_of_manufacture()%></td>
                         <td><%= x.getCurrent_address()%></td>
-    <!--                    <td><%= x.getCar_type_id()%></td>
-                        <td><%= x.getCar_brand_id()%></td>
-                        <td><%= x.getRent_id()%></td>
-                        <td><%= x.getDistrict_id()%></td>-->
                         <tD>
                             <button class="update-btn"><a href="update-car?id=<%= x.getId_car()%>">Update</a></button>&nbsp;&nbsp;
                             <button class="delete-btn"><a href="#" onclick="doDelete(<%= x.getId_car()%>)">Delete</a></button>

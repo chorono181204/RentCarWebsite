@@ -16,6 +16,7 @@ public class Contact {
         this.status = status;
         this.time_sent = time_sent;
     }
+    
 
     public long getId() {
         return id;
