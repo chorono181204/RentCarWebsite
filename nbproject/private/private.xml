@@ -33,6 +33,7 @@
             <file>file:/Users/developer/My%20Workspace/RentCarWebsite/src/java/controller/admin/AdminCarController.java</file>
             <file>file:/Users/developer/My%20Workspace/RentCarWebsite/src/java/controller/admin/AdminCreateCarController.java</file>
             <file>file:/Users/developer/My%20Workspace/RentCarWebsite/web/index.jsp</file>
+            <file>file:/Users/developer/My%20Workspace/RentCarWebsite/web/scss/bootstrap/_variables.scss</file>
             <file>file:/Users/developer/My%20Workspace/RentCarWebsite/src/java/controller/admin/AdminDeleteCarController.java</file>
             <file>file:/Users/developer/My%20Workspace/RentCarWebsite/src/java/controller/admin/AdminContactController.java</file>
             <file>file:/Users/developer/My%20Workspace/RentCarWebsite/web/blog.jsp</file>
@@ -42,6 +43,7 @@
             <file>file:/Users/developer/My%20Workspace/RentCarWebsite/src/java/controller/FileController.java</file>
             <file>file:/Users/developer/My%20Workspace/RentCarWebsite/src/java/model/District.java</file>
             <file>file:/Users/developer/My%20Workspace/RentCarWebsite/src/java/util/JDBCConnect.java</file>
+            <file>file:/Users/developer/My%20Workspace/RentCarWebsite/web/scss/bootstrap/_root.scss</file>
             <file>file:/Users/developer/My%20Workspace/RentCarWebsite/src/java/controller/admin/AdminCreateUserController.java</file>
             <file>file:/Users/developer/My%20Workspace/RentCarWebsite/src/java/dao/RentinforDao.java</file>
             <file>file:/Users/developer/My%20Workspace/RentCarWebsite/src/java/controller/admin/AdminCreateContactController.java</file>
