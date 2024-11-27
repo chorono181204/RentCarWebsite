@@ -1,8 +1,3 @@
-<%-- 
-    Document   : createContact
-    Created on : 16-10-2024, 23:22:51
-    Author     : pc
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

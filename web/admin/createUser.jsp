@@ -1,8 +1,3 @@
-<%-- 
-    Document   : createUser
-    Created on : 10-10-2024, 22:09:09
-    Author     : pc
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

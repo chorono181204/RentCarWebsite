@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarDTO {
+    private long id;
     private String name;
     private String brand;
     private Long price;
@@ -40,5 +41,14 @@ public class CarDTO {
     public void setBrand(String brand) {
         this.brand = brand;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+    
 
 }

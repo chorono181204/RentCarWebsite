@@ -1,8 +1,3 @@
-<%-- 
-    Document   : updateCar
-    Created on : 16-10-2024, 21:37:29
-    Author     : pc
---%>
 
 <%@page import="model.Car"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -103,13 +98,7 @@
                 <div class="form-field">
                     <label for="car_brand_id">Car Brand ID:</label>
                     <input type="text" id="car_brand_id" name="car_brand_id" value="<%= u.getCar_brand_id()%>"  />
-                </div>
-
-                <div class="form-field">
-                    <label for="rent_id">Rent ID:</label>
-                    <input type="text" id="rent_id" name="rent_id" value="<%= u.getRent_id()%>"  />
-                </div>
-
+                </div>             
                 <div class="form-field">
                     <label for="district_id">District ID:</label>
                     <input type="text" id="district_id" name="district_id" value="<%= u.getDistrict_id()%>"  />

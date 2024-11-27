@@ -83,8 +83,13 @@ public class LoginController extends HttpServlet {
         dis.forward(request,response);
        }
         if(us!=null ){
-            response.sendRedirect("./home");
+            if(us.getRole()==0){
+            response.sendRedirect("./admin");
+            }else if(us.getRole()==1) {
+               response.sendRedirect("./home");
+            }
             session.setAttribute("Login","successfull");
+            session.setAttribute("user",us);
         }else{
             request.setAttribute("message", "Username or password incorrect!"); 
         RequestDispatcher dis=request.getRequestDispatcher("login.jsp");

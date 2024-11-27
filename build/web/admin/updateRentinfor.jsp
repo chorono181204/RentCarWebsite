@@ -1,8 +1,4 @@
-<%-- 
-    Document   : updateRentinfor
-    Created on : 17-10-2024, 23:48:44
-    Author     : pc
---%>
+
 
 <%@page import="model.Rentinfor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -10,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Update rentinfor</title>
+        <title>Update rent information</title>
         <link rel="stylesheet" href="admin/admin-create2.css"/>
     </head>
     <body>
@@ -70,7 +66,7 @@
 
                 <div class="form-field">
                     <label for="time_sent">Time Sent:</label>
-                    <input type="date" id="time_sent" name="time_sent" value="<%= u.getTime_sent()%>"  />
+                    <input type="date" id="time_sent" name="pick_time" value="<%= u.getPick_time()%>" />
                 </div>
 
                 <div class="form-field">

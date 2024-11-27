@@ -1,15 +1,10 @@
-<%-- 
-    Document   : createRentinfor
-    Created on : 17-10-2024, 00:03:32
-    Author     : pc
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Create rentinfor</title>
+        <title>Create rent information</title>
         <link rel="stylesheet" href="admin/admin-create2.css"/>
     </head>
     <body>
@@ -62,10 +57,9 @@
                 </div>
 
                 <div class="form-field">
-                    <label for="time_sent">Time Sent:</label>
-                    <input type="date" id="time_sent" name="time_sent" required />
+                    <label for="time_sent">Pick time:</label>
+                    <input type="date" id="pick_time" name="pick_time" required />
                 </div>
-
                 <div class="form-field">
                     <label for="status">Status:</label>
                     <input type="text" id="status" name="status" required />

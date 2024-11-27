@@ -18,7 +18,16 @@ public class User {
         this.role = role;
         this.status = status;
     }
-
+    public User(long id_user, String username, String password, String name, String date_of_bird, long role, long status,String email) {
+        this.id_user = id_user;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.date_of_bird = date_of_bird;
+        this.role = role;
+        this.status = status;
+        this.email=email;
+    }
     public User(String name, String username, String password, String email, String date_of_bird) {
         this.name = name;
         this.username = username;

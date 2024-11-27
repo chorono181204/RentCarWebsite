@@ -1,9 +1,3 @@
-<%-- 
-    Document   : cardetails
-    Created on : Oct 6, 2024, 3:29:05 PM
-    Author     : Hacom
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

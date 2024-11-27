@@ -9,13 +9,13 @@ package model;
  * @author pc
  */
 public class Rentinfor {
-    private long rent_id, id_user, status;
-    private String customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, time_sent;
+    private long rent_id, id_user, status,id_car;
+    private String customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, pick_time;
 
     public Rentinfor() {
     }
 
-    public Rentinfor(long rent_id, String customer_name, String phone, String email, String customer_note, String pick_up_date, String pick_off_date, String pick_up_location, String pick_off_location, long id_user, String time_sent, long status) {
+    public Rentinfor(long rent_id, String customer_name, String phone, String email, String customer_note, String pick_up_date, String pick_off_date, String pick_up_location, String pick_off_location, long id_user, String pick_time, long status,long id_car) {
         this.rent_id = rent_id;
         this.customer_name = customer_name;
         this.phone = phone;
@@ -26,8 +26,9 @@ public class Rentinfor {
         this.pick_up_location = pick_up_location;
         this.pick_off_location = pick_off_location;
         this.id_user = id_user;
-        this.time_sent  = time_sent;
+        this.pick_time  = pick_time;
         this.status = status;
+        this.id_car=id_car;
     }
 
     public long getRent_id() {
@@ -117,14 +118,20 @@ public class Rentinfor {
     public void setPick_off_location(String pick_off_location) {
         this.pick_off_location = pick_off_location;
     }
-
-    public String getTime_sent() {
-        return time_sent;
+    public String getPick_time() {
+        return pick_time;
     }
 
-    public void setTime_sent(String time_sent) {
-        this.time_sent = time_sent;
+    public void setPick_time(String pick_time) {
+        this.pick_time = pick_time;
     }
-    
+
+    public long getId_car() {
+        return id_car;
+    }
+
+    public void setId_car(long id_car) {
+        this.id_car = id_car;
+    }
     
 }

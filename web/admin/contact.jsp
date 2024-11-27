@@ -1,8 +1,3 @@
-<%-- 
-    Document   : contact
-    Created on : Oct 6, 2024, 3:31:45 PM
-    Author     : Hacom
---%>
 
 <%@page import="model.Contact"%>
 <%@page import="model.Contact"%>
@@ -52,7 +47,14 @@
 
             <main>
 
-                <button class="add-btn"><a href="create-contact"><h4>Add a new contact</h4></a></button>
+                <button class="add-btn">
+                    <a href="create-contact">
+                        <svg style="width: 24px;font-weight: bold;margin-right: 5px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                        <h4>Add contact</h4>
+                    </a>
+                </button>
                 <table border="1px" width="90%">
                     <tr>
                         <th>Id</th>
@@ -73,12 +75,25 @@
                         <td><%= x.getEmail()%></td>
                         <td><%= x.getMessage()%></td>
                         <td><%= x.getSubject()%></td>
-                        <td><%= x.getStatus()%></td>
+                        <% 
+                            Long status_code = x.getStatus();
+                            String status;
+                            if(status_code == 0) {
+                                status = "Disable";
+                            }
+                            else {
+                                status = "Active";
+                            }
+                        %>
+                        <td><%= status%></td>
                         <td><%= x.getTime_sent()%></td>
-                        <tD>
-                            <button class="update-btn"><a href="update-contact?id=<%= x.getId()%>">Update</a></button>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <button class="delete-btn"><a href="#" onclick="doDelete(<%= x.getId()%>)">Delete</a></button>
-                        </tD>
+                        <td>
+                            <div class="action">
+                                <button class="update-btn"><a href="update-contact?id=<%= x.getId()%>">Update</a></button>
+                                <button class="delete-btn"><a href="#" onclick="doDelete(<%= x.getId()%>)">Delete</a></button>
+                            </div>
+                            
+                        </td>
                     </tr>
                     <%
                         }

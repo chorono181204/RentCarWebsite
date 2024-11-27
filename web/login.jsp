@@ -139,7 +139,7 @@ String username = (String) session.getAttribute("username");
                 <a href="forgottenpassword" class="forget-password">Forgotten password?</a>
                 <div class="hr"></div>               
                 <div class="create-new-account-btn-container">                
-                     <a href="register" class="create-new-account-btn">Register Now</a>
+                     <a href="register" class="create-new-account-btn">Register</a>
                 </div>
                 
             </div>

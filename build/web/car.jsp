@@ -156,12 +156,12 @@
                                          background-size: contain;">
                                     </div>
                                     <div class="text">
-                                            <h2 class="mb-0"><a href="car-single.html">${item.name}</a></h2>
+                                            <h2 class="mb-0"><a href="cardetails?id=${item.id}">${item.name}</a></h2>
                                             <div class="d-flex mb-3 brandAndPrice">
                                                     <span class="cat">${item.brand}</span>
                                                     <p class="price ml-auto">${item.price}đ <span>/day</span></p>
                                             </div>
-                                            <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="cardetails" class="btn btn-secondary py-2 ml-1 carDetails">Details</a></p>
+                                            <p class="d-flex mb-0 d-block"><a href="rentcar?id=${item.id}" class="btn btn-primary py-2 mr-1">Book now</a> <a href="cardetails?id=${item.id}" class="btn btn-secondary py-2 ml-1 carDetails">Details</a></p>
                                     </div>
                             </div>
                     </div>

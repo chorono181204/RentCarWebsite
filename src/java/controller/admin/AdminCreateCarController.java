@@ -58,7 +58,6 @@ public class AdminCreateCarController extends HttpServlet {
         String current_address = request.getParameter("current_address");
         String car_type_id_raw = request.getParameter("car_type_id");
         String car_brand_id_raw = request.getParameter("car_brand_id");
-        String rent_id_raw = request.getParameter("rent_id");
         String district_id_raw = request.getParameter("district_id");
 
         long seats = 0, luggage = 0, rate = 0, status = 0, price = 0, year_of_manufacture = 0;
@@ -91,11 +90,10 @@ public class AdminCreateCarController extends HttpServlet {
             year_of_manufacture = Long.parseLong(year_of_manufacture_raw != null ? year_of_manufacture_raw : "0");
             car_type_id = Long.parseLong(car_type_id_raw != null ? car_type_id_raw : "0");
             car_brand_id = Long.parseLong(car_brand_id_raw != null ? car_brand_id_raw : "0");
-            rent_id = Long.parseLong(rent_id_raw != null ? rent_id_raw : "0");
             district_id = Long.parseLong(district_id_raw != null ? district_id_raw : "0");
 
             // Tạo đối tượng Car và lưu vào cơ sở dữ liệu
-            Car uNew = new Car(carname, fuel, transmission, filename, description, color, current_address, 1, seats, luggage, rate, status, price, year_of_manufacture, car_type_id, car_brand_id, rent_id, district_id);
+            Car uNew = new Car(carname, fuel, transmission, filename, description, color, current_address, 1, seats, luggage, rate, status, price, year_of_manufacture, car_type_id, car_brand_id,district_id);
             CarDao udb = new CarDao();
             udb.insert(uNew);
 

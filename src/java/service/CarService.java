@@ -17,6 +17,7 @@ public class CarService {
         List<CarDTO> result = new ArrayList<>();
         for(Car item : car) {
             CarDTO carDTO = new CarDTO();
+            carDTO.setId(item.getId_car());
             carDTO.setName(item.getCar_name());
             CarBrand carBrand = carBrandDao.findNameById(item.getCar_brand_id());
             carDTO.setBrand(carBrand.getName());

@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 :root {
-    --main-color: #DD2F6E;
-    --color-dark: #1D2231;
+    --main-color: #48ABF7;
+    --color-dark: #1572E8;
     --text-grey: #8390A2;
 }
 
@@ -16,116 +16,121 @@
 }
 
 .sidebar {
-    width: 200px;
+    width: 220px;
     position: fixed;
     left: 0;
     top: 0;
     height: 100%;
-    background: var(--main-color);
+    background: #1a1919;
     z-index: 100;
     transition: width 300ms;
 }
 
 .sidebar-brand {
     height: 90px;
-    padding: 1rem 0rem 1rem 2rem;
+    padding: 24px 0rem 2rem 0.3rem;
     color: #fff;
+}
+
+.sidebar-brand a {
+    outline: none;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .sidebar-brand span {
     display: inline-block;
-    padding-right: 1rem;
+    font-weight: bold;
 }
 
 .sidebar-menu {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 
 .sidebar-menu li {
     width: 100%;
     margin-bottom: 1.7rem;
-    padding-left: 1rem;
+    padding-left: 24px;
 }
 
 .sidebar-menu a {
-    padding-left: 1rem;
-    display: block;
-    color: #fff;
-    font-size: 1.1rem;
+    padding-left: 20px;
+    width: 187px;
+    height: 49px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
 }
 
 .sidebar-menu a.active {
-    background: #fff;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    color: var(--main-color);
-    border-radius: 30px 0px 0px 30px;
+    background-color: #006aff;
+    color: #fff;
+    position: relative;
 }
 
-.sidebar-menu a span:first-child {
-    font-size: 1.5rem;
-    padding-right: 1rem;
+.sidebar-menu a.active::before {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 34px;
+    top: 8px;
+    left: 0;
+    border-radius: 4px;
+    background-color: #fff;
+    font-weight: bold;
+}
+
+.sidebar-menu a .las  {
+    font-size: 28px;
+    margin-right: 12px;
+}
+
+.sidebar-menu a svg {
+    width: 28px;
+    margin-right: 12px;
+}
+
+.sidebar-menu a{
+    font-size: 16px;
+    color: #c5c5c5;
 }
 
 .sidebar-menu ul li{
-    padding: 15px;
+    padding: 0 15px;
     text-align: left;
+    outline: none
 }
 
-.sidebar-menu ul li:hover {
-    background-color: #CC0066;
+.sidebar-menu ul li a:not(.active):hover {
+    background-color: #2b2a2a;
+    transition: .5s
 }
 
-/*#nav-toggle:checked + .sidebar {
-    width: 70px;
+.sidebar-menu ul li a {
+    outline: none;
 }
-
-#nav-toggle:checked + .sidebar .sidebar-brand,
-#nav-toggle:checked + .sidebar li {
-    padding-left: 1rem;
-    text-align: center;
-}
-
-#nav-toggle:checked + .sidebar li a {
-    padding-left: 0rem;
-}
-
-#nav-toggle:checked + .sidebar .sidebar-brand h2 span:last-child,
-#nav-toggle:checked + .sidebar li a span:last-child {
-    display: none;
-}
-
-#nav-toggle:checked ~ .main-content {
-    margin-left: 70px;
-}
-
-#nav-toggle:checked ~ .main-content header {
-    width: calc(100% - 70px);
-    left: 70px;
-}*/
 
 .main-content {
     transition: margin-left 300ms;
-    margin-left: 200px;
+    margin-left: 220px;
 }
 
 header {
     background: #fff;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 1rem 1.5rem;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
     position: fixed;
-    left: 200px;
-    width: calc(100% - 200px);
+    left: 220px;
+    width: calc(100% - 220px);
     top: 0;
     z-index: 100;
     transition: left 300ms;
 }
 
-/*#nav-toggle {
-    display: none;
-}*/
 
 header h2 {
     color: #222;
@@ -184,19 +189,45 @@ main {
     min-height: calc(100vh - 90px);
 }
 
+html, body {
+    background:  #f1f5f9;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: auto;
+}
+
 .cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 52px;
     margin-top: 1rem;
 }
 
 .card-single {
     display: flex;
     justify-content: space-between;
+    width: 200px;
+    height: 145px;
     background: #fff;
     padding: 2rem;
-    border-radius: 2px;
+    border-radius: 8px;
+}
+
+.card-single:hover {
+    background: var(--main-color);
+    transition: .5s;
+}
+
+.card-single:hover h1,
+.card-single:hover div:first-child span,
+.card-single:hover div:last-child span {
+    color: #fff;
+}
+
+.card-single h1 {
+    color: #222;
 }
 
 .card-single div:last-child span {
@@ -208,18 +239,6 @@ main {
     color: var(--text-grey);
 }
 
-.card-single:last-child {
-    background: var(--main-color);
-}
-
-.card-single:last-child h1,
-.card-single:last-child div:first-child span,
-.card-single:last-child div:last-child span {
-    color: #fff;
-}
-
-
-/*CSS phần bảng hiển thị */
 table {
     border-collapse: collapse;
     width: 100%;
@@ -234,7 +253,7 @@ th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: center;
-    background-color: #0066CC;
+    background-color: #3382D3;
     color: white;
 }
 
@@ -242,19 +261,23 @@ td {
     text-align: center;
 }
 
-/*Nút add*/
 .add-btn {
-    background-color: #4CAF50; /* Màu nền xanh lá cây */
-    color: white;              /* Màu chữ trắng */
-    padding: 10px 20px;        /* Khoảng cách padding */
-    text-align: center;        /* Căn giữa chữ */
-    font-size: 16px;           /* Kích thước chữ */
-    border: none;              /* Bỏ viền */
-    border-radius: 5px;        /* Góc bo tròn */
-    cursor: pointer;           /* Con trỏ chuột thành hình tay khi hover */
-    transition: background-color 0.3s; /* Hiệu ứng khi hover */
-    display: inline-block;     /* Đảm bảo nó là một nút */
-    margin-bottom: 15px;       /* Khoảng cách dưới */
+    background-color: #0083f6; 
+    color: white;            
+    padding: 10px 20px;       
+    text-align: center;       
+    font-size: 16px;        
+    border: none;            
+    border-radius: 5px;     
+    cursor: pointer;         
+    transition: background-color 0.3s; 
+    display: inline-block;     
+    margin-bottom: 15px;       
+}
+
+.add-btn a {
+    display: flex;
+    color: #fff;
 }
 
 .add-btn h4 {
@@ -262,41 +285,57 @@ td {
 }
 
 .add-btn:hover {
-    background-color: #669966; /* Màu khi hover */
+    background-color: #0f3f69; 
 }
 
-/* Nút Update (màu xám) */
 .update-btn {
-    background-color: #FFCC00;  /* Màu xám */
-    color: white;               /* Màu chữ trắng */
-    padding: 4px 8px;          /* Khoảng cách padding */
-    font-size: 14px;            /* Kích thước chữ */
-    border: none;               /* Bỏ viền */
-    border-radius: 4px;         /* Góc bo tròn */
-    cursor: pointer;            /* Con trỏ chuột thành hình tay khi hover */
-    margin-right: 5px;          /* Khoảng cách giữa 2 nút */
-    transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+    background-color: #3382D3;    
+    padding: 4px 8px;          
+    font-size: 14px;            
+    border: none;               
+    border-radius: 4px;        
+    cursor: pointer;            
+    transition: background-color 0.3s; 
+    width: 68px;
+    height: 30px;
+}
+
+.action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.update-btn a {
+    color: white;
 }
 
 .update-btn:hover {
-    background-color: #FFCC99;  /* Màu xám đậm hơn khi hover */
+    background-color: #2871B9; 
 }
 
-/* Nút Delete (màu đỏ) */
 .delete-btn {
-    background-color: #FF0000;  /* Màu đỏ */
-    color: white;               /* Màu chữ trắng */
-    padding: 4px 8px;          /* Khoảng cách padding */
-    font-size: 14px;            /* Kích thước chữ */
-    border: none;               /* Bỏ viền */
-    border-radius: 4px;         /* Góc bo tròn */
-    cursor: pointer;            /* Con trỏ chuột thành hình tay khi hover */
-    transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+    background-color: #e13e57;       
+    padding: 4px 8px;          
+    font-size: 14px;           
+    border: none;              
+    border-radius: 4px;         
+    cursor: pointer;            
+    transition: background-color 0.3s; 
+    width: 68px;
+    height: 30px;
+}
+
+.delete-btn a {
+    color: white;
 }
 
 .delete-btn:hover {
-    background-color: #d32f2f;  /* Màu đỏ đậm hơn khi hover */
+    background-color: #d32f2f;  
 }
+
 
 
 
