@@ -52,7 +52,7 @@ public class User {
     }
 
     public long getStatus() {
-        return status;
+        return this.status;
     }
 
     public void setStatus(long status) {

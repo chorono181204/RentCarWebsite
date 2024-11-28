@@ -1,78 +1,102 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
+
 package controller.admin;
 
-import dao.RentinforDao;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
-import javax.servlet.RequestDispatcher;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Rentinfor;
+import service.RentInfoService;
 
-/**
- *
- * @author Hacom
- */
 public class AdminRentinforController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.getRequestDispatcher("admin/rentinfor.jsp").forward(request, response);
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        RentinforDao c = new RentinforDao();
-        List<Rentinfor> list = c.getAll();        
-        request.setAttribute("data", list);
+        response.setContentType("text/html;charset=UTF-8");
+        RentInfoService rentInfoService = new RentInfoService();
+        Map<String, String[]> params = request.getParameterMap();
+        List<Rentinfor> list = rentInfoService.findAllInfor(params);        
+        
+        int page, numberPerPage = 10;
+        int size = list.size();
+        int number = (size % numberPerPage == 0 ? (size / numberPerPage) : (size / numberPerPage) + 1);
+        String currentPage = request.getParameter("page");
+        if(currentPage == null) {
+            page = 1;
+        }
+        else {
+            page = Integer.parseInt(currentPage);
+        }
+        int start, end;
+        start = (page - 1) * numberPerPage;
+        end = Math.min(page * numberPerPage, size);
+        
+        //Get List By Page
+        List<Rentinfor> listContactPerPage = rentInfoService.GetListByPage(list, start, end);
+        
+        //Set Attributes
+        request.setAttribute("infor", listContactPerPage);
+        request.setAttribute("status", rentInfoService.findAllStatus());
+        request.setAttribute("page", page);
+        request.setAttribute("totalPages", number);
+        request.setAttribute("totalItems", size);
+        
+        if(params.containsKey("customer_name")) {
+            request.setAttribute("customer_name", params.get("customer_name")[0]);
+        }
+        if(params.containsKey("email")) {
+            request.setAttribute("email", params.get("email")[0]);
+        }
+        if(params.containsKey("phone")) {
+            request.setAttribute("phone", params.get("phone")[0]);
+        }
+        if(params.containsKey("id_user")) {
+            request.setAttribute("customer_id", params.get("id_user")[0]);
+        }
+        if(params.containsKey("id_car")) {
+            request.setAttribute("car_id", params.get("id_car")[0]);
+        }
+        if(params.containsKey("status") && !params.get("status")[0].equals("")) {
+            request.setAttribute("status_code", params.get("status")[0]);
+        }
+        if(params.containsKey("pick_up_from")) {
+            request.setAttribute("pick_up_from", params.get("pick_up_from")[0]);
+        }
+        if(params.containsKey("pick_up_to")) {
+            request.setAttribute("pick_up_to", params.get("pick_up_to")[0]);
+        }
+        if(params.containsKey("pick_off_from")) {
+            request.setAttribute("pick_off_from", params.get("pick_off_from")[0]);
+        }
+        if(params.containsKey("pick_off_to")) {
+            request.setAttribute("pick_off_to", params.get("pick_off_to")[0]);
+        }
+        if(params.containsKey("pick_up_location")) {
+            request.setAttribute("pick_up_location", params.get("pick_up_location")[0]);
+        }
+        if(params.containsKey("pick_off_location")) {
+            request.setAttribute("pick_off_location", params.get("pick_off_location")[0]);
+        }
         request.getRequestDispatcher("admin/rentinfor.jsp").forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+
     @Override
     public String getServletInfo() {
         return "Short description";

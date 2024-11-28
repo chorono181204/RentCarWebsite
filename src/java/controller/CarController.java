@@ -2,10 +2,6 @@
 package controller;
 
 import DTO.CarDTO;
-import dao.CarBrandDao;
-import dao.CarDao;
-import dao.CarTypeDao;
-import dao.DistrictDao;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,22 +12,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import service.CarBrandService;
 import service.CarService;
+import service.CarTypeService;
+import service.DistrictService;
 
 @WebServlet(name = "CarController", urlPatterns = {"/car"})
 public class CarController extends HttpServlet {
    
- 
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        CarDTO carDTO = new CarDTO();
-        CarDao carDao = new CarDao();
-        CarBrandDao carBrandDao = new CarBrandDao();
-        CarTypeDao carTypeDao = new CarTypeDao();
-        DistrictDao districtDao = new DistrictDao();
+        CarBrandService carBrandService = new CarBrandService();
+        CarTypeService carTypeService = new CarTypeService();
+        DistrictService districtService = new DistrictService();
         CarService carService = new CarService();
         List<CarDTO> listCarDTOTmp = new ArrayList<>();
         Map<String, String[]> params = request.getParameterMap();
@@ -57,12 +53,12 @@ public class CarController extends HttpServlet {
         
         //Set Attributes
         request.setAttribute("cars", listCarDTO);
-        request.setAttribute("colors", carDao.findAllColors());
-        request.setAttribute("seats", carDao.findAllSeats());
-        request.setAttribute("transmissions", carDao.findAllTransmission());
-        request.setAttribute("districts", districtDao.findAllDistricts());
-        request.setAttribute("brands", carBrandDao.findAllBrands());
-        request.setAttribute("types", carTypeDao.findAllTypes());
+        request.setAttribute("colors", carService.findAllColors());
+        request.setAttribute("seats", carService.findAllSeats());
+        request.setAttribute("transmissions", carService.findAllTransmission());
+        request.setAttribute("districts", districtService.findAllDistricts());
+        request.setAttribute("brands", carBrandService.findAllBrands());
+        request.setAttribute("types", carTypeService.findAllTypes());
         request.setAttribute("page", page);
         request.setAttribute("totalPages", number);
         request.setAttribute("totalItems", size);

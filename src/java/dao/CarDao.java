@@ -20,7 +20,7 @@ public class CarDao {
         for(Map.Entry<String, String[]> item : params.entrySet()) {
             String key = item.getKey();
             String value = item.getValue()[0];
-            if(!key.startsWith("price") && !key.equals("page") && !key.equals("car_name")) {
+            if(!key.startsWith("year") && !key.startsWith("price") && !key.equals("page") && !key.equals("car_name")) {
                 if(StringUtil.check(value)) {
                     if(NumberUtil.check(value)) {
                         where.append("AND c." + key + " = " + value + " ");
@@ -39,6 +39,12 @@ public class CarDao {
         }
         if(params.containsKey("priceTo") && StringUtil.check(params.get("priceTo")[0])) {
             where.append("AND c.price <= " + params.get("priceTo")[0] + " ");
+        }
+        if(params.containsKey("yearFrom") && StringUtil.check(params.get("yearFrom")[0])) {
+            where.append("AND c.year_of_manufacture >= " + params.get("yearFrom")[0] + " ");
+        }
+        if(params.containsKey("yearTo") && StringUtil.check(params.get("yearTo")[0])) {
+            where.append("AND c.year_of_manufacture <= " + params.get("yearTo")[0] + " ");
         }
         if(params.containsKey("car_name") && StringUtil.check(params.get("car_name")[0])) {
             String tmp[] = params.get("car_name")[0].split("\\s+");
@@ -155,38 +161,54 @@ public class CarDao {
         }
         return null;
     }
+    
+    public List<Long> findAllLuggage() {
+        JDBCConnect connection = new JDBCConnect(); 
+        String sql = "SELECT luggage FROM car GROUP BY luggage ORDER BY luggage";
+        List<Long> result = new ArrayList<>();
+        try(Connection conn = connection.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+                while(rs.next()) {
+                    result.add(rs.getLong("luggage"));
+                }
+                return result;
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+            System.out.println("Connect Database Failed");
+        }
+        return null;
+    }
 
 
-    public List<Car> getAll() {
-        try ( Connection connection = JDBCConnect.getConnection()) {
-            List<Car> list = new ArrayList<>();
-            String sql = "SELECT * FROM rentcar.car;";
-            PreparedStatement st = connection.prepareStatement(sql);
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                Car c = new Car(rs.getString("car_name"),
-                        rs.getString("fuel"),
-                        rs.getString("transmission"),
-                        rs.getString("img"),
-                        rs.getString("description"),
-                        rs.getString("color"),
-                        rs.getString("current_address"),
-                        rs.getLong("id_car"),
-                        rs.getLong("seats"),
-                        rs.getLong("luggage"),
-                        rs.getLong("rate"),
-                        rs.getLong("status"),
-                        rs.getLong("price"),
-                        rs.getLong("year_of_manufacture"),
-                        rs.getLong("car_type_id"),
-                        rs.getLong("car_brand_id"),
-                 
-                        rs.getLong("district_id"));
-                list.add(c);
-            }
-            return list;
-        } catch (SQLException e) {
-            System.out.println(e);
+    public List<Car> adminFindAll(Map<String, String[]> params) {
+        JDBCConnect connection = new JDBCConnect(); 
+        StringBuilder sql = new StringBuilder("SELECT c.id_car, c.car_name, c.price, c.description, c.year_of_manufacture, c.current_address FROM rentcar.car c ");
+        StringBuilder where = new StringBuilder("WHERE 1 = 1 ");
+        queryNormal(where, params);
+        querySpecial(where, params);
+        joinTable(sql, params);
+        sql.append(where);
+        List<Car> result = new ArrayList<>();
+        try(Connection conn =  connection.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql.toString())) {
+                while(rs.next()) {
+                    Car car = new Car();
+                    car.setId_car(rs.getLong("id_car"));
+                    car.setCar_name(rs.getString("car_name"));
+                    car.setPrice(rs.getLong("price"));
+                    car.setDescription(rs.getString("description"));
+                    car.setYear_of_manufacture(rs.getLong("year_of_manufacture"));
+                    car.setCurrent_address(rs.getString("current_address"));
+                    result.add(car);
+                }
+                return result;
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+            System.out.println("Connect Database Failed");
         }
         return null;
     }

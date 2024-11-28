@@ -91,6 +91,11 @@
     margin-right: 5px;
 }
 
+.select__box--item label {
+    display: inline-block;
+    color: #999999;
+}
+
 .filter button.submit {
     background: transparent;
     border: 2px solid grey;

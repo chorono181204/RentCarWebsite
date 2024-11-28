@@ -1,78 +1,86 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package controller.admin;
 
-import dao.ContactDao;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
-import javax.servlet.RequestDispatcher;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Contact;
+import service.ContactService;
 
-/**
- *
- * @author Hacom
- */
 public class AdminContactController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.getRequestDispatcher("admin/contact.jsp").forward(request, response);
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ContactDao c = new ContactDao();
-        List<Contact> list = c.getAll();        
-        request.setAttribute("data", list);
+        response.setContentType("text/html;charset=UTF-8");
+        ContactService contactService = new ContactService();
+        Map<String, String[]> params = request.getParameterMap();
+        List<Contact> list = contactService.findAllContact(params);        
+        
+        int page, numberPerPage = 10;
+        int size = list.size();
+        int number = (size % numberPerPage == 0 ? (size / numberPerPage) : (size / numberPerPage) + 1);
+        String currentPage = request.getParameter("page");
+        if(currentPage == null) {
+            page = 1;
+        }
+        else {
+            page = Integer.parseInt(currentPage);
+        }
+        int start, end;
+        start = (page - 1) * numberPerPage;
+        end = Math.min(page * numberPerPage, size);
+        
+        //Get List By Page
+        List<Contact> listContactPerPage = contactService.GetListByPage(list, start, end);
+        
+        //Set Attributes
+        request.setAttribute("contacts", listContactPerPage);
+        request.setAttribute("status", contactService.findAllStatus());
+        request.setAttribute("page", page);
+        request.setAttribute("totalPages", number);
+        request.setAttribute("totalItems", size);
+        if(params.containsKey("username")) {
+            request.setAttribute("name", params.get("username")[0]);
+        }
+        if(params.containsKey("email")) {
+            request.setAttribute("email", params.get("email")[0]);
+        }
+        if(params.containsKey("subject")) {
+            request.setAttribute("subject", params.get("subject")[0]);
+        }
+        if(params.containsKey("message")) {
+            request.setAttribute("message", params.get("message")[0]);
+        }
+        if(params.containsKey("status") && !params.get("status")[0].equals("")) {
+            request.setAttribute("status_code", params.get("status")[0]);
+        }
+        if(params.containsKey("sentFrom")) {
+            request.setAttribute("sentFrom", params.get("sentFrom")[0]);
+        }
+        if(params.containsKey("sentTo")) {
+            request.setAttribute("sentTo", params.get("sentTo")[0]);
+        }
+        
         request.getRequestDispatcher("admin/contact.jsp").forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

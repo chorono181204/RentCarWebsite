@@ -1,44 +1,123 @@
 package dao;
 import java.sql.Connection;
-import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 import model.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Map;
 import util.JDBCConnect;
+import util.NumberUtil;
+import util.StringUtil;
 
-/**
- *
- * @author Hacom
- */
 public class UserDao{
     
-    public static List<User> getAll() {       
-        try(  Connection conn =JDBCConnect.getConnection()) { 
-            List<User> list = new ArrayList<>();
-        String sql = "SELECT * FROM rentcar.user ;";
-            PreparedStatement st = conn.prepareStatement(sql);
-            ResultSet rs = st.executeQuery();
-            while(rs.next()){
-                User u = new User(rs.getLong("id_user"),
-                                  rs.getString("username"),
-                                  rs.getString("password"),
-                                  rs.getString("name"),
-                                  rs.getString("date_of_bird"),
-                                  rs.getLong("role"),
-                                  rs.getLong("status"));
-                list.add(u);
+    public static void queryNormal(StringBuilder where, Map<String, String[]> params) {
+        for(Map.Entry<String, String[]> item : params.entrySet()) {
+            String key = item.getKey();
+            String value = item.getValue()[0];
+            if(!key.startsWith("dob") && !key.equals("page")) {
+                if(StringUtil.check(value)) {
+                    if(NumberUtil.check(value)) {
+                        where.append("AND u." + key + " = " + value + " ");
+                    }
+                    else {
+                        where.append("AND u." + key + " LIKE " + "'%" + value + "%' ");
+                    }
+                }
             }
-             return list;
-        } catch (SQLException e) {
-            System.out.println(e);
         }
-       return null;
     }
+    
+    public static void querySpecial(StringBuilder where, Map<String, String[]> params) {
+        if(params.containsKey("dobFrom") && StringUtil.check(params.get("dobFrom")[0])) {
+            where.append("AND u.date_of_bird >= " + "'" + params.get("dobFrom")[0] + "'" + " ");
+        }
+        if(params.containsKey("dobTo") && StringUtil.check(params.get("dobTo")[0])) {
+            where.append("AND u.date_of_bird <= " + "'" + params.get("dobTo")[0] + "'" + " ");
+        }
+    }
+    
+    public static List<User> findAll(Map<String, String[]> params) {       
+        JDBCConnect connection = new JDBCConnect(); 
+        StringBuilder sql = new StringBuilder("SELECT * FROM rentcar.user u ");
+        StringBuilder where = new StringBuilder("WHERE 1 = 1 ");
+        queryNormal(where, params);
+        querySpecial(where, params);
+        sql.append(where);
+        List<User> result = new ArrayList<>();
+        try(Connection conn =  connection.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql.toString())) {
+                while(rs.next()) {
+                    User user = new User();
+                    Date sqlDate = rs.getDate("date_of_bird");
+                    java.util.Date utilDate = new java.util.Date(sqlDate.getTime());
+                    SimpleDateFormat simpleFormat = new SimpleDateFormat("dd/MM/yyyy");
+                    String formattedDate = simpleFormat.format(utilDate);
+                    user.setDate_of_bird(formattedDate);
+                    user.setId_user(rs.getLong("id_user"));
+                    user.setEmail(rs.getString("email"));            
+                    user.setRole(rs.getLong("role"));
+                    user.setUsername(rs.getString("username"));
+                    user.setName(rs.getString("name"));
+                    user.setStatus(rs.getLong("status"));
+                    result.add(user);
+                }
+                return result;
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+            System.out.println("Connect Database Failed");
+        }
+        return null;
+    }
+    
+    public List<String> findAllRoles() {
+        JDBCConnect connection = new JDBCConnect(); 
+        String sql = "SELECT role FROM user GROUP BY role ";
+        List<String> result = new ArrayList<>();
+        try(Connection conn = connection.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+                while(rs.next()) {
+                    result.add(rs.getString("role"));
+                }
+                return result;
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+            System.out.println("Connect Database Failed");
+        }
+        return null;
+    }
+    
+    public List<Long> findAllStatus() {
+        JDBCConnect connection = new JDBCConnect(); 
+        String sql = "SELECT status FROM user GROUP BY status ";
+        List<Long> result = new ArrayList<>();
+        try(Connection conn = connection.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+                while(rs.next()) {
+                    result.add(rs.getLong("status"));
+                }
+                return result;
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+            System.out.println("Connect Database Failed");
+        }
+        return null;
+    }
+    
     public static User loginAuth(String username,String password){
         try(Connection conn =JDBCConnect.getConnection()){
-            String sql=String.format("SELECT * FROM user WHERE username='%s' AND password='%s'",username,password);
+            String sql=String.format("SELECT * FROM user  WHERE username='%s' AND password='%s'",username,password);
             PreparedStatement ps=conn.prepareStatement(sql);
             ResultSet rs=ps.executeQuery();
             if(rs.next()){
