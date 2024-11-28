@@ -270,7 +270,7 @@
                           <c:if test="${totalItems == 0}">
                               <div class="notFound" style="font-size: 25px;
                                                           font-weight: 500;">
-                                  Rent information not found!
+                                  User not found!
                               </div>
                           </c:if>
                         </ul>
