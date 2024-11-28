@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Car {
     private String car_name, fuel, transmission, img, description, color, current_address;
-    private long id_car, seats, luggage, rate, status, price, year_of_manufacture, car_type_id, car_brand_id, rent_id, district_id;
+    private long id_car, seats, luggage, rate, status, price, year_of_manufacture, car_type_id, car_brand_id, district_id;
     private List<Car> listResult = new ArrayList<>();
 
     public Car() {

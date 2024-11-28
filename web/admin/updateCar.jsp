@@ -1,4 +1,9 @@
 
+<%@page import="model.District"%>
+<%@page import="model.CarType"%>
+<%@page import="model.CarBrand"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.List"%>
 <%@page import="model.Car"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -18,8 +23,11 @@
                     return;
                 }
             %>
-
-            <form action="update-car" method="post" enctype="multipart/form-data">
+             <% List<CarBrand> lcb=(List<CarBrand>) request.getAttribute("listBrand");
+            List<CarType> lct=( List<CarType>) request.getAttribute("listType");
+            List<District> ld=(List<District>) request.getAttribute("listDistrict");
+            %>
+            <form action="" method="post" enctype="multipart/form-data">
                 <div class="form-field">
                     <label for="id">Car ID:</label>
                     <input type="text" id="id" name="id" readonly value="<%= u.getId_car()%>" />
@@ -52,7 +60,7 @@
 
                 <div class="form-field">
                     <label for="img">Image:</label>
-                    <input type="file" id="img" name="img"/>
+                    <input type="file" id="img" name="img" accept="image/*" />
                 </div>
 
                 <div class="form-field">
@@ -91,17 +99,41 @@
                 </div>
 
                 <div class="form-field">
-                    <label for="car_type_id">Car Type ID:</label>
-                    <input type="text" id="car_type_id" name="car_type_id" value="<%= u.getCar_type_id()%>"  />
+                    <label for="car_type_id">Car Type :</label>
+                     <select  name="car_type_id"  required >
+                        <% for (CarType ct : lct){ %> 
+                        <% if (ct.getId()==u.getCar_type_id()){ %>
+                        <option value="<%= ct.getId()%>" selected  ><%= ct.getType() %></option>
+                        <% } else{ %>
+                         <option value="<%= ct.getId()%>"   ><%= ct.getType() %></option>
+                         <% } %>
+                         <%} %>
+                 </select>
                 </div>
 
                 <div class="form-field">
-                    <label for="car_brand_id">Car Brand ID:</label>
-                    <input type="text" id="car_brand_id" name="car_brand_id" value="<%= u.getCar_brand_id()%>"  />
+                    <label for="car_brand_id">Car Brand :</label>
+                    <select  name="car_brand_id"  required >
+                        <% for (CarBrand cb : lcb){ %> 
+                        <% if (cb.getId()==u.getCar_brand_id()){ %>
+                        <option value="<%= cb.getId()%>" selected  ><%= cb.getName()%></option>
+                        <% } else{ %>
+                         <option value="<%= cb.getId()%>"   ><%= cb.getName()%></option>
+                         <% } %>
+                         <%} %>
+                 </select>
                 </div>             
                 <div class="form-field">
-                    <label for="district_id">District ID:</label>
-                    <input type="text" id="district_id" name="district_id" value="<%= u.getDistrict_id()%>"  />
+                    <label for="district_id">District :</label>
+                    <select  name="district_id"  required >
+                        <% for (District d : ld){ %> 
+                        <% if (d.getId()==u.getDistrict_id()){ %>
+                        <option value="<%= d.getId()%>" selected  ><%= d.getName()%></option>
+                        <% } else{ %>
+                         <option value="<%= d.getId()%>"   ><%= d.getName()%></option>
+                         <% } %>
+                         <%} %>
+                 </select>
                 </div>
 
                 <button type="submit">Update</button>

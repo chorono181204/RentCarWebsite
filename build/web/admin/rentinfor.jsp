@@ -100,6 +100,7 @@
             .select__box .select__box--item input {
                 height: 35px;
                 width: 160px;
+                font-size: 16px;
             }
         </style>
     </head>
@@ -222,7 +223,7 @@
                         <th>Pick off date</th>
                         <th>Pick up location</th>
                         <th>Pick off location</th>
-                        <th>Sent time</th>
+                        <th>Pick up time</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -245,10 +246,10 @@
                             Long status_code = x.getStatus();
                             String status;
                             if(status_code == 0) {
-                                status = "Disable";
+                                status = "Processing";
                             }
                             else {
-                                status = "Active";
+                                status = "Complete";
                             }
                         %>
                         <td><%= status%></td>

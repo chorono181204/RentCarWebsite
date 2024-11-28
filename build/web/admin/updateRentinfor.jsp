@@ -1,5 +1,5 @@
-
-
+<%@page import="model.Car"%>
+<%@page import="java.util.List"%>
 <%@page import="model.Rentinfor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,31 +12,21 @@
     <body>
         <div class="container">
             <h1>Update Rental Information</h1>
-            <% Rentinfor u = (Rentinfor) request.getAttribute("rentinfor");%>
-            <form action="update-rentinfor" method="post">
-                <div class="form-field">
-                    <label for="id">Rent ID:</label>
-                    <input type="number" id="id" name="id" readonly value="<%= u.getRent_id()%>" />
-                </div>
-                
+            <% Rentinfor u = (Rentinfor) request.getAttribute("rentinfor");
+               List<Car>lc=(List<Car>)request.getAttribute("listCar");
+            %>
+            <form action="" method="post">                              
                 <div class="form-field">
                     <label for="customer_name">Customer Name:</label>
                     <input type="text" id="customer_name" name="customer_name" value="<%= u.getCustomer_name()%>"  />
                 </div>
-
                 <div class="form-field">
                     <label for="phone">Phone:</label>
                     <input type="text" id="phone" name="phone" value="<%= u.getPhone()%>"  />
-                </div>
-
-                <div class="form-field">
-                    <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" value="<%= u.getEmail()%>"  />
-                </div>
-
+                </div>              
                 <div class="form-field">
                     <label for="customer_note">Customer Note:</label>
-                    <textarea id="customer_note" name="customer_note" required><%= u.getCustomer_note()%></textarea>
+                    <textarea id="customer_note" name="customer_note" ><%= u.getCustomer_note()%></textarea>
                 </div>
 
                 <div class="form-field">
@@ -60,20 +50,30 @@
                 </div>
 
                 <div class="form-field">
-                    <label for="id_user">User ID:</label>
-                    <input type="text" id="id_user" name="id_user" value="<%= u.getId_user()%>"  />
-                </div>
-
-                <div class="form-field">
-                    <label for="time_sent">Time Sent:</label>
-                    <input type="date" id="time_sent" name="pick_time" value="<%= u.getPick_time()%>" />
+                   
+                                    <label for="" class="label">Pick-up time</label>
+                                    <input type="text" class="form-control" id="time_pick" name="pick_time" placeholder="Time" required="required" value="<%= u.getPick_time() %>">
+                                
                 </div>
 
                 <div class="form-field">
                     <label for="status">Status:</label>
                     <input type="text" id="status" name="status" value="<%= u.getStatus()%>"  />
                 </div>
+                 
+                 <div class="form-field ">
+                    <label for="car">Car :</label>
+                    <select  name="id_car"   >
+                        <% for (Car c : lc){ %>
+                        <% if(c.getId_car()==u.getId_car()){    %>
+                        <option value="<%= c.getId_car() %>" selected  ><%= c.getCar_name()+" "+c.getColor() %></option>
+                        <%}else{ %>
+                         <option value="<%= c.getId_car() %>"   ><%= c.getCar_name()+" "+c.getColor() %></option>
+                         <%} %>
+                         <%} %>
+                    </select>
 
+                </div>
                 <button type="submit">Update</button>
             </form>
         </div>

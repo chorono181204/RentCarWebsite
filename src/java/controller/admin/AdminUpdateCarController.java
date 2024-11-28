@@ -4,31 +4,45 @@
  */
 package controller.admin;
 
+import dao.CarBrandDao;
 import dao.CarDao;
+import dao.CarTypeDao;
+import dao.DistrictDao;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import model.Car;
-
-
+import model.CarBrand;
+import model.CarType;
+import model.District;
+import org.apache.commons.io.FileUtils;
+@MultipartConfig
 public class AdminUpdateCarController extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("admin/updateCar.jsp").forward(request, response);
-    }
+  
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+         CarBrandDao cbd = new CarBrandDao();
+        CarTypeDao ctd= new CarTypeDao();
+        DistrictDao dd= new DistrictDao();
+        List<CarType>lct = ctd.findAllTypes();
+        List<District>ld= dd.findAllDistricts();
+        List<CarBrand>lcb=cbd.findAllBrands();
+        request.setAttribute("listType", lct);
+        request.setAttribute("listBrand", lcb);
+        request.setAttribute("listDistrict", ld);
         String id_raw = request.getParameter("id");
         int id;
         CarDao udb = new CarDao();
@@ -68,30 +82,20 @@ public class AdminUpdateCarController extends HttpServlet {
         long id = 0, seats = 0, luggage = 0, rate = 0, status = 0, price = 0, year_of_manufacture = 0;
         long car_type_id = 0, car_brand_id = 0, rent_id = 0, district_id = 0;
 
-        // Xử lý file ảnh upload
-        Part part = request.getPart("img");
-        String filename = null;
+       
+       Part filePart = request.getPart("img");
+         //Tùy chỉnh theo máy mình!
+        String uploadPath = "C:\\RentCarWebsite\\web\\uploads";
+        File uploadDir = new File(uploadPath);
+        if (!uploadDir.exists()) uploadDir.mkdirs(); 
 
-        if (part != null && part.getSize() > 0) {
-            String realPath = request.getServletContext().getRealPath("/uploads");
-            filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+        
+        String fileName = filePart.getSubmittedFileName();
+        File file = new File(uploadPath, fileName);
 
-            if (!Files.exists(Paths.get(realPath))) {
-                Files.createDirectory(Paths.get(realPath));
-            }
+        
+        FileUtils.copyInputStreamToFile(filePart.getInputStream(), file);
 
-            try {
-                part.write(realPath + File.separator + filename);
-            } catch (IOException e) {
-                System.out.println("Error writing file: " + e.getMessage());
-            }
-        } else {
-            CarDao carDao = new CarDao();
-            Car existingCar = carDao.getCarById(id);
-            if (existingCar != null) {
-                filename = existingCar.getImg();
-            }
-        }
 
         try {
             // Parse các tham số từ form
@@ -107,10 +111,10 @@ public class AdminUpdateCarController extends HttpServlet {
          
             district_id = Long.parseLong(district_id_raw != null ? district_id_raw : "0");
 
-            Car uNew = new Car(carname, fuel, transmission, filename, description, color, current_address, 1, seats, luggage, rate, status, price, year_of_manufacture, car_type_id, car_brand_id,  district_id);
+            Car uNew = new Car(carname, fuel, transmission, fileName, description, color, current_address, 1, seats, luggage, rate, status, price, year_of_manufacture, car_type_id, car_brand_id,  district_id);
             CarDao udb = new CarDao();
             udb.update(uNew);
-
+            
             response.sendRedirect("admin-car");
         } catch (NumberFormatException e) {
             System.out.println("Error parsing number: " + e.getMessage());

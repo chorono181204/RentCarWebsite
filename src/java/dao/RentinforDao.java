@@ -194,22 +194,20 @@ public class RentinforDao {
     public void update(Rentinfor u) {
         try ( Connection connection = util.JDBCConnect.getConnection()) {
             String sql = "UPDATE rentinfor\n"
-                    + "SET customer_name=?, phone=?, email=?, customer_note=?,pick_up_date=?,pick_off_date=?, pick_up_location=?, pick_off_location=?, id_user=?, time_sent=?, status=?\n"
-                    + "WHERE rent_id = ?;";
+                    + "SET customer_name=?, phone=?, customer_note=?,pick_up_date=?,pick_off_date=?, pick_up_location=?, pick_off_location=?,pick_time=?,status=? ,id_car=?\n"
+                    + "WHERE rent_id = "+u.getRent_id()+" ;";
             PreparedStatement st = connection.prepareStatement(sql);
-
             st.setString(1, u.getCustomer_name());
             st.setString(2, u.getPhone());
-            st.setString(3, u.getEmail());
-            st.setString(4, u.getCustomer_note());
-            st.setString(5, u.getPick_up_date());
-            st.setString(6, u.getPick_off_date());
-            st.setString(7, u.getPick_up_location());
-            st.setString(8, u.getPick_off_location());
-            st.setLong(9, u.getId_user());
-            st.setString(10, u.getPick_time());
-            st.setLong(11, u.getStatus());
-            st.setLong(12, u.getRent_id());
+            st.setString(3, u.getCustomer_note());
+            st.setString(4, u.getPick_up_date());
+            st.setString(5, u.getPick_off_date());
+            st.setString(6, u.getPick_up_location());
+            st.setString(7, u.getPick_off_location());
+            st.setString(8, u.getPick_time());
+            st.setLong(9, u.getStatus());
+            st.setLong(10, u.getId_car());
+          
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);

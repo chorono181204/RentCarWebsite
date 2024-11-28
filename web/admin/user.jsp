@@ -101,6 +101,7 @@
             .select__box .select__box--item input {
                 height: 35px;
                 width: 160px;
+                font-size: 16px;
             }
         </style>
     </head>
@@ -165,7 +166,7 @@
                         </div>
                         <div class="select__box--item">
                             <label for="username">Username</label>
-                            <input type="text" id="username" name="username" value="${username}">
+                            <input type="text" id="username" name="username" value="${username_hi}">
                         </div>
                         <div class="select__box--item">
                             <label for="email">Email</label>
@@ -232,11 +233,12 @@
                             long statusCode = x.getStatus();
                             
                             String status;
-                            if(statusCode == 0) {
-                                status = "Disable";
+
+                            if(statusCode == 1) {
+                                status = "Active";
                             }
                             else {
-                                status = "Active";
+                                status = "Disable";
                             }
                         %>
                         

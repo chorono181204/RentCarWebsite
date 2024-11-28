@@ -50,7 +50,7 @@ public class AdminUserController extends HttpServlet {
             request.setAttribute("user_id", params.get("id_user")[0]);
         }
         if(params.containsKey("username")) {
-            request.setAttribute("username", params.get("username")[0]);
+            request.setAttribute("username_hi", params.get("username")[0]);
         }
         if(params.containsKey("name")) {
             request.setAttribute("name", params.get("name")[0]);

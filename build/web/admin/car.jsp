@@ -73,8 +73,8 @@
             }
             
             .select__box select {
-                padding: 5px 10px;
-                width: 140px;
+                padding: 4px 10px;
+                width: 160px;
             }
             
             .select__box .select__box--item label {
@@ -83,7 +83,8 @@
             
             .select__box .select__box--item input {
                 height: 35px;
-                width: 140px;
+                width: 160px;
+                font-size: 16px;
             }
         </style>
     </head>

@@ -50,10 +50,10 @@ public class AdminContactController extends HttpServlet {
         request.setAttribute("totalPages", number);
         request.setAttribute("totalItems", size);
         if(params.containsKey("username")) {
-            request.setAttribute("name", params.get("username")[0]);
+            request.setAttribute("username_retain", params.get("username")[0]);
         }
         if(params.containsKey("email")) {
-            request.setAttribute("email", params.get("email")[0]);
+            request.setAttribute("email_retain", params.get("email")[0]);
         }
         if(params.containsKey("subject")) {
             request.setAttribute("subject", params.get("subject")[0]);
