@@ -1,8 +1,3 @@
-<%-- 
-    Document   : updateUser
-    Created on : 11-10-2024, 10:25:51
-    Author     : pc
---%>
 
 <%@page import="model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

@@ -1,11 +1,5 @@
-<<<<<<< HEAD
-=======
-<!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
--->
 
+<!DOCTYPE html>
 <%@page import="model.Car"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
@@ -48,7 +42,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 <% int cnt_contact = (int) request.getAttribute("count_contact"); %>
                 <% int cnt_rentinfor = (int) request.getAttribute("count_rentinfor"); %>
                 <div class="cards">
-                    <div class="card-single">
+                    <a class="card-single" href="admin-user">
                         <div>
                             <h1><%= cnt_user %></h1>
                             <span>Users</span>
@@ -56,9 +50,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                         <div>
                             <span class="las la-users"></span>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="card-single">
+                    <a class="card-single" href="admin-contact">
                         <div>
                             <h1><%= cnt_contact %></h1>
                             <span>Contacts</span>
@@ -66,19 +60,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                         <div>
                             <span class="las la-phone"></span>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="card-single">
+                    <a class="card-single" href="admin-rentinfor">
                         <div>
                             <h1><%= cnt_rentinfor %></h1>
-                            <span>Rentinfors</span>
+                            <span>Rent info</span>
                         </div>
                         <div>
                             <span class="las la-user-alt"></span>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="card-single">
+                    <a class="card-single" href="admin-car">
                         <div>
                             <h1><%= cnt_car %></h1>
                             <span>Cars</span>
@@ -86,7 +80,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                         <div>
                             <span class="las la-car-side"></span>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
             </main>
@@ -94,4 +88,3 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         
     </body>
 </html>
->>>>>>> cbf9c38e23ebc147983d609d590171a08e08f53a

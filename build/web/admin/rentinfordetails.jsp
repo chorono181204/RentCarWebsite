@@ -1,8 +1,4 @@
-<%-- 
-    Document   : rentinfordetails
-    Created on : Oct 6, 2024, 3:33:04 PM
-    Author     : Hacom
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

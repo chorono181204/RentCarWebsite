@@ -1,3 +1,8 @@
+<%@page import="model.District"%>
+<%@page import="model.District"%>
+<%@page import="model.CarType"%>
+<%@page import="java.util.List"%>
+<%@page import="model.CarBrand"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,6 +12,10 @@
     </head>
     <body>
         <div class="container">
+            <% List<CarBrand> lcb=(List<CarBrand>) request.getAttribute("listBrand");
+            List<CarType> lct=( List<CarType>) request.getAttribute("listType");
+            List<District> ld=(List<District>) request.getAttribute("listDistrict");
+            %>
             <h1>Add a new car</h1>
             <form action="create-car" method="post" enctype="multipart/form-data">
                 <label for="car_name">Car Name:</label>
@@ -47,12 +56,24 @@
 
                 <label for="current_address">Current Address:</label>
                 <input type="text" id="current_address" name="current_address" required /><br/>
-                <label for="car_type_id">Car Type ID:</label>
-                <input type="text" id="car_type_id" name="car_type_id" required /><br/>
-                <label for="car_brand_id">Car Brand ID:</label>
-                <input type="text" id="car_brand_id" name="car_brand_id" required /><br/>
-                <label for="district_id">District ID:</label>
-                <input type="text" id="district_id" name="district_id" required /><br/>
+                <label for="car_type_id">Car Type :</label>
+                <select  name="car_type_id"  required >
+                        <% for (CarType ct : lct){ %>                       
+                        <option value="<%= ct.getId()%>"   ><%= ct.getType() %></option>                                       
+                         <%} %>
+                 </select>
+                <label for="car_brand_id">Car Brand :</label>
+                <select  name="car_brand_id"  required >
+                        <% for (CarBrand cb : lcb){ %>                       
+                        <option value="<%= cb.getId()%>"   ><%= cb.getName() %></option>                                       
+                         <%} %>
+                 </select>
+                <label for="district_id">District :</label>
+                <select  name="district_id"  required >
+                        <% for (District d : ld){ %>                       
+                        <option value="<%= d.getId()%>"   ><%= d.getName() %></option>                                       
+                         <%} %>
+                 </select>
                 <button type="submit">Create</button>
             </form>
         </div>

@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import util.JDBCConnect;
+import util.SecurityUtil;
 
 /**
  *
@@ -38,11 +39,11 @@ public class UserDao{
     }
     public static User loginAuth(String username,String password){
         try(Connection conn =JDBCConnect.getConnection()){
-            String sql=String.format("SELECT * FROM user WHERE username='%s' AND password='%s'",username,password);
+            String sql=String.format("SELECT * FROM user WHERE username='%s' ",username);
             PreparedStatement ps=conn.prepareStatement(sql);
             ResultSet rs=ps.executeQuery();
             if(rs.next()){
-                return  new User(rs.getLong("id_user"),
+               User us  = new User(rs.getLong("id_user"),
                                   rs.getString("username"),
                                   rs.getString("password"),
                                   rs.getString("name"),
@@ -51,8 +52,14 @@ public class UserDao{
                                   rs.getLong("status"),
                                   rs.getString("email")
                                                         );
+               if (SecurityUtil.checkPassword(password, us.getPassword())){
+                   return us;
+               }else{
+                   return null;
+               }
             }
             return null;
+            
         }catch(Exception ex){
             ex.printStackTrace();
         }
@@ -90,8 +97,8 @@ public class UserDao{
                     String email=newUser.getEmail();
                     String username=newUser.getUsername();
                     String dob=newUser.getDate_of_bird();
-                    String password=newUser.getPassword();
-            String sql=String.format("INSERT INTO user (username , password , name , date_of_bird,role, email)VALUES('%s','%s','%s','%s','%d','%s');",username,password,name,dob,1,email);
+                    String password=SecurityUtil.hashPassword(newUser.getPassword());
+            String sql=String.format("INSERT INTO user (username , password , name , date_of_bird,role, email,status)VALUES('%s','%s','%s','%s','%d','%s','%d');",username,password,name,dob,1,email,1);
             PreparedStatement ps=conn.prepareStatement(sql);
            int res =ps.executeUpdate(sql);
            if(res>=1){
@@ -131,7 +138,7 @@ public class UserDao{
     }
      public static boolean updatePassword(String password,String email){
         try(Connection conn=JDBCConnect.getConnection()){
-            String sql=String.format("UPDATE user SET password = '%s' WHERE email='%s' ",password,email);
+            String sql=String.format("UPDATE user SET password = '%s' WHERE email='%s' ",SecurityUtil.hashPassword(password),email);
             PreparedStatement ps=conn.prepareStatement(sql);
             int res=ps.executeUpdate(sql);
             if(res>=1){

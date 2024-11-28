@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-=======
-<%-- 
-    Document   : user
-    Created on : Oct 6, 2024, 9:21:27 PM
-    Author     : Hacom
---%>
+
 
 <%@page import="model.User"%>
 <%@page import="java.util.List"%>
@@ -54,12 +48,17 @@
 
             <main>
 
-                <button class="add-btn"><a href="create-user"><h4>Add a new user</h4></a></button>
+                <button class="add-btn">
+                    <a href="create-user">
+                        <svg style="width: 24px;font-weight: bold;margin-right: 5px;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M18 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM3 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 9.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
+                        </svg>
+                        <h4>Add user</h4>
+                    </a>
+                </button>
                 <table border="1px" width="90%">
                     <tr>
-                        <th>Id_user</th>
                         <th>Username</th>
-                        <th>Password</th>
                         <th>Name</th>
                         <th>Date of bird</th>
                         <th>Role</th>
@@ -70,17 +69,37 @@
                     <% for (User x : users) {
                     %>
                     <tr>
-                        <td><%= x.getId_user()%></td>
                         <td><%= x.getUsername()%></td>
-                        <td><%= x.getPassword()%></td>
                         <td><%= x.getName()%></td>
                         <td><%= x.getDate()%></td>
-                        <td><%= x.getRole()%></td>
-                        <td><%= x.getStatus()%></td>
-                        <tD>
-                            <button class="update-btn"><a href="update-user?id=<%= x.getId_user()%>">Update</a></button>&nbsp;&nbsp;&nbsp;&nbsp;
-                            <button class="delete-btn"><a href="#" onclick="doDelete(<%= x.getId_user()%>)">Delete</a></button>
-                        </tD>
+                        <% 
+                            Long role_code = x.getRole();
+                            String role;
+                            if(role_code == 0) {
+                                role = "Admin";
+                            }
+                            else {
+                                role = "User";
+                            }
+                        %>
+                        <td><%= role%></td>
+                        <% 
+                            Long status_code = x.getStatus();
+                            String status;
+                            if(status_code == 1) {
+                                status = "Active";
+                            }
+                            else {
+                                status = "Disable";
+                            }
+                        %>
+                        <td><%= status%></td>
+                        <td>
+                            <div class="action">
+                                <button class="update-btn"><a href="update-user?id=<%= x.getId_user()%>">Update</a></button>
+                                <button class="delete-btn"><a href="#" onclick="doDelete(<%= x.getId_user()%>)">Delete</a></button>
+                            </div>                            
+                        </td>
                     </tr>
                     <%
                         }
@@ -93,5 +112,3 @@
         
     </body>
 </html>
-
->>>>>>> cbf9c38e23ebc147983d609d590171a08e08f53a

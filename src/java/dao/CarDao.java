@@ -194,8 +194,8 @@ public class CarDao {
     //insert car
     public void insert(Car u) {
         try ( Connection connection = JDBCConnect.getConnection()) {
-            String sql = "INSERT INTO car (car_name, seats, fuel, transmission, luggage, img, description, rate, status, color, price, year_of_manufacture, current_address, car_type_id, car_brand_id, district_id) \n"
-                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO car (car_name, seats, fuel, transmission, luggage, img, description, rate, status, color, price, year_of_manufacture, current_address, car_type_id, car_brand_id, district_id) "
+                    + "VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
             PreparedStatement st = connection.prepareStatement(sql);
 
             st.setString(1, u.getCar_name());
@@ -315,6 +315,38 @@ public class CarDao {
         try ( Connection connection = JDBCConnect.getConnection()) {
             List<Car> list = new ArrayList<>();
             String sql = "SELECT * FROM rentcar.car WHERE car_type_id = " +type_id+" AND car_brand_id = "+brand_id+" ;";
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Car c = new Car(rs.getString("car_name"),
+                        rs.getString("fuel"),
+                        rs.getString("transmission"),
+                        rs.getString("img"),
+                        rs.getString("description"),
+                        rs.getString("color"),
+                        rs.getString("current_address"),
+                        rs.getLong("id_car"),
+                        rs.getLong("seats"),
+                        rs.getLong("luggage"),
+                        rs.getLong("rate"),
+                        rs.getLong("status"),
+                        rs.getLong("price"),
+                        rs.getLong("year_of_manufacture"),
+                        rs.getLong("car_type_id"),
+                        rs.getLong("car_brand_id"),
+                        rs.getLong("district_id"));
+                list.add(c);
+            }
+            return list;
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    public List<Car> getAllByBrand(long brand_id){
+        try ( Connection connection = JDBCConnect.getConnection()) {
+            List<Car> list = new ArrayList<>();
+            String sql = "SELECT * FROM rentcar.car WHERE car_brand_id = " +brand_id+" ;";
             PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {

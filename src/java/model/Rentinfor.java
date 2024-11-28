@@ -30,7 +30,6 @@ public class Rentinfor {
         this.status = status;
         this.id_car=id_car;
     }
-
     public long getRent_id() {
         return rent_id;
     }

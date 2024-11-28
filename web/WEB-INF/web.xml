@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    
     <servlet>
         <servlet-name>HomeController</servlet-name>
         <servlet-class>controller.HomeController</servlet-class>
@@ -341,12 +342,13 @@
             300
         </session-timeout>
     </session-config>
-    <!--    <context-param>
-        <param-name>user</param-name>
-        <param-value>minh16</param-value>
-    </context-param>
-    <context-param>
-        <param-name>pass</param-name>
-        <param-value>123</param-value>
-    </context-param>-->
+ 
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/error403.jsp</location>
+    </error-page>
 </web-app>

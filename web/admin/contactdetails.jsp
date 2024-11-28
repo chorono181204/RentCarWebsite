@@ -1,8 +1,3 @@
-<%-- 
-    Document   : contactdetails
-    Created on : Oct 6, 2024, 4:50:34 PM
-    Author     : Hacom
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

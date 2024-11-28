@@ -35,9 +35,11 @@
                         %>
 
                         <div class="car-details">		
-                            <div class="img rounded " style="background-image: url(images/Car_Images/<%= c.getImg()%>);"></div>
+                            <div class="img rounded " style="background-size: contain;
+                                 background-image: url(images/Car_Images/<%= c.getImg()%>);
+                                 "></div>
                             <div class="text text-center">
-                                <span class="subheading"><%=cb.getName()%></span>
+                                <span class="subheading" style="font-size: 14px"><%=cb.getName()%></span>
                                 <h2><%= c.getCar_name()%></h2>
                                  
                             </div>
@@ -46,11 +48,14 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md d-flex align-self-stretch ftco-animate">
+                    <div class="col-md d-flex car_details_icon align-self-stretch ftco-animate" style="  
+                            justify-content: center;
+                            
+                         ">
                         <div class="media block-6 services">
                             <div class="media-body py-md-4">
                                 <div class="d-flex mb-3 align-items-center">
-                                    <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-dashboard"></span></div>
+                                    <div class="icon d-flex align-items-center justify-content-center" style="margin:0;"><span class="flaticon-dashboard"></span></div>
                                     <div class="text">
                                         <h3 class="heading mb-0 pl-4">
                                              Model year 
@@ -61,11 +66,13 @@
                             </div>
                         </div>      
                     </div>
-                    <div class="col-md d-flex align-self-stretch ftco-animate">
+                    <div class="car_details_icon col-md d-flex align-self-stretch ftco-animate" style="  
+                            justify-content: center;
+                         ">
                         <div class="media block-6 services">
                             <div class="media-body py-md-4">
-                                <div class="d-flex mb-3 align-items-center">
-                                    <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-pistons"></span></div>
+                                <div class="d-flex mb-3 align-items-center" style="width:189px;">
+                                    <div class="icon d-flex align-items-center justify-content-center" style="margin:0;"><span class="flaticon-pistons"></span></div>
                                     <div class="text">
                                         <h3 class="heading mb-0 pl-3">
                                             Transmission
@@ -76,11 +83,13 @@
                             </div>
                         </div>      
                     </div>
-                    <div class="col-md d-flex align-self-stretch ftco-animate">
+                    <div class="car_details_icon col-md d-flex align-self-stretch ftco-animate" style="  
+                            justify-content: center;
+                         ">
                         <div class="media block-6 services">
                             <div class="media-body py-md-4">
-                                <div class="d-flex mb-3 align-items-center">
-                                    <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-car-seat"></span></div>
+                                <div class="d-flex mb-3 align-items-center" style="width:189px;">
+                                    <div class="icon d-flex align-items-center justify-content-center" style="margin:0;"><span class="flaticon-car-seat"></span></div>
                                     <div class="text">
                                         <h3 class="heading mb-0 pl-3">
                                             Seats
@@ -91,11 +100,13 @@
                             </div>
                         </div>      
                     </div>
-                    <div class="col-md d-flex align-self-stretch ftco-animate">
+                    <div class="car_details_icon col-md d-flex align-self-stretch ftco-animate" style="  
+                            justify-content: center;
+                         ">
                         <div class="media block-6 services">
                             <div class="media-body py-md-4">
-                                <div class="d-flex mb-3 align-items-center">
-                                    <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-backpack"></span></div>
+                                <div class="d-flex mb-3 align-items-center" style="width:189px;">
+                                    <div class="icon d-flex align-items-center justify-content-center" style="margin:0;"><span class="flaticon-backpack"></span></div>
                                     <div class="text">
                                         <h3 class="heading mb-0 pl-3">
                                             Luggage
@@ -106,11 +117,13 @@
                             </div>
                         </div>      
                     </div>
-                    <div class="col-md d-flex align-self-stretch ftco-animate">
+                    <div class="car_details_icon col-md d-flex align-self-stretch ftco-animate" style="  
+                            justify-content: center;
+                         ">
                         <div class="media block-6 services">
                             <div class="media-body py-md-4">
-                                <div class="d-flex mb-3 align-items-center">
-                                    <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-diesel"></span></div>
+                                <div class="d-flex mb-3 align-items-center" style="width:189px;">
+                                    <div class="icon d-flex align-items-center justify-content-center" style="margin:0;"><span class="flaticon-diesel"></span></div>
                                     <div class="text">
                                         <h3 class="heading mb-0 pl-3">
                                             Fuel
@@ -124,7 +137,7 @@
                 </div>
                         <div class="text text-center">
                                  <div class="form-group">
-                                     <a type="submit" href="rentcar?id=<%= c.getId_car() %>" class="btn btn-secondary py-3 px-4">Rent Car Now</a>
+                                     <a type="submit" href="rentcar?id=<%= c.getId_car() %>" class="btn btn-secondary py-3 px-4" style="font-size: 16px;">Rent Car</a>
 			            </div>
                             </div>                    
             </div>
@@ -143,7 +156,9 @@
     					<% for (Car rc : rcs){ %>
     					<div class="item">
     						<div class="car-wrap rounded ftco-animate">
-		    					<div class="img rounded d-flex align-items-end" style="background-image: url(images/Car_Images/<%= rc.getImg()%>);">
+		    					<div class="img rounded d-flex align-items-end" style="background-size:contain;
+                                                             background-image: url(images/Car_Images/<%= rc.getImg()%>);
+                                                             ">
 		    					</div>
 		    					<div class="text">
 		    						<h2 class="mb-0"><a href="cardetails?id=<%= rc.getId_car() %>"><%= rc.getCar_name() %></a></h2>

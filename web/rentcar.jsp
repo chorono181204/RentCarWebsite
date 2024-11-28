@@ -31,18 +31,18 @@
                                      
                                 %>
                                 <div class="car-wrap rounded ftco-animate">
-                                    <div class="img rounded d-flex align-items-end" style="background-image: url(images/Car_Images/<%= c.getImg()%>);">
+                                    <div class="img rounded d-flex align-items-end" style="background-size: contain;
+                                         background-image: url(images/Car_Images/<%= c.getImg()%>);">
                                     </div>
                                     <div class="text">
-                                        <h2 class="mb-0"><a href="cardetails?id=<%= c.getId_car()%>"><%= c.getCar_name()%></a></h2>
-                                        <div class="text text-left">
-                                            <p class="price ml-auto "><%= c.getPrice()%> <span>/day</span></p>
-                                            <p> <span><strong>Brand :</strong><%= cb.getName() %></span></p>
-                                            <p><span><strong>Model year :</strong><%= c.getYear_of_manufacture() %></span></p>
-                                            <p><span><strong>Transmission :</strong><%= c.getTransmission()%></span></p>
-                                            <p><span><strong>Seats :</strong><%= c.getSeats()%></span></p>
-                                            <p><span><strong>Luggage :</strong><%= c.getLuggage()%></span></p>
-                                            <p> <span><strong>Fuel :</strong><%= c.getFuel()%></span></p>
+                                        <h2 class="mb-0 text-center"><a href="cardetails?id=<%= c.getId_car()%>"><%= c.getCar_name()%></a></h2>
+                                        <div class="text text-center">
+                                            <p class="price ml-auto" style="font-size: 24px"><%= c.getPrice()%> <span>/day</span></p>
+                                            <p> <span  style="color: #4D4242; font-size: 20px"><strong><%= cb.getName() %>  <%= c.getYear_of_manufacture() %></strong></span></p>
+                                            <p><span style="color: #4D4242;"><strong><%= c.getTransmission()%></strong></span></p>
+                                            <p><span style="color: #4D4242;"><strong><%= c.getSeats()%> Seats</strong></span></p>
+                                            <p><span style="color: #4D4242;"><strong><%= c.getLuggage()%> Luggage</strong></span></p>
+                                            <p> <span style="color: #4D4242;"><strong><%= c.getFuel()%></strong></span></p>
                                        
                                         </div>
                                         

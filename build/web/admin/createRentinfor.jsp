@@ -1,15 +1,10 @@
-<%-- 
-    Document   : createRentinfor
-    Created on : 17-10-2024, 00:03:32
-    Author     : pc
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Create rentinfor</title>
+        <title>Create rent information</title>
         <link rel="stylesheet" href="admin/admin-create2.css"/>
     </head>
     <body>

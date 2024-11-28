@@ -1,8 +1,3 @@
-<%-- 
-    Document   : updateContact
-    Created on : 16-10-2024, 23:31:28
-    Author     : pc
---%>
 
 <%@page import="model.Contact"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
