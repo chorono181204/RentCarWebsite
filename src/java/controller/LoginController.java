@@ -41,7 +41,7 @@ public class LoginController extends HttpServlet {
         String username=request.getParameter("username");
         String password=request.getParameter("password");
         session.setAttribute("username", username);
-<<<<<<< HEAD
+
         
        if(username==null||username.equals("")){
               request.setAttribute("messageUsername", "Please enter your username!"); 
@@ -54,8 +54,8 @@ public class LoginController extends HttpServlet {
         dis.forward(request,response);
        }
        User us=UserDao.loginAuth(username,password);
-=======
-        User us=UserDao.loginAuth(username,password);
+
+        
         if(username==null||username.equals("")){
             request.setAttribute("messageUsername", "Please enter your username!"); 
               RequestDispatcher dis=request.getRequestDispatcher("login.jsp");
@@ -66,7 +66,7 @@ public class LoginController extends HttpServlet {
             RequestDispatcher dis=request.getRequestDispatcher("login.jsp");
             dis.forward(request,response);
         }
->>>>>>> d050581a59b3db5e11d6f0f15d47bd9ca5d807ee
+
         if(us!=null ){
             if(us.getStatus()==1){
             if(us.getRole()==0){
@@ -76,7 +76,7 @@ public class LoginController extends HttpServlet {
             }
             session.setAttribute("Login","successfull");
             session.setAttribute("user",us);
-<<<<<<< HEAD
+
             }else{
                        request.setAttribute("UserNotActive", "User is not active!"); 
         RequestDispatcher dis=request.getRequestDispatcher("login.jsp");
@@ -86,13 +86,8 @@ public class LoginController extends HttpServlet {
             request.setAttribute("message", "Username or password incorrect!"); 
         RequestDispatcher dis=request.getRequestDispatcher("login.jsp");
         dis.forward(request,response);
-=======
->>>>>>> d050581a59b3db5e11d6f0f15d47bd9ca5d807ee
+
         }
-        else{
-            request.setAttribute("message", "Username or password incorrect!"); 
-           RequestDispatcher dis=request.getRequestDispatcher("login.jsp");
-           dis.forward(request,response);
-        }
+        
     } 
 }

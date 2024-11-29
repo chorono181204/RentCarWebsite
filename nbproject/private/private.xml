@@ -50,9 +50,7 @@
             <file>file:/C:/RentCarWebsite/web/error404.jsp</file>
             <file>file:/C:/RentCarWebsite/web/blog.jsp</file>
             <file>file:/C:/RentCarWebsite/web/rentinfo.jsp</file>
-            <file>file:/C:/RentCarWebsite/src/java/controller/RentCarController.java</file>
             <file>file:/C:/RentCarWebsite/src/java/dao/CarTypeDao.java</file>
-            <file>file:/C:/RentCarWebsite/src/java/controller/admin/AdminUpdateRentinforController.java</file>
             <file>file:/C:/RentCarWebsite/src/java/dao/CarDao.java</file>
             <file>file:/C:/RentCarWebsite/web/admin/index.jsp</file>
             <file>file:/C:/RentCarWebsite/web/admin/updateCar.jsp</file>
