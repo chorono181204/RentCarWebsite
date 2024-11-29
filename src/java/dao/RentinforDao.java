@@ -127,8 +127,8 @@ public class RentinforDao {
     //insert rentinfor
     public void insert(Rentinfor u) {
         try ( Connection connection = util.JDBCConnect.getConnection()) {
-            String sql = "INSERT INTO rentinfor ( customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, id_user, pick_time, status,id_car ) \n "
-                    + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
+            String sql = "INSERT INTO rentinfor ( customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, id_user, pick_time, status,id_car, rent_price ) \n "
+                    + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, u.getCustomer_name());
             st.setString(2, u.getPhone());
@@ -142,6 +142,7 @@ public class RentinforDao {
             st.setString(10, u.getPick_time());
             st.setLong(11, u.getStatus());
             st.setLong(12, u.getId_car());
+            st.setLong(13, u.getRent_price());
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -194,8 +195,8 @@ public class RentinforDao {
                         rs.getInt("id_user"),
                         rs.getString("pick_time"),
                         rs.getInt("status"),
-                        rs.getInt("id_car")
-                       
+                        rs.getInt("id_car"),
+                        rs.getLong("rent_price")
                 );
                 return u;
             }

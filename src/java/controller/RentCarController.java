@@ -51,6 +51,7 @@ public class RentCarController extends HttpServlet {
         String phone = request.getParameter("phone");
         String email=request.getParameter("email");
         String id_us=request.getParameter("id_user");
+        String rent_price = request.getParameter("rent_price");
         String customer_note = request.getParameter("customer_note");
         String pick_up_date = request.getParameter("pick_up_date");
         String pick_off_date = request.getParameter("pick_off_date");
@@ -66,7 +67,7 @@ public class RentCarController extends HttpServlet {
         CarDao carDao=new CarDao();
         try{ 
             status = 0L;
-            Rentinfor newRentinfor = new Rentinfor(1, customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, id_user, pick_time, status,id_car);
+            Rentinfor newRentinfor = new Rentinfor(1, customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, id_user, pick_time, status,id_car, Long.parseLong(rent_price));
             rentinforDao.insert(newRentinfor);
             carDao.updateStatus(id_car);
             response.sendRedirect("rentinfor");
