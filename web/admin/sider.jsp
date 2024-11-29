@@ -57,7 +57,7 @@
             </div>
         </div>
         <div class="logout-btn">
-            <a href="/RentCarWebSite" style="outline: none; font-size: 16px;
+            <a href="/RentCarWebSite/logout" style="outline: none; font-size: 16px;
                                                 display: flex;
                                                 align-items: center;
                                                 gap: 6px;

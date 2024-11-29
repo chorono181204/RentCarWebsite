@@ -169,7 +169,7 @@
                         </div>
                         <div class="select__box--item">
                             <label for="name">Name</label>
-                            <input type="text" id="name" name="name" value="${name}">
+                            <input type="text" id="name" name="name" value="${name_hi}">
                         </div>
                         <div class="select__box--item">
                             <label for="username">Username</label>
@@ -177,7 +177,7 @@
                         </div>
                         <div class="select__box--item">
                             <label for="email">Email</label>
-                            <input type="text" id="email" name="email" value="${email}">
+                            <input type="text" id="email" name="email" value="${email_hi}">
                         </div>
                         <div class="select__box--item">
                             <label for="dobFrom">Dob from</label>
@@ -266,13 +266,13 @@
                       <div class="block-27">
                         <ul>
                           <c:if test="${page != 1}">
-                              <li><a href="admin-user?page=${page - 1}&role=${role}&id_user=${user_id}&name=${name}&username=${username}&email=${email}&dobFrom=${dobFrom}&dobTo=${dobTo}&status=${status_code}">&lt;</a></li>
+                              <li><a href="admin-user?page=${page - 1}&role=${role}&id_user=${user_id}&name=${name_hi}&username=${username_hi}&email=${email_hi}&dobFrom=${dobFrom}&dobTo=${dobTo}&status=${status_code}">&lt;</a></li>
                           </c:if>
                           <c:forEach begin="1" end="${totalPages}" var="i">
-                                  <li class="link ${i == page ? "active" : ""}"><a href="admin-user?page=${i}&role=${role}&id_user=${user_id}&name=${name}&username=${username}&email=${email}&dobFrom=${dobFrom}&dobTo=${dobTo}&status=${status_code}">${i}</a></li>
+                                  <li class="link ${i == page ? "active" : ""}"><a href="admin-user?page=${i}&role=${role}&id_user=${user_id}&name=${name_hi}&username=${username_hi}&email=${email_hi}&dobFrom=${dobFrom}&dobTo=${dobTo}&status=${status_code}">${i}</a></li>
                           </c:forEach>
                           <c:if test="${page != totalPages && totalItems != 0}">
-                              <li><a href="admin-user?page=${page + 1}&role=${role}&id_user=${user_id}&name=${name}&username=${username}&email=${email}&dobFrom=${dobFrom}&dobTo=${dobTo}&status=${status_code}">&gt;</a></li>
+                              <li><a href="admin-user?page=${page + 1}&role=${role}&id_user=${user_id}&name=${name_hi}&username=${username_hi}&email=${email_hi}&dobFrom=${dobFrom}&dobTo=${dobTo}&status=${status_code}">&gt;</a></li>
                           </c:if>
                           <c:if test="${totalItems == 0}">
                               <div class="notFound" style="font-size: 25px;
