@@ -102,7 +102,7 @@
     .cus-content .info {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 10px;
+        margin-bottom: 0;
     }
     .cus-content .info div {
         width: 45%;
@@ -134,7 +134,7 @@
         border-collapse: collapse;
     }
     th {
-        background-color: #1c7430;
+        background-color: #272d26;
         color: white;
         padding: 10px;
         text-align: center;
@@ -196,6 +196,11 @@
         border-radius: 5px;
         font-size: 16px;
         cursor: pointer;
+    }
+    
+    .cus-sidebar ul li a:hover {
+        background: #dadada;
+        border-radius: 6px;
     }
 </style>
   </head>
