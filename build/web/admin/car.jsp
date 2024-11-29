@@ -129,9 +129,11 @@
 
                 <div class="user-wrapper">
                     <img src="admin/user.png" width="50px" height="50px" alt=""/>
-                    <div>
-                        <h4>John Doe</h4>
-                        <small>Super admin</small>
+                    <div style="
+                        display: flex;
+                        align-items: center;
+                    ">
+                        <h4>Admin</h4>
                     </div>
                 </div>
             </header>
@@ -231,7 +233,7 @@
                         <div class="select__box--item">
                             <label for="luggage">Luggage</label>
                             <select name="luggage" id="luggage">
-                                <option value="">All</option>
+                                <option value="" selected>All</option>
                                 <c:forEach var="item" items="${luggages}">
                                     <option value="${item}" ${(item == luggage) ? "selected" : ""}>${item}</option>
                                 </c:forEach>
@@ -258,7 +260,7 @@
                             <select name="status" id="status">
                                 <option selected value="">All</option>
                                 <c:forEach var="item" items="${status}">
-                                    <option value="${item}" ${(item == status_code) ? "selected" : ""}>${item == 1 ? "Available" : "Rented"}</option>
+                                    <option value="${item}" ${(item == status_code) ? "selected" : ""}>${item == 0 ? "Available" : "Rented"}</option>
                                 </c:forEach>
                             </select>
                         </div>

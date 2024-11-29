@@ -202,7 +202,7 @@
                     </c:if>
                     <c:if test="${totalItems == 0}">
                         <div class="notFound" style="font-size: 25px;
-                                                    font-weight: 500;">Không tìm thấy xe!</div>
+                                                    font-weight: 500;">Car not found!</div>
                     </c:if>
                   </ul>
                 </div>
