@@ -55,7 +55,7 @@ public class AdminRentinforController extends HttpServlet {
             request.setAttribute("customer_name", params.get("customer_name")[0]);
         }
         if(params.containsKey("email")) {
-            request.setAttribute("email", params.get("email")[0]);
+            request.setAttribute("email_rent_info", params.get("email")[0]);
         }
         if(params.containsKey("phone")) {
             request.setAttribute("phone", params.get("phone")[0]);
@@ -86,6 +86,9 @@ public class AdminRentinforController extends HttpServlet {
         }
         if(params.containsKey("pick_off_location")) {
             request.setAttribute("pick_off_location", params.get("pick_off_location")[0]);
+        }
+        if(params.containsKey("rent_price")) {
+            request.setAttribute("rent_price", params.get("rent_price")[0]);
         }
         request.getRequestDispatcher("admin/rentinfor.jsp").forward(request, response);
     }

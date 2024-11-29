@@ -1,17 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-/**
- *
- * @author pc
- */
 public class Rentinfor {
     private long rent_id, id_user, status,id_car;
     private String customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, pick_time;
+    private long rent_price;
 
+    
     public Rentinfor() {
     }
 
@@ -30,6 +24,15 @@ public class Rentinfor {
         this.status = status;
         this.id_car=id_car;
     }
+    
+    public long getRent_price() {
+        return rent_price;
+    }
+
+    public void setRent_price(long rent_price) {
+        this.rent_price = rent_price;
+    }
+    
     public long getRent_id() {
         return rent_id;
     }

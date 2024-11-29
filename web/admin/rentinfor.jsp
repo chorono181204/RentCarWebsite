@@ -175,6 +175,10 @@
                             <input type="text" id="phone" name="phone" value="${phone}">
                         </div>
                         <div class="select__box--item">
+                            <label for="rent_price">Rent Price</label>
+                            <input type="text" id="rent_price" name="rent_price" value="${rent_price}">
+                        </div>
+                        <div class="select__box--item">
                             <label for="pick_up_from">Pick up from</label>
                             <input style="font-size:16px;" type="date" id="pick_up_from" name="pick_up_from" value="${pick_up_from}">
                         </div>
@@ -227,6 +231,7 @@
                         <th>Email</th>
                         <th>Customer note</th>
                         <th>Car id</th>
+                        <th>Rent Price</th>
                         <th>Pick up date</th>
                         <th>Pick off date</th>
                         <th>Pick up location</th>
@@ -245,6 +250,7 @@
                         <td><%= x.getEmail()%></td>
                         <td style="overflow-wrap: break-word; max-width: 200px;"><%= x.getCustomer_note()%></td>
                         <td><%= x.getId_car()%></td>
+                        <td><%= x.getRent_price()%></td>
                         <td style="min-width: 120px;"><%= x.getPick_up_date()%></td>
                         <td style="min-width: 120px;"><%= x.getPick_off_date()%></td>
                         <td><%= x.getPick_up_location()%></td>
@@ -277,13 +283,13 @@
                       <div class="block-27">
                         <ul>
                           <c:if test="${page != 1}">
-                              <li><a href="admin-rentinfor?page=${page - 1}&customer_name=${customer_name}&id_user=${customer_id}&id_car=${car_id}&email=${email_rent_info}&phone=${phone}&pick_up_from=${pick_up_from}&pick_up_to=${pick_up_to}&pick_off_from=${pick_off_from}&pick_off_to=${pick_off_to}&pick_up_location=${pick_up_location}&pick_off_location=${pick_off_location}&status=${status_code}">&lt;</a></li>
+                              <li><a href="admin-rentinfor?page=${page - 1}&customer_name=${customer_name}&id_user=${customer_id}&id_car=${car_id}&email=${email_rent_info}&phone=${phone}&rent_price=${rent_price}&pick_up_from=${pick_up_from}&pick_up_to=${pick_up_to}&pick_off_from=${pick_off_from}&pick_off_to=${pick_off_to}&pick_up_location=${pick_up_location}&pick_off_location=${pick_off_location}&status=${status_code}">&lt;</a></li>
                           </c:if>
                           <c:forEach begin="1" end="${totalPages}" var="i">
-                                  <li class="link ${i == page ? "active" : ""}"><a href="admin-rentinfor?page=${i}&customer_name=${customer_name}&id_user=${customer_id}&id_car=${car_id}&email=${email_rent_info}&phone=${phone}&pick_up_from=${pick_up_from}&pick_up_to=${pick_up_to}&pick_off_from=${pick_off_from}&pick_off_to=${pick_off_to}&pick_up_location=${pick_up_location}&pick_off_location=${pick_off_location}&status=${status_code}">${i}</a></li>
+                                  <li class="link ${i == page ? "active" : ""}"><a href="admin-rentinfor?page=${i}&customer_name=${customer_name}&id_user=${customer_id}&id_car=${car_id}&email=${email_rent_info}&phone=${phone}&rent_price=${rent_price}&pick_up_from=${pick_up_from}&pick_up_to=${pick_up_to}&pick_off_from=${pick_off_from}&pick_off_to=${pick_off_to}&pick_up_location=${pick_up_location}&pick_off_location=${pick_off_location}&status=${status_code}">${i}</a></li>
                           </c:forEach>
                           <c:if test="${page != totalPages && totalItems != 0}">
-                              <li><a href="admin-rentinfor?page=${page + 1}&customer_name=${customer_name}&id_user=${customer_id}&id_car=${car_id}&email=${email_rent_info}&phone=${phone}&pick_up_from=${pick_up_from}&pick_up_to=${pick_up_to}&pick_off_from=${pick_off_from}&pick_off_to=${pick_off_to}&pick_up_location=${pick_up_location}&pick_off_location=${pick_off_location}&status=${status_code}">&gt;</a></li>
+                              <li><a href="admin-rentinfor?page=${page + 1}&customer_name=${customer_name}&id_user=${customer_id}&id_car=${car_id}&email=${email_rent_info}&phone=${phone}&rent_price=${rent_price}&pick_up_from=${pick_up_from}&pick_up_to=${pick_up_to}&pick_off_from=${pick_off_from}&pick_off_to=${pick_off_to}&pick_up_location=${pick_up_location}&pick_off_location=${pick_off_location}&status=${status_code}">&gt;</a></li>
                           </c:if>
                           <c:if test="${totalItems == 0}">
                               <div class="notFound" style="font-size: 25px;

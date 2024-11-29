@@ -26,9 +26,10 @@
                         <div style="margin-bottom: 0 !important;height: 100%;" class="row mb-5">
                             <div class="col-md-12">
                                 <%  Car c = (Car) request.getAttribute("car");
-                                     CarBrand cb = (CarBrand) request.getAttribute("carBrand");
-                                     User us = (User) session.getAttribute("user");
-                                     Rentinfor r=(Rentinfor)request.getAttribute("details");
+                                    
+                                    CarBrand cb = (CarBrand) request.getAttribute("carBrand");
+                                    User us = (User) session.getAttribute("user");
+                                    Rentinfor r =(Rentinfor)request.getAttribute("details");
                                 %>
                                 <div style="height: 100%;margin-bottom: 0 !important;" class="car-wrap rounded ftco-animate">
                                     <div class="img rounded d-flex align-items-end" style="background-size: contain;
@@ -37,7 +38,7 @@
                                     <div class="text">
                                         <h2 class="mb-0 text-center"><a href="cardetails?id=<%= c.getId_car()%>"><%= c.getCar_name()%></a></h2>
                                         <div class="text text-center">
-                                            <p class="price ml-auto" style="font-size: 24px"><%= c.getPrice()%> <span>/day</span></p>
+                                            <p class="price ml-auto" style="font-size: 24px"><%= r.getRent_price() %> <span>/day</span></p>
                                             <p> <span  style="color: #4D4242; font-size: 20px"><strong><%= cb.getName() %>  <%= c.getYear_of_manufacture() %></strong></span></p>
                                             <p><span style="color: #4D4242;"><strong><%= c.getTransmission()%></strong></span></p>
                                             <p><span style="color: #4D4242;"><strong><%= c.getSeats()%> Seats</strong></span></p>

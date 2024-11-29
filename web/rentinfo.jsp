@@ -64,7 +64,7 @@
                             <thead>
                                 <tr>
                                     <th>Customer name</th>
-
+                                    
                                     <th>Pick up date</th>
                                     <th>Pick off date</th>
                                     <th>Status</th>

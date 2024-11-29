@@ -78,7 +78,7 @@ public class CarDao {
     public List<Car> findAll(Map<String, String[]> params) {
         JDBCConnect connection = new JDBCConnect(); 
         StringBuilder sql = new StringBuilder("SELECT c.id_car, c.car_name, c.car_brand_id, c.price, c.img FROM car c ");
-        StringBuilder where = new StringBuilder("WHERE 1 = 1 ");
+        StringBuilder where = new StringBuilder("WHERE c.status = 0 ");
         queryNormal(where, params);
         querySpecial(where, params);
         joinTable(sql, params);
