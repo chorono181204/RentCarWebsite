@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Car;
 import model.Rentinfor;
+import util.DateTimeUtil;
 
 /**
  *
@@ -77,15 +78,18 @@ public class AdminCreateRentinforController extends HttpServlet {
         String pick_time = request.getParameter("pick_time");
         String status_raw = request.getParameter("status");
         long id_user, status;
-        
+      
         RentinforDao udb = new RentinforDao();
         try{
             id_user = 0;
             status = Long.parseLong(status_raw);
             long id_car=Long.parseLong(id_car_raw);
-            Rentinfor uNew = new Rentinfor(1, customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, id_user, pick_time, status,id_car);
+              long days=DateTimeUtil.calculateDaysBetween(pick_up_date, pick_off_date);
+        CarDao cd = new CarDao();
+        long rent_price =cd.getCarById(id_car).getPrice()*days;
+            Rentinfor uNew = new Rentinfor(1, customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, id_user, pick_time, status,id_car,rent_price);
             udb.adminInsert(uNew);
-            
+            cd.updateStatus(id_car);
             response.sendRedirect("admin-rentinfor");
         }catch(NumberFormatException e){
             System.out.println(e);

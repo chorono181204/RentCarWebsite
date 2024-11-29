@@ -9,13 +9,13 @@ package model;
  * @author pc
  */
 public class Rentinfor {
-    private long rent_id, id_user, status,id_car;
+    private long rent_id, id_user, status,id_car,rent_price;
     private String customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, pick_time;
 
     public Rentinfor() {
     }
 
-    public Rentinfor(long rent_id, String customer_name, String phone, String email, String customer_note, String pick_up_date, String pick_off_date, String pick_up_location, String pick_off_location, long id_user, String pick_time, long status,long id_car) {
+    public Rentinfor(long rent_id, String customer_name, String phone, String email, String customer_note, String pick_up_date, String pick_off_date, String pick_up_location, String pick_off_location, long id_user, String pick_time, long status,long id_car,long rent_price) {
         this.rent_id = rent_id;
         this.customer_name = customer_name;
         this.phone = phone;
@@ -29,6 +29,23 @@ public class Rentinfor {
         this.pick_time  = pick_time;
         this.status = status;
         this.id_car=id_car;
+        this.rent_price=rent_price;
+    }
+     public Rentinfor(long rent_id, String customer_name, String phone, String email, String customer_note, String pick_up_date, String pick_off_date, String pick_up_location, String pick_off_location, long id_user, String pick_time, long status,long id_car) {
+        this.rent_id = rent_id;
+        this.customer_name = customer_name;
+        this.phone = phone;
+        this.email = email;
+        this.customer_note = customer_note;
+        this.pick_up_date = pick_up_date;
+        this.pick_off_date = pick_off_date;
+        this.pick_up_location = pick_up_location;
+        this.pick_off_location = pick_off_location;
+        this.id_user = id_user;
+        this.pick_time  = pick_time;
+        this.status = status;
+        this.id_car=id_car;
+       
     }
     public long getRent_id() {
         return rent_id;
@@ -132,5 +149,15 @@ public class Rentinfor {
     public void setId_car(long id_car) {
         this.id_car = id_car;
     }
+
+    public long getRent_price() {
+        return rent_price;
+    }
+
+    public void setRent_price(long rent_price) {
+        this.rent_price = rent_price;
+    }
+
+   
     
 }

@@ -148,8 +148,8 @@ public class RentinforDao {
     }
      public void adminInsert(Rentinfor u) {
         try ( Connection connection = util.JDBCConnect.getConnection()) {
-            String sql = "INSERT INTO rentinfor ( customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, pick_time, status,id_car ) \n "
-                    + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
+            String sql = "INSERT INTO rentinfor ( customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, pick_time, status,id_car,rent_price ) \n "
+                    + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,? )";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, u.getCustomer_name());
             st.setString(2, u.getPhone());
@@ -163,6 +163,7 @@ public class RentinforDao {
             st.setString(9, u.getPick_time());
             st.setLong(10, u.getStatus());
             st.setLong(11, u.getId_car());
+             st.setLong(12, u.getRent_price());
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -192,7 +193,8 @@ public class RentinforDao {
                         rs.getInt("id_user"),
                         rs.getString("pick_time"),
                         rs.getInt("status"),
-                        rs.getInt("id_car")                       
+                        rs.getInt("id_car")
+                       
                 );
                 return u;
             }
@@ -218,7 +220,7 @@ public class RentinforDao {
     public void update(Rentinfor u) {
         try ( Connection connection = util.JDBCConnect.getConnection()) {
             String sql = "UPDATE rentinfor\n"
-                    + "SET customer_name=?, phone=?, customer_note=?,pick_up_date=?,pick_off_date=?, pick_up_location=?, pick_off_location=?,pick_time=?,status=? ,id_car=?\n"
+                    + "SET customer_name=?, phone=?, customer_note=?,pick_up_date=?,pick_off_date=?, pick_up_location=?, pick_off_location=?,pick_time=?,status=?  ,id_car=?,rent_price=?\n"
                     + "WHERE rent_id = "+u.getRent_id()+" ;";
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, u.getCustomer_name());
@@ -231,7 +233,7 @@ public class RentinforDao {
             st.setString(8, u.getPick_time());
             st.setLong(9, u.getStatus());
             st.setLong(10, u.getId_car());
-          
+             st.setLong(11, u.getRent_price());         
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);

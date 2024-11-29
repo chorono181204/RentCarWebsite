@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Car;
 import model.Rentinfor;
+import util.DateTimeUtil;
 
 public class AdminUpdateRentinforController extends HttpServlet {
 
@@ -67,7 +68,11 @@ public class AdminUpdateRentinforController extends HttpServlet {
             status = Long.parseLong(status_raw);
             email=u.getEmail();
             id_car=Long.parseLong(id_car_raw);
-            Rentinfor uNew = new Rentinfor(rent_id, customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, id_user, pick_time, status,id_car);
+            
+            long days=DateTimeUtil.calculateDaysBetween(pick_up_date, pick_off_date);
+            CarDao cd = new CarDao();
+            long rent_price =cd.getCarById(id_car).getPrice()*days;
+            Rentinfor uNew = new Rentinfor(rent_id, customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, id_user, pick_time, status,id_car,rent_price);
             udb.update(uNew);
             
            response.sendRedirect("admin-rentinfor");
