@@ -72,7 +72,7 @@
     align-items: center;color: #272d25; font-size:18px"
     >
        <div>
-           <img src="https://avatars.githubusercontent.com/u/124599?v=4" style="border-radius: 100%;width: 90px;height: auto;">
+           <img src="images/default-avatar.jpeg" alt="avatar" style="border-radius: 100%;width: 90px;height: auto;">
        </div>
     <div class="info" style="margin-bottom:0;">
       <strong style="font-size: 24px; margin-top:15px; ">
