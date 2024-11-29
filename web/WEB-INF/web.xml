@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    
     <servlet>
         <servlet-name>HomeController</servlet-name>
         <servlet-class>controller.HomeController</servlet-class>
@@ -14,28 +13,12 @@
         <servlet-class>controller.CarDetailsController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>BlogDetailsController</servlet-name>
-        <servlet-class>controller.BlogDetailsController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>CarController</servlet-name>
         <servlet-class>controller.CarController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ContactController</servlet-name>
         <servlet-class>controller.ContactController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>BlogController</servlet-name>
-        <servlet-class>controller.BlogController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>PricingController</servlet-name>
-        <servlet-class>controller.PricingController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ServiceController</servlet-name>
-        <servlet-class>controller.ServiceController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoginController</servlet-name>
@@ -62,10 +45,6 @@
         <servlet-class>controller.admin.AdminRentinforController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AdminRentinforDetailsController</servlet-name>
-        <servlet-class>controller.admin.AdminRentinforDetailsController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AdminUserController</servlet-name>
         <servlet-class>controller.admin.AdminUserController</servlet-class>
     </servlet>
@@ -74,20 +53,12 @@
         <servlet-class>controller.admin.AdminCarController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AdminCarDetailsController</servlet-name>
-        <servlet-class>controller.admin.AdminCarDetailsController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AdminLogoutController</servlet-name>
         <servlet-class>controller.admin.AdminLogoutController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AdminContactController</servlet-name>
         <servlet-class>controller.admin.AdminContactController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AdminContactDetailsController</servlet-name>
-        <servlet-class>controller.admin.AdminContactDetailsController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>CreateUser</servlet-name>
@@ -186,28 +157,12 @@
         <url-pattern>/cardetails</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>BlogDetailsController</servlet-name>
-        <url-pattern>/blogdetails</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>BlogController</servlet-name>
-        <url-pattern>/blog</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>CarController</servlet-name>
         <url-pattern>/car</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ContactController</servlet-name>
         <url-pattern>/contact</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>PricingController</servlet-name>
-        <url-pattern>/pricing</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ServiceController</servlet-name>
-        <url-pattern>/services</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
@@ -230,32 +185,20 @@
         <url-pattern>/admin-login</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AdminLogoutController</servlet-name>
-        <url-pattern>/admin-logout</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>AdminCarController</servlet-name>
         <url-pattern>/admin-car</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AdminCarDetailsController</servlet-name>
-        <url-pattern>/admin-cardetails</url-pattern>
+        <servlet-name>AdminLogoutController</servlet-name>
+        <url-pattern>/admin-logout</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminContactController</servlet-name>
         <url-pattern>/admin-contact</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AdminContactDetailsController</servlet-name>
-        <url-pattern>/admin-contactdetails</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>AdminRentinforController</servlet-name>
         <url-pattern>/admin-rentinfor</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AdminRentinforDetailsController</servlet-name>
-        <url-pattern>/admin-rentinfordetails</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>AdminUserController</servlet-name>
@@ -342,7 +285,6 @@
             300
         </session-timeout>
     </session-config>
- 
     <error-page>
         <error-code>404</error-code>
         <location>/error404.jsp</location>

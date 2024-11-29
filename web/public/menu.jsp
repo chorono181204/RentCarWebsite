@@ -13,11 +13,10 @@
                         String currentPage = request.getRequestURI();
                     %>
                     <li class="nav-item <%= currentPage.contains("home") ? "active" : currentPage %>"><a href="home" class="nav-link" style="font-size:18px;">Home</a></li>
-                    <li class="nav-item <%= currentPage.contains("about") ? "active" : currentPage %>"><a href="about" class="nav-link" style="font-size:18px;">About</a></li>
-                    <li class="nav-item <%= currentPage.contains("services") ? "active" : currentPage %>"><a href="services" class="nav-link" style="font-size:18px;">Services</a></li>
-                    <li class="nav-item <%= currentPage.contains("pricing") ? "active" : currentPage %>"><a href="pricing" class="nav-link" style="font-size:18px;">Pricing</a></li>
+                   
+                   
                     <li class="nav-item <%= currentPage.contains("car") ? "active" : currentPage %>"><a href="car" class="nav-link" style="font-size:18px;">Cars</a></li>
-                    <li class="nav-item <%= currentPage.contains("blog") ? "active" : currentPage %>"><a href="blog" class="nav-link" style="font-size:18px;">Blog</a></li>
+                    
                     <li class="nav-item <%= currentPage.contains("contact") ? "active" : currentPage %>"><a href="contact" class="nav-link" style="font-size:18px;">Contact</a></li>
                 <% 
                     String sessionCheck = (String) session.getAttribute("Login");
