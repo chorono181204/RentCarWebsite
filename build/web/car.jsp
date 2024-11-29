@@ -27,8 +27,26 @@
             .row .brandAndPrice span {
                 width: 100%;
                 text-align: center;
-            }
-}
+            }    
+        }
+        
+        .select__box {
+            column-gap: 35px;
+        }
+        
+        .search__bar {
+            border-radius: 10px;
+            border: 0;
+            box-shadow: inset 0px 1px 6px rgba(0, 0, 0, 0.2);
+        }
+        
+        .filter button.submit {
+            border: 0px;
+            border-radius: 10px;
+            color: #6b6464;
+            box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
    </style>
   <body>
     
@@ -62,7 +80,7 @@
                 
             <!--Search Bar-->
                 <div class="search__bar">
-                     <input type="text" name="car_name" class="search" placeholder="Nhập tên xe" value="${car_name}">
+                     <input type="text" name="car_name" class="search" placeholder="Enter car name" value="${car_name}">
                      <button type="submit" style="background: none;
                                                     border: none;
                                                     outline: none">
@@ -80,69 +98,69 @@
                             "
                         >
                     <div class="select__box--item">
-                        <label for="color">Màu</label>
+                        <label for="color">Color</label>
                         <select name="color" id="color">
-                            <option value="">Tất cả</option>
+                            <option value="">All</option>
                             <c:forEach var="item" items="${colors}">
                                 <option value="${item}" ${(item == color) ? "selected" : ""}>${item}</option>
                             </c:forEach>
                         </select>
                     </div>
                     <div class="select__box--item">
-                        <label for="district_id">Điểm thuê</label>
+                        <label for="district_id">Location</label>
                         <select name="district_id" id="district_id">
-                            <option value="">Tất cả</option>
+                            <option value="">All</option>
                             <c:forEach var="item" items="${districts}">
                                 <option value="${item.id}" ${(item.id == district_id) ? "selected" : ""}>${item.name}</option>
                             </c:forEach>
                         </select>
                     </div>
                     <div class="select__box--item">
-                        <label for="car_brand_id">Hãng xe</label>
+                        <label for="car_brand_id">Brand</label>
                         <select name="car_brand_id" id="car_brand_id">
-                            <option value="">Tất cả</option>
+                            <option value="">All</option>
                             <c:forEach var="item" items="${brands}">
                                 <option value="${item.id}" ${(item.id == car_brand_id) ? "selected" : ""}>${item.name}</option>
                             </c:forEach>
                         </select>
                     </div>
                     <div class="select__box--item">
-                        <label for="car_type_id">Loại xe</label>
+                        <label for="car_type_id">Car Type</label>
                         <select name="car_type_id" id="car_type_id">
-                            <option value="">Tất cả</option>
+                            <option value="">All</option>
                             <c:forEach var="item" items="${types}">
                                 <option value="${item.id}" ${(item.id == car_type_id) ? "selected" : ""}>${item.type}</option>
                             </c:forEach>
                         </select>
                     </div>
                     <div class="select__box--item">
-                        <label for="seats">Số chỗ</label>
+                        <label for="seats">Seats</label>
                         <select name="seats" id="seats">
-                            <option value="">Tất cả</option>
+                            <option value="">All</option>
                             <c:forEach var="item" items="${seats}">
                                 <option value="${item}" ${(item == seat) ? "selected" : ""}>${item}</option>
                             </c:forEach>
                         </select>
                     </div>
                     <div class="select__box--item">
-                        <label for="transmission">Loại hộp số</label>
+                        <label for="transmission">Transmission</label>
                         <select name="transmission" id="transmission">
-                            <option value="">Tất cả</option>
+                            <option value="">All</option>
                             <c:forEach var="item" items="${transmissions}">
                                 <option value="${item}" ${(item == transmission) ? "selected" : ""}>${item}</option>
                             </c:forEach>
                         </select>
                     </div>
                     <div class="select__box--item">
-                        <label for="priceFrom">Giá thuê từ</label>
+                        <label for="priceFrom">Price from</label>
                         <input type="text" id="priceFrom" name="priceFrom" value="${priceFrom}">
                     </div>
                     <div class="select__box--item">
-                        <label for="priceTo">Giá thuê đến</label>
+                        <label for="priceTo">Price to</label>
                         <input type="text" id="priceTo" name="priceTo" value="${priceTo}">
                     </div>
                 </div>
-                <button type="submit" class="submit">Tìm kiếm</button>
+                <button type="submit" class="submit">Search</button>
                 <!--<input type="submit" class="submit">-->
             </form>
             

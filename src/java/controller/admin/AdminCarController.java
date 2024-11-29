@@ -68,6 +68,7 @@ public class AdminCarController extends HttpServlet {
         request.setAttribute("page", page);
         request.setAttribute("totalPages", number);
         request.setAttribute("totalItems", size);
+        request.setAttribute("status", carService.findAllStatus());
         if(params.containsKey("id_car")) {
             request.setAttribute("car_id", params.get("id_car")[0]);
         }
@@ -107,7 +108,9 @@ public class AdminCarController extends HttpServlet {
         if(params.containsKey("yearTo")) {
             request.setAttribute("yearTo", params.get("yearTo")[0]);
         }
-        
+        if(params.containsKey("status") && !params.get("status")[0].equals("")) {
+            request.setAttribute("status_code", params.get("status")[0]);
+        }
         
         request.getRequestDispatcher("admin/car.jsp").forward(request, response);
     }

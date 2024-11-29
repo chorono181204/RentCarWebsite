@@ -4,7 +4,7 @@
   
   <body>
     
-	 <%@include file="public/menu.jsp" %>
+        <%@include file="public/menu.jsp" %>
     <!-- END nav -->
     
     <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('images/bg_3.jpg');" data-stellar-background-ratio="0.5">
@@ -30,12 +30,6 @@
     <div class="cus-container">
    <div class="cus-sidebar">
     
-    <h2>
-    <strong><%= us.getName() %></strong> 
-    </h2>
-    <h3>
-        <strong>My Account</strong>
-    </h3>
     <ul>
      <li>
       <a class="active" href="file">
@@ -56,9 +50,6 @@
      <li>
      </li>
     </ul>
-    <a class="logout" href="logout">
-     Log out
-    </a>
    </div>
    <div class="cus-content">
     <h2>

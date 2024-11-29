@@ -80,6 +80,7 @@ public class RentinforDao {
                     SimpleDateFormat simpleFormat = new SimpleDateFormat("dd/MM/yyyy");
                     String formattedPickUpDate = simpleFormat.format(utilPickUpDate);
                     String formattedPickOffDate = simpleFormat.format(utilPickOffDate);
+                    rentInfor.setRent_id(rs.getLong("rent_id"));
                     rentInfor.setPick_up_date(formattedPickUpDate);
                     rentInfor.setPick_off_date(formattedPickOffDate);
                     rentInfor.setCustomer_name(rs.getString("customer_name"));

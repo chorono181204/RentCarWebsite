@@ -105,6 +105,25 @@ public class CarDao {
         return null;
     }
     
+    public List<Long> findAllStatus() {
+        JDBCConnect connection = new JDBCConnect(); 
+        String sql = "SELECT status FROM car GROUP BY status ";
+        List<Long> result = new ArrayList<>();
+        try(Connection conn = connection.getConnection();
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql)) {
+                while(rs.next()) {
+                    result.add(rs.getLong("status"));
+                }
+                return result;
+        }
+        catch(SQLException e) {
+            e.printStackTrace();
+            System.out.println("Connect Database Failed");
+        }
+        return null;
+    }
+    
     public List<String> findAllColors() {
         JDBCConnect connection = new JDBCConnect(); 
         String sql = "SELECT color FROM car GROUP BY color ";
@@ -217,7 +236,7 @@ public class CarDao {
 
     public List<Car> adminFindAll(Map<String, String[]> params) {
         JDBCConnect connection = new JDBCConnect(); 
-        StringBuilder sql = new StringBuilder("SELECT c.id_car, c.car_name, c.price, c.description, c.year_of_manufacture, c.current_address FROM rentcar.car c ");
+        StringBuilder sql = new StringBuilder("SELECT c.id_car, c.car_name, c.price, c.description, c.year_of_manufacture, c.current_address, c.status FROM rentcar.car c ");
         StringBuilder where = new StringBuilder("WHERE 1 = 1 ");
         queryNormal(where, params);
         querySpecial(where, params);
@@ -235,6 +254,7 @@ public class CarDao {
                     car.setDescription(rs.getString("description"));
                     car.setYear_of_manufacture(rs.getLong("year_of_manufacture"));
                     car.setCurrent_address(rs.getString("current_address"));
+                    car.setStatus(rs.getLong("status"));
                     result.add(car);
                 }
                 return result;

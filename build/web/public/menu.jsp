@@ -27,6 +27,9 @@
                     <li class="nav-item"><a href="login" class="nav-link" style="font-size:18px;">Log in</a></li>
                 <% } else { %>
                     <li class="nav-item <%= currentPage.contains("file") ? "active" : currentPage %>"><a href="file" class="nav-link" style="font-size:18px;">My Profile</a></li>
+                    <a class="nav-link" style="font-size:18px;" href="logout">
+                    Log out
+                   </a>
                 <% } %>
 
                   

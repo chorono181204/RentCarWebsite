@@ -8,7 +8,16 @@ public class AdminCarDTO {
     private long year;
     private long price;
     private String currentAddress;
+    private long status;
 
+    public long getStatus() {
+        return status;
+    }
+
+    public void setStatus(long status) {
+        this.status = status;
+    }
+    
     public long getId() {
         return id;
     }

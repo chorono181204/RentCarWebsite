@@ -61,6 +61,7 @@ public class ContactDao {
                     SimpleDateFormat simpleFormat = new SimpleDateFormat("dd/MM/yyyy");
                     String formattedDate = simpleFormat.format(utilDate);
                     contact.setTime_sent(formattedDate);
+                    contact.setId(rs.getLong("id"));
                     contact.setUsername(rs.getString("username"));
                     contact.setEmail(rs.getString("email"));
                     contact.setSubject(rs.getString("subject"));

@@ -81,10 +81,33 @@
                 font-size: 16px;
             }
             
+            .select__box .select__box--item select {
+                font-size: 16px;
+            }
+            
             .select__box .select__box--item input {
-                height: 35px;
+                height: 33px;
                 width: 160px;
                 font-size: 16px;
+            }
+            
+            .filter button.submit {
+                border: 2px solid #c2c2c2;
+                border-radius: 10px;
+                color: gray;
+            }
+            
+            .search__bar {
+                border-radius: 10px;
+                border: 0;
+                box-shadow: inset 0px 1px 6px rgba(0, 0, 0, 0.2);
+            }
+            
+            .filter button.submit {
+                border: 0px;
+                border-radius: 10px;
+                color: #6b6464;
+                box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.2);
             }
         </style>
     </head>
@@ -230,6 +253,15 @@
                             <label for="priceTo">To Year</label>
                             <input type="text" id="yearTo" name="yearTo" value="${yearTo}">
                         </div>
+                        <div class="select__box--item">
+                            <label for="status">Status</label>
+                            <select name="status" id="status">
+                                <option selected value="">All</option>
+                                <c:forEach var="item" items="${status}">
+                                    <option value="${item}" ${(item == status_code) ? "selected" : ""}>${item == 1 ? "Available" : "Rented"}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
                     </div>            
                     <button type="submit" class="submit" style="cursor:pointer;">Search</button>
                 </form>
@@ -248,7 +280,7 @@
                         <th>Price</th>
                         <th>Year</th>
                         <th>Current address</th>
-                        
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                     <% List<AdminCarDTO> cars = (List<AdminCarDTO>) request.getAttribute("cars"); %>
@@ -261,6 +293,17 @@
                         <td><%= x.getPrice()%></td>
                         <td><%= x.getYear()%></td>
                         <td><%= x.getCurrentAddress()%></td>
+                        <% 
+                            Long status_code = x.getStatus();
+                            String status;
+                            if(status_code == 0) {
+                                status = "Rented";
+                            }
+                            else {
+                                status = "Available";
+                            }
+                        %>
+                        <td><%= status%></td>
                         <td>
                             <div class="action">
                                 <button class="update-btn" ><a href="update-car?id=<%= x.getId()%>">Update</a></button>

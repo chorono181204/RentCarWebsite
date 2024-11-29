@@ -95,12 +95,20 @@
             
             .select__box .select__box--item label {
                 font-size: 16px;
+                width: 142px;
             }
             
             .select__box .select__box--item input {
                 height: 35px;
                 width: 160px;
                 font-size: 16px;
+            }
+            
+            .filter button.submit {
+                border: 0px;
+                border-radius: 10px;
+                color: #6b6464;
+                box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.2);
             }
         </style>
     </head>
@@ -147,7 +155,7 @@
                                 "
                             >
                         <div class="select__box--item">
-                            <label for="customer_name">Customer name</label>
+                            <label for="customer_name" style="margin-bottom: 20px;">Customer name</label>
                             <input type="text" id="customer_name" name="customer_name" value="${customer_name}">
                         </div>
                         <div class="select__box--item">
@@ -195,7 +203,7 @@
                             <select name="status" id="status">
                                 <option selected value="">All</option>
                                 <c:forEach var="item" items="${status}">
-                                    <option value="${item}" ${(item == status_code) ? "selected" : ""}>${item == 1 ? "Active" : "Disabled"}</option>
+                                    <option value="${item}" ${(item == status_code) ? "selected" : ""}>${item == 1 ? "Completed" : "Processing"}</option>
                                 </c:forEach>
                             </select>
                         </div>

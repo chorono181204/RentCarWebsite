@@ -12,6 +12,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Update car</title>
         <link rel="stylesheet" href="admin/admin-create2.css"/>
+        <style>
+            .form-field select {
+                width: 100px;
+                height: 30px;
+                margin-top: 5px;
+                outline: none;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+        </style>
     </head>
     <body>
         <div class="container">

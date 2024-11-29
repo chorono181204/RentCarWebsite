@@ -103,6 +103,13 @@
                 width: 160px;
                 font-size: 16px;
             }
+            
+            .filter button.submit {
+                border: 0px;
+                border-radius: 10px;
+                color: #6b6464;
+                box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.2);
+            }
         </style>
     </head>
 

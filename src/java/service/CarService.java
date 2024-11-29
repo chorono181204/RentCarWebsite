@@ -42,6 +42,7 @@ public class CarService {
             adminCarDTO.setCurrentAddress(item.getCurrent_address());
             adminCarDTO.setDescription(item.getDescription());
             adminCarDTO.setYear(item.getYear_of_manufacture());
+            adminCarDTO.setStatus(item.getStatus());
             result.add(adminCarDTO);
         }
         return result;
@@ -78,5 +79,9 @@ public class CarService {
     
     public List<Long> findAllLuggage() {
         return carDao.findAllLuggage();
+    }
+    
+    public List<Long> findAllStatus() {
+        return carDao.findAllStatus();
     }
 }
