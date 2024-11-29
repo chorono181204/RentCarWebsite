@@ -1,15 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package controller;
 
 import dao.CarBrandDao;
 import dao.CarDao;
 import dao.RentinforDao;
-import dao.UserDao;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,12 +13,7 @@ import model.Car;
 import model.CarBrand;
 import model.Rentinfor;
 import javax.servlet.http.HttpSession;
-import model.User;
 
-/**
- *
- * @author Hacom
- */
 public class RentCarController extends HttpServlet {
 
    
@@ -52,25 +41,16 @@ public class RentCarController extends HttpServlet {
         
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         HttpSession session = request.getSession();
-        
-          request.setCharacterEncoding("UTF-8");
-           response.setContentType("text/html;charset=UTF-8");
-         String customer_name = request.getParameter("customer_name");
+        HttpSession session = request.getSession();
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
+        String customer_name = request.getParameter("customer_name");
         String phone = request.getParameter("phone");
         String email=request.getParameter("email");
-         String id_us=request.getParameter("id_user");
+        String id_us=request.getParameter("id_user");
         String customer_note = request.getParameter("customer_note");
         String pick_up_date = request.getParameter("pick_up_date");
         String pick_off_date = request.getParameter("pick_off_date");
@@ -79,13 +59,12 @@ public class RentCarController extends HttpServlet {
         String pick_time = request.getParameter("pick_time");
         long id_user, status;
         String id_raw = request.getParameter("id");
-            long id_car;
-            id_car = Long.parseLong(id_raw);
-            id_user=Long.parseLong(id_us);
+        long id_car;
+        id_car = Long.parseLong(id_raw);
+        id_user=Long.parseLong(id_us);
         RentinforDao rentinforDao = new RentinforDao();
         CarDao carDao=new CarDao();
-        try{
-          
+        try{ 
             status = 0L;
             Rentinfor newRentinfor = new Rentinfor(1, customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, id_user, pick_time, status,id_car);
             rentinforDao.insert(newRentinfor);

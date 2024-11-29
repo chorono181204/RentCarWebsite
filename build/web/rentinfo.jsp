@@ -86,8 +86,8 @@
                                 <tr>
                                     <td class="order-code"><%= rt.getCustomer_name()%></td>
 
-                                    <td ><%= rt.getPick_up_date()%></td>
-                                    <td><%= rt.getPick_off_date()%></td>
+                                    <td style="color: #272d25;font-weight: bold;" ><%= rt.getPick_up_date()%></td>
+                                    <td style="color: #272d25;font-weight: bold;"><%= rt.getPick_off_date()%></td>
 
                                     <td class="status"><%= stt%></td>
                             

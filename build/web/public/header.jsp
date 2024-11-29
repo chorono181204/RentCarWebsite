@@ -148,11 +148,11 @@
         background-color: #f2f2f2;
     }
     .order-code {
-        color: #1c7430;
+        color: #272d25;
         font-weight: bold;
     }
     .status {
-        color: #1c7430;
+        color: #6d6e6e;
         font-weight: bold;
     }
     .icons {
@@ -201,6 +201,10 @@
     .cus-sidebar ul li a:hover {
         background: #dadada;
         border-radius: 6px;
+    }
+    
+    .form-group p {
+        font-size: 18px !important;
     }
 </style>
   </head>
