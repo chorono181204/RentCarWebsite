@@ -94,6 +94,7 @@ public class CarDao {
                     car.setCar_brand_id(rs.getLong("car_brand_id"));
                     car.setPrice(rs.getLong("price"));
                     car.setImg(rs.getString("img"));
+                    
                     result.add(car);
                 }
                 return result;

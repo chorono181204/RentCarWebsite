@@ -30,8 +30,8 @@
 
                 <label>Status:</label>
                 <div class="radio-group">
-                    <input type="radio" id="status0" name="status" value="0" <%= u.getStatus() == 0 ? "checked" : ""%> />0
-                    <input type="radio" id="status1" name="status" value="1" <%= u.getStatus() == 1 ? "checked" : ""%> />1
+                    <input type="radio" id="status0" name="status" value="0" <%= u.getStatus() == 0 ? "checked" : ""%> />Processing
+                    <input type="radio" id="status1" name="status" value="1" <%= u.getStatus() == 1 ? "checked" : ""%> />Completed
                 </div>
 
                 <label for="time_sent">Time Sent:</label>

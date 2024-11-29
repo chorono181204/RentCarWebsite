@@ -1,6 +1,13 @@
 
+<%@page import="model.Car"%>
+<%@page import="java.util.List"%>
+<%@page import="model.Rentinfor"%>
+<%@page import="model.Rentinfor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<% 
+               List<Car>lc=(List<Car>)request.getAttribute("listCar");
+            %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -10,7 +17,7 @@
     <body>
         <div class="container">
             <h1>Add a new rental information</h1>
-            <form action="create-rentinfor" method="post">
+            <form action="" method="post">
                 <div class="form-field">
                     <label for="customer_name">Customer Name:</label>
                     <input type="text" id="customer_name" name="customer_name" required />
@@ -28,7 +35,7 @@
 
                 <div class="form-field">
                     <label for="customer_note">Customer Note:</label>
-                    <textarea id="customer_note" name="customer_note" required></textarea>
+                    <textarea id="customer_note" name="customer_note" ></textarea>
                 </div>
 
                 <div class="form-field">
@@ -50,19 +57,27 @@
                     <label for="pick_off_location">Pick-Off Location:</label>
                     <input type="text" id="pick_off_location" name="pick_off_location" required />
                 </div>
-
                 <div class="form-field">
-                    <label for="id_user">User ID:</label>
-                    <input type="text" id="id_user" name="id_user" required />
+                    <label for="pick_time">Pick time:</label>
+                    <input type="text" id="pick_time" name="pick_time" required />
                 </div>
-
-                <div class="form-field">
-                    <label for="time_sent">Pick time:</label>
-                    <input type="date" id="pick_time" name="pick_time" required />
-                </div>
+                   <div class="form-field ">
+                    <label for="car">Car :</label>
+                    <select  name="id_car"   >
+                        <% for (Car c : lc){ %>
+                       
+                        <option value="<%= c.getId_car() %>"   ><%= c.getCar_name()+" "+c.getColor() %></option>
+                       
+                         <%} %>
+                         
+                    </select>
+                   </div>
                 <div class="form-field">
                     <label for="status">Status:</label>
-                    <input type="text" id="status" name="status" required />
+                    <div class="radio-group">
+                    <input type="radio" id="status0" name="status" value="0" checked/>Processing
+                    <input type="radio" id="status1" name="status" value="1"/>Completed
+                    </div>
                 </div>
 
                 <button type="submit">Create</button>

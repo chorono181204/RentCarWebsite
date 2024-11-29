@@ -11,7 +11,7 @@
         <div class="container">
             <h1>Add a new contact</h1>
             <form action="create-contact" method="post">
-                <label for="username">Username:</label>
+                <label for="username">Customer name:</label>
                 <input type="text" id="username" name="username" required /><br/>
 
                 <label for="email">Email:</label>
@@ -25,8 +25,8 @@
 
                 <label>Status:</label>
                 <div class="radio-group">
-                    <input type="radio" id="status0" name="status" value="0" checked />0
-                    <input type="radio" id="status1" name="status" value="1" />1
+                    <input type="radio" id="status0" name="status" value="0" checked />Processing
+                    <input type="radio" id="status1" name="status" value="1" />Completed
                 </div>
 
                 <label for="time_sent">Time Sent:</label>

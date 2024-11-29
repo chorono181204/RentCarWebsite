@@ -31,14 +31,14 @@
 
                 <label for="role">Role:</label>
                 <div class="radio-group">
-                    <input type="radio" id="role0" name="role" value="0" <%= u.getRole() == 0 ? "checked" : ""%> />0
-                    <input type="radio" id="role1" name="role" value="1" <%= u.getRole() == 1 ? "checked" : ""%> />1    
+                    <input type="radio" id="role0" name="role" value="0" <%= u.getRole() == 0 ? "checked" : ""%> />Admin
+                    <input type="radio" id="role1" name="role" value="1" <%= u.getRole() == 1 ? "checked" : ""%> />User 
                 </div>
 
                 <label for="status">Status:</label>
                 <div class="radio-group">
-                    <input type="radio" id="status0" name="status" value="0" <%= u.getStatus() == 0 ? "checked" : ""%> />0
-                    <input type="radio" id="status1" name="status" value="1" <%= u.getStatus() == 1 ? "checked" : ""%> />1
+                    <input type="radio" id="status0" name="status" value="0" <%= u.getStatus() == 0 ? "checked" : ""%> />Disable
+                    <input type="radio" id="status1" name="status" value="1" <%= u.getStatus() == 1 ? "checked" : ""%> />Active
                 </div>
 
                 <button type="submit">Update</button>
