@@ -121,20 +121,24 @@ public class UserDao{
             PreparedStatement ps=conn.prepareStatement(sql);
             ResultSet rs=ps.executeQuery();
             if(rs.next()){
-               User us  = new User(rs.getLong("id_user"),
-                                  rs.getString("username"),
-                                  rs.getString("password"),
-                                  rs.getString("name"),
-                                  rs.getString("date_of_bird"),
-                                  rs.getLong("role"),
-                                  rs.getLong("status"),
-                                  rs.getString("email")
-                                                        );
-               if (SecurityUtil.checkPassword(password, us.getPassword())){
-                   return us;
-               }else{
-                   return null;
-               }
+                Date sqlDate = rs.getDate("date_of_bird");
+                java.util.Date utilDate = new java.util.Date(sqlDate.getTime());
+                SimpleDateFormat simpleFormat = new SimpleDateFormat("dd/MM/yyyy");
+                String formattedDate = simpleFormat.format(utilDate);
+                User us  = new User(rs.getLong("id_user"),
+                                   rs.getString("username"),
+                                   rs.getString("password"),
+                                   rs.getString("name"),
+                                   formattedDate,
+                                   rs.getLong("role"),
+                                   rs.getLong("status"),
+                                   rs.getString("email")
+                                                         );
+                if (SecurityUtil.checkPassword(password, us.getPassword())){
+                    return us;
+                }else{
+                    return null;
+                }
             }
             return null;
             

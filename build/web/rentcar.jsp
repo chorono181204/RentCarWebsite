@@ -91,7 +91,7 @@
                             <input type="hidden" class="form-control"  name="email" value="<%= us.getEmail() %>" required="required">
                             <input type="hidden" class="form-control"  name="id_user"  value="<%= us.getId_user()%>" required="required">
                             <div class="form-group text text-center">
-                                <button type="submit"  class="btn btn-secondary py-3 px-4">Rent car now </button>
+                                <button style="margin-top: 30px;font-size: 16px;background: #1089ff !important;border-radius: 10px;" type="submit"  class="btn btn-secondary py-3 px-4">Rent car now </button>
                             </div>
                         </form>
                     </div>

@@ -53,7 +53,7 @@ public class AdminUserController extends HttpServlet {
             request.setAttribute("username_hi", params.get("username")[0]);
         }
         if(params.containsKey("name")) {
-            request.setAttribute("name", params.get("name")[0]);
+            request.setAttribute("name_hi", params.get("name")[0]);
         }
         if(params.containsKey("dobFrom")) {
             request.setAttribute("dobFrom", params.get("dobFrom")[0]);
@@ -65,7 +65,7 @@ public class AdminUserController extends HttpServlet {
             request.setAttribute("role", params.get("role")[0]);
         }
         if(params.containsKey("email")) {
-            request.setAttribute("email", params.get("email")[0]);
+            request.setAttribute("email_hi", params.get("email")[0]);
         }
         if(params.containsKey("status") && !params.get("status")[0].equals("")) {
             request.setAttribute("status_code", params.get("status")[0]);

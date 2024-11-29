@@ -250,13 +250,13 @@
                       <div class="block-27">
                         <ul>
                           <c:if test="${page != 1}">
-                              <li><a href="admin-contact?page=${page - 1}&username=${username}&email=${email}&subject=${subject}&sentFrom=${sentFrom}&sentTo=${sentTo}&status=${status_code}">&lt;</a></li>
+                              <li><a href="admin-contact?page=${page - 1}&username=${username_retain}&email=${email_retain}&subject=${subject}&sentFrom=${sentFrom}&sentTo=${sentTo}&status=${status_code}">&lt;</a></li>
                           </c:if>
                           <c:forEach begin="1" end="${totalPages}" var="i">
-                                  <li class="link ${i == page ? "active" : ""}"><a href="admin-contact?page=${i}&username=${username}&email=${email}&subject=${subject}&sentFrom=${sentFrom}&sentTo=${sentTo}&status=${status_code}">${i}</a></li>
+                                  <li class="link ${i == page ? "active" : ""}"><a href="admin-contact?page=${i}&username=${username_retain}&email=${email_retain}&subject=${subject}&sentFrom=${sentFrom}&sentTo=${sentTo}&status=${status_code}">${i}</a></li>
                           </c:forEach>
                           <c:if test="${page != totalPages && totalItems != 0}">
-                              <li><a href="admin-contact?page=${page + 1}&username=${username}&email=${email}&subject=${subject}&sentFrom=${sentFrom}&sentTo=${sentTo}&status=${status_code}">&gt;</a></li>
+                              <li><a href="admin-contact?page=${page + 1}&username=${username_retain}&email=${email_retain}&subject=${subject}&sentFrom=${sentFrom}&sentTo=${sentTo}&status=${status_code}">&gt;</a></li>
                           </c:if>
                           <c:if test="${totalItems == 0}">
                               <div class="notFound" style="font-size: 25px;

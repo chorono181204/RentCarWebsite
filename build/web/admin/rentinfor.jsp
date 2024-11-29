@@ -168,7 +168,7 @@
                         </div>
                         <div class="select__box--item">
                             <label for="email">Email</label>
-                            <input type="text" id="email" name="email" value="${email}">
+                            <input type="text" id="email" name="email" value="${email_rent_info}">
                         </div>
                         <div class="select__box--item">
                             <label for="phone">Phone</label>
@@ -277,13 +277,13 @@
                       <div class="block-27">
                         <ul>
                           <c:if test="${page != 1}">
-                              <li><a href="admin-rentinfor?page=${page - 1}&customer_name=${customer_name}&id_user=${customer_id}&id_car=${car_id}&email=${email}&phone=${phone}&pick_up_from=${pick_up_from}&pick_up_to=${pick_up_to}&pick_off_from=${pick_off_from}&pick_off_to=${pick_off_to}&pick_up_location=${pick_up_location}&pick_off_location=${pick_off_location}&status=${status_code}">&lt;</a></li>
+                              <li><a href="admin-rentinfor?page=${page - 1}&customer_name=${customer_name}&id_user=${customer_id}&id_car=${car_id}&email=${email_rent_info}&phone=${phone}&pick_up_from=${pick_up_from}&pick_up_to=${pick_up_to}&pick_off_from=${pick_off_from}&pick_off_to=${pick_off_to}&pick_up_location=${pick_up_location}&pick_off_location=${pick_off_location}&status=${status_code}">&lt;</a></li>
                           </c:if>
                           <c:forEach begin="1" end="${totalPages}" var="i">
-                                  <li class="link ${i == page ? "active" : ""}"><a href="admin-rentinfor?page=${i}&customer_name=${customer_name}&id_user=${customer_id}&id_car=${car_id}&email=${email}&phone=${phone}&pick_up_from=${pick_up_from}&pick_up_to=${pick_up_to}&pick_off_from=${pick_off_from}&pick_off_to=${pick_off_to}&pick_up_location=${pick_up_location}&pick_off_location=${pick_off_location}&status=${status_code}">${i}</a></li>
+                                  <li class="link ${i == page ? "active" : ""}"><a href="admin-rentinfor?page=${i}&customer_name=${customer_name}&id_user=${customer_id}&id_car=${car_id}&email=${email_rent_info}&phone=${phone}&pick_up_from=${pick_up_from}&pick_up_to=${pick_up_to}&pick_off_from=${pick_off_from}&pick_off_to=${pick_off_to}&pick_up_location=${pick_up_location}&pick_off_location=${pick_off_location}&status=${status_code}">${i}</a></li>
                           </c:forEach>
                           <c:if test="${page != totalPages && totalItems != 0}">
-                              <li><a href="admin-rentinfor?page=${page + 1}&customer_name=${customer_name}&id_user=${customer_id}&id_car=${car_id}&email=${email}&phone=${phone}&pick_up_from=${pick_up_from}&pick_up_to=${pick_up_to}&pick_off_from=${pick_off_from}&pick_off_to=${pick_off_to}&pick_up_location=${pick_up_location}&pick_off_location=${pick_off_location}&status=${status_code}">&gt;</a></li>
+                              <li><a href="admin-rentinfor?page=${page + 1}&customer_name=${customer_name}&id_user=${customer_id}&id_car=${car_id}&email=${email_rent_info}&phone=${phone}&pick_up_from=${pick_up_from}&pick_up_to=${pick_up_to}&pick_off_from=${pick_off_from}&pick_off_to=${pick_off_to}&pick_up_location=${pick_up_location}&pick_off_location=${pick_off_location}&status=${status_code}">&gt;</a></li>
                           </c:if>
                           <c:if test="${totalItems == 0}">
                               <div class="notFound" style="font-size: 25px;
