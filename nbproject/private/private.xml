@@ -7,7 +7,6 @@
             <file>file:/C:/RentCarWebsite/web/admin/createContact.jsp</file>
             <file>file:/C:/RentCarWebsite/src/java/controller/CarDetailsController.java</file>
             <file>file:/C:/RentCarWebsite/src/java/controller/RegisterController.java</file>
-            <file>file:/C:/RentCarWebsite/src/java/controller/TestController.java</file>
             <file>file:/C:/RentCarWebsite/web/WEB-INF/web.xml</file>
             <file>file:/C:/RentCarWebsite/web/car.jsp</file>
             <file>file:/C:/RentCarWebsite/src/java/util/SecurityUtil.java</file>
@@ -18,13 +17,13 @@
             <file>file:/C:/RentCarWebsite/src/java/service/CarService.java</file>
             <file>file:/C:/RentCarWebsite/src/java/util/StringUtil.java</file>
             <file>file:/C:/RentCarWebsite/src/java/controller/CarController.java</file>
-            <file>file:/C:/RentCarWebsite/src/java/controller/admin/AdminRentinforDetailsController.java</file>
             <file>file:/C:/RentCarWebsite/web/cardetails.jsp</file>
             <file>file:/C:/RentCarWebsite/src/java/controller/admin/AdminCreateRentinforController.java</file>
             <file>file:/C:/RentCarWebsite/web/admin/createCar.jsp</file>
             <file>file:/C:/RentCarWebsite/src/java/service/CarBrandService.java</file>
             <file>file:/C:/RentCarWebsite/src/java/controller/HomeController.java</file>
             <file>file:/C:/RentCarWebsite/src/java/controller/admin/AdminUpdateContactController.java</file>
+            <file>file:/C:/RentCarWebsite/src/java/controller/admin/AdminDeleteCarController.java</file>
             <file>file:/C:/RentCarWebsite/web/admin/updateContact.jsp</file>
             <file>file:/C:/RentCarWebsite/src/java/controller/admin/AdminCreateUserController.java</file>
             <file>file:/C:/RentCarWebsite/web/admin/style_admin.css</file>
@@ -33,33 +32,36 @@
             <file>file:/C:/RentCarWebsite/src/java/model/Car.java</file>
             <file>file:/C:/RentCarWebsite/src/java/DTO/CarDTO.java</file>
             <file>file:/C:/RentCarWebsite/src/java/dao/CarBrandDao.java</file>
+            <file>file:/C:/RentCarWebsite/web/admin/sider.jsp</file>
             <file>file:/C:/RentCarWebsite/web/rentinfordetails.jsp</file>
             <file>file:/C:/RentCarWebsite/web/admin/createRentinfor.jsp</file>
             <file>file:/C:/RentCarWebsite/src/java/controller/admin/AdminCarController.java</file>
             <file>file:/C:/RentCarWebsite/web/error403.jsp</file>
+            <file>file:/C:/RentCarWebsite/src/java/controller/admin/AdminUserController.java</file>
             <file>file:/C:/RentCarWebsite/web/admin/updateUser.jsp</file>
-            <file>file:/C:/RentCarWebsite/src/java/controller/AboutController.java</file>
             <file>file:/C:/RentCarWebsite/src/java/controller/LoginController.java</file>
+            <file>file:/C:/RentCarWebsite/src/java/controller/admin/AdminUpdateUserController.java</file>
+            <file>file:/C:/RentCarWebsite/src/java/controller/admin/AdminLoginController.java</file>
             <file>file:/C:/RentCarWebsite/web/admin/rentinfor.jsp</file>
             <file>file:/C:/RentCarWebsite/src/java/controller/ContactController.java</file>
-            <file>file:/C:/RentCarWebsite/web/test.jsp</file>
             <file>file:/C:/RentCarWebsite/src/java/controller/admin/AdminUpdateCarController.java</file>
             <file>file:/C:/RentCarWebsite/web/admin/contact.jsp</file>
             <file>file:/C:/RentCarWebsite/web/admin/admin-create2.css</file>
             <file>file:/C:/RentCarWebsite/web/admin/car.jsp</file>
             <file>file:/C:/RentCarWebsite/web/error404.jsp</file>
-            <file>file:/C:/RentCarWebsite/web/blog.jsp</file>
             <file>file:/C:/RentCarWebsite/web/rentinfo.jsp</file>
             <file>file:/C:/RentCarWebsite/src/java/dao/CarTypeDao.java</file>
             <file>file:/C:/RentCarWebsite/src/java/dao/CarDao.java</file>
             <file>file:/C:/RentCarWebsite/web/admin/index.jsp</file>
+            <file>file:/C:/RentCarWebsite/src/java/controller/admin/AdminUpdateRentinforController.java</file>
             <file>file:/C:/RentCarWebsite/web/admin/updateCar.jsp</file>
             <file>file:/C:/RentCarWebsite/src/java/dao/UserDao.java</file>
             <file>file:/C:/RentCarWebsite/web/home.jsp</file>
             <file>file:/C:/RentCarWebsite/src/java/controller/RentInforController.java</file>
+            <file>file:/C:/RentCarWebsite/src/java/controller/admin/AdminLogoutController.java</file>
             <file>file:/C:/RentCarWebsite/src/java/model/User.java</file>
             <file>file:/C:/RentCarWebsite/src/java/model/Rentinfor.java</file>
-            <file>file:/C:/RentCarWebsite/web/blogdetails.jsp</file>
+            <file>file:/C:/RentCarWebsite/src/java/controller/admin/AdminIndexController.java</file>
             <file>file:/C:/RentCarWebsite/web/admin/admin-create.css</file>
             <file>file:/C:/RentCarWebsite/web/admin/user.png</file>
             <file>file:/C:/RentCarWebsite/src/java/controller/RentinforDetailsController.java</file>
@@ -70,6 +72,8 @@
             <file>file:/C:/RentCarWebsite/web/register.jsp</file>
             <file>file:/C:/RentCarWebsite/src/java/util/NumberUtil.java</file>
             <file>file:/C:/RentCarWebsite/src/java/controller/admin/AdminCreateContactController.java</file>
+            <file>file:/C:/RentCarWebsite/web/public/menu.jsp</file>
+            <file>file:/C:/RentCarWebsite/src/java/controller/admin/AdminRentinforController.java</file>
         </group>
     </open-files>
 </project-private>
