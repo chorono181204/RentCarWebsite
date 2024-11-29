@@ -166,7 +166,7 @@
             
             <!--Render Car-->
             <div class="row">
-                <c:forEach var="item" items="${cars}">  
+                <c:forEach var="item" items="${cars}">              
                     <div class="col-md-4">
                             <div class="car-wrap rounded ftco-animate">
                                     <div class="img rounded d-flex align-items-end" style="
@@ -182,7 +182,7 @@
                                             <p class="d-flex mb-0 d-block"><a href="rentcar?id=${item.id}" class="btn btn-primary py-2 mr-1">Book now</a> <a href="cardetails?id=${item.id}" class="btn btn-secondary py-2 ml-1 carDetails">Details</a></p>
                                     </div>
                             </div>
-                    </div>
+                    </div>                   
                 </c:forEach >  
 
         <!--Pagination--> 

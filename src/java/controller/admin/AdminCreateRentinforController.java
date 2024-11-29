@@ -4,13 +4,16 @@
  */
 package controller.admin;
 
+import dao.CarDao;
 import dao.RentinforDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Car;
 import model.Rentinfor;
 
 /**
@@ -28,11 +31,7 @@ public class AdminCreateRentinforController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("admin/createRentinfor.jsp").forward(request, response);
-    }
+   
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -46,6 +45,10 @@ public class AdminCreateRentinforController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+         response.setContentType("text/html;charset=UTF-8");
+         CarDao cd = new CarDao();
+        List<Car>listCar=cd.getAll();
+            request.setAttribute("listCar", listCar);
         request.getRequestDispatcher("admin/createRentinfor.jsp").forward(request, response);
     }
 
@@ -61,7 +64,7 @@ public class AdminCreateRentinforController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        
+         response.setContentType("text/html;charset=UTF-8");
         String customer_name = request.getParameter("customer_name");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
@@ -70,17 +73,19 @@ public class AdminCreateRentinforController extends HttpServlet {
         String pick_off_date = request.getParameter("pick_off_date");
         String pick_up_location = request.getParameter("pick_up_location");
         String pick_off_location = request.getParameter("pick_off_location");
-        String id_user_raw = request.getParameter("id_user");
-        String time_sent = request.getParameter("time_sent");
+        String id_car_raw=request.getParameter("id_car");
+        String pick_time = request.getParameter("pick_time");
         String status_raw = request.getParameter("status");
-        int id_user, status;
-        int id_car=1;
+        long id_user, status;
+        
         RentinforDao udb = new RentinforDao();
         try{
-            id_user = Integer.parseInt(id_user_raw);
-            status = Integer.parseInt(status_raw);
-            Rentinfor uNew = new Rentinfor(1, customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, id_user, time_sent, status,id_car);
-            udb.insert(uNew);
+            id_user = 0;
+            status = Long.parseLong(status_raw);
+            long id_car=Long.parseLong(id_car_raw);
+            Rentinfor uNew = new Rentinfor(1, customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, id_user, pick_time, status,id_car);
+            udb.adminInsert(uNew);
+            
             response.sendRedirect("admin-rentinfor");
         }catch(NumberFormatException e){
             System.out.println(e);

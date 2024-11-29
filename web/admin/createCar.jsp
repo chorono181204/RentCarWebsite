@@ -42,8 +42,11 @@
                 <label for="rate">Rate:</label>
                 <input type="text" id="rate" name="rate" required /><br/>
 
-                <label for="status">Status:</label>
-                <input type="text" id="status" name="status" required /><br/>
+                 <label>Status:</label>
+                <div class="radio-group">
+                    <input type="radio" id="status0" name="status" value="0" /> Available
+                    <input type="radio" id="status1" name="status" value="1" />Rented
+                </div>
 
                 <label for="color">Color:</label>
                 <input type="text" id="color" name="color" required /><br/>

@@ -126,10 +126,9 @@ public class RentinforDao {
     //insert rentinfor
     public void insert(Rentinfor u) {
         try ( Connection connection = util.JDBCConnect.getConnection()) {
-            String sql = "INSERT INTO rentinfor (customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, id_user, pick_time, status,id_car) \n"
-                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
+            String sql = "INSERT INTO rentinfor ( customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, id_user, pick_time, status,id_car ) \n "
+                    + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
             PreparedStatement st = connection.prepareStatement(sql);
-
             st.setString(1, u.getCustomer_name());
             st.setString(2, u.getPhone());
             st.setString(3, u.getEmail());
@@ -147,7 +146,31 @@ public class RentinforDao {
             System.out.println(e);
         }
     }
-
+     public void adminInsert(Rentinfor u) {
+        try ( Connection connection = util.JDBCConnect.getConnection()) {
+            String sql = "INSERT INTO rentinfor ( customer_name, phone, email, customer_note, pick_up_date, pick_off_date, pick_up_location, pick_off_location, pick_time, status,id_car ) \n "
+                    + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )";
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, u.getCustomer_name());
+            st.setString(2, u.getPhone());
+            st.setString(3, u.getEmail());
+            st.setString(4, u.getCustomer_note());
+            st.setString(5, u.getPick_up_date());
+            st.setString(6, u.getPick_off_date());
+            st.setString(7, u.getPick_up_location());
+            st.setString(8, u.getPick_off_location());
+            
+            st.setString(9, u.getPick_time());
+            st.setLong(10, u.getStatus());
+            st.setLong(11, u.getId_car());
+            st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+    
+    
+    
     //tim 1 rentinfor khi co id
     public Rentinfor getRentinforById(int id) {
         try ( Connection connection = util.JDBCConnect.getConnection()) {

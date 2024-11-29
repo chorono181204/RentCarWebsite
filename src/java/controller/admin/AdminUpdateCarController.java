@@ -18,22 +18,20 @@ import model.CarBrand;
 import model.CarType;
 import model.District;
 import org.apache.commons.io.FileUtils;
+
 @MultipartConfig
 public class AdminUpdateCarController extends HttpServlet {
-
-  
-
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         CarBrandDao cbd = new CarBrandDao();
-        CarTypeDao ctd= new CarTypeDao();
-        DistrictDao dd= new DistrictDao();
-        List<CarType>lct = ctd.findAllTypes();
-        List<District>ld= dd.findAllDistricts();
-        List<CarBrand>lcb=cbd.findAllBrands();
+        CarBrandDao cbd = new CarBrandDao();
+        CarTypeDao ctd = new CarTypeDao();
+        DistrictDao dd = new DistrictDao();
+        List<CarType> lct = ctd.findAllTypes();
+        List<District> ld = dd.findAllDistricts();
+        List<CarBrand> lcb = cbd.findAllBrands();
         request.setAttribute("listType", lct);
         request.setAttribute("listBrand", lcb);
         request.setAttribute("listDistrict", ld);
@@ -75,21 +73,23 @@ public class AdminUpdateCarController extends HttpServlet {
 
         long id = 0, seats = 0, luggage = 0, rate = 0, status = 0, price = 0, year_of_manufacture = 0;
         long car_type_id = 0, car_brand_id = 0, rent_id = 0, district_id = 0;
-
+        CarDao udb = new CarDao();
+        Car u = udb.getCarById(id);
+        request.setAttribute("car", u);
+        String fileName = "";
+        Part filePart = request.getPart("img");
+        //Tùy chỉnh theo máy mình!
+        if (filePart == null) {
+            String uploadPath = "C:\\RentCarWebsite\\web\\uploads";
+            File uploadDir = new File(uploadPath);
+            if (!uploadDir.exists()) {
+                uploadDir.mkdirs();
+            }
+            fileName = filePart.getSubmittedFileName();
+            File file = new File(uploadPath, fileName);
+            FileUtils.copyInputStreamToFile(filePart.getInputStream(), file);
+        } 
        
-       Part filePart = request.getPart("img");
-         //Tùy chỉnh theo máy mình!
-        String uploadPath = "C:\\RentCarWebsite\\web\\uploads";
-        File uploadDir = new File(uploadPath);
-        if (!uploadDir.exists()) uploadDir.mkdirs(); 
-
-        
-        String fileName = filePart.getSubmittedFileName();
-        File file = new File(uploadPath, fileName);
-
-        
-        FileUtils.copyInputStreamToFile(filePart.getInputStream(), file);
-
 
         try {
             // Parse các tham số từ form
@@ -102,13 +102,14 @@ public class AdminUpdateCarController extends HttpServlet {
             year_of_manufacture = Long.parseLong(year_of_manufacture_raw != null ? year_of_manufacture_raw : "0");
             car_type_id = Long.parseLong(car_type_id_raw != null ? car_type_id_raw : "0");
             car_brand_id = Long.parseLong(car_brand_id_raw != null ? car_brand_id_raw : "0");
-         
-            district_id = Long.parseLong(district_id_raw != null ? district_id_raw : "0");
 
-            Car uNew = new Car(carname, fuel, transmission, fileName, description, color, current_address, 1, seats, luggage, rate, status, price, year_of_manufacture, car_type_id, car_brand_id,  district_id);
-            CarDao udb = new CarDao();
+            district_id = Long.parseLong(district_id_raw != null ? district_id_raw : "0");
+             Car existCar=udb.getCarById(id);
+             fileName=existCar.getImg();
+            Car uNew = new Car(carname, fuel, transmission, fileName, description, color, current_address, 1, seats, luggage, rate, status, price, year_of_manufacture, car_type_id, car_brand_id, district_id);
+
             udb.update(uNew);
-            
+
             response.sendRedirect("admin-car");
         } catch (NumberFormatException e) {
             System.out.println("Error parsing number: " + e.getMessage());

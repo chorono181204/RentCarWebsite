@@ -274,6 +274,8 @@ public class UserDao{
 
     //delete user
     public void delete(int id) {
+        User existUser=getUserById(id);
+        if(existUser.getRole()!=0){
         try ( Connection connection = JDBCConnect.getConnection()) {
             String sql = "DELETE FROM user WHERE id_user = ?";
             PreparedStatement st = connection.prepareStatement(sql);
@@ -281,6 +283,7 @@ public class UserDao{
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
+        }
         }
     }
 

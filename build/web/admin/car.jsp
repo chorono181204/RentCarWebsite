@@ -297,10 +297,10 @@
                             Long status_code = x.getStatus();
                             String status;
                             if(status_code == 0) {
-                                status = "Rented";
+                                status = "Available";
                             }
                             else {
-                                status = "Available";
+                                status = "Rented";
                             }
                         %>
                         <td><%= status%></td>

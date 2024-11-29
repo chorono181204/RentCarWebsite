@@ -66,9 +66,10 @@
                                 
                 </div>
 
-                <div class="form-field">
-                    <label for="status">Status:</label>
-                    <input type="text" id="status" name="status" value="<%= u.getStatus()%>"  />
+                <label>Status:</label>
+                <div class="radio-group">
+                    <input type="radio" id="status0" name="status" value="0" <%= u.getStatus() == 0 ? "checked" : ""%> />Processing
+                    <input type="radio" id="status1" name="status" value="1" <%= u.getStatus() == 1 ? "checked" : ""%> />Completed
                 </div>
                  
                  <div class="form-field ">
