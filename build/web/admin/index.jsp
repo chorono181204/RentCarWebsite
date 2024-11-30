@@ -26,7 +26,6 @@
                     Dashboard
                 </h2>
                 
-                <%// String userName = (String) request.getAttribute("userName"); %>
                 <div class="user-wrapper">
                     <img src="admin/user.png" width="50px" height="50px" alt=""/>
                     <div style="

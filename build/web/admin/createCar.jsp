@@ -9,6 +9,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Create Car</title>
         <link rel="stylesheet" href="admin/admin-create2.css"/>
+        <style>
+            .select-option {
+                width: 180px;
+                height: 30px;
+                margin-top: 5px;
+                outline: none;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+        </style>
     </head>
     <body>
         <div class="container">
@@ -60,19 +70,19 @@
                 <label for="current_address">Current Address:</label>
                 <input type="text" id="current_address" name="current_address" required /><br/>
                 <label for="car_type_id">Car Type :</label>
-                <select  name="car_type_id"  required >
+                <select class="select-option" name="car_type_id"  required >
                         <% for (CarType ct : lct){ %>                       
                         <option value="<%= ct.getId()%>"   ><%= ct.getType() %></option>                                       
                          <%} %>
                  </select>
                 <label for="car_brand_id">Car Brand :</label>
-                <select  name="car_brand_id"  required >
+                <select class="select-option" name="car_brand_id"  required >
                         <% for (CarBrand cb : lcb){ %>                       
                         <option value="<%= cb.getId()%>"   ><%= cb.getName() %></option>                                       
                          <%} %>
                  </select>
                 <label for="district_id">District :</label>
-                <select  name="district_id"  required >
+                <select class="select-option" name="district_id"  required >
                         <% for (District d : ld){ %>                       
                         <option value="<%= d.getId()%>"   ><%= d.getName() %></option>                                       
                          <%} %>

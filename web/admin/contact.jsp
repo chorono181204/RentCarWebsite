@@ -138,9 +138,11 @@
 
                 <div class="user-wrapper">
                     <img src="admin/user.png" width="50px" height="50px" alt=""/>
-                    <div>
-                        <h4>John Doe</h4>
-                        <small>Super admin</small>
+                    <div style="
+                        display: flex;
+                        align-items: center;
+                    ">
+                        <h4>Admin</h4>
                     </div>
                 </div>
             </header>
