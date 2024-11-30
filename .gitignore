@@ -1,3 +1,7 @@
 /dist/
 .DS_Store
+<<<<<<< HEAD
 /lib/
+=======
+/lib/
+>>>>>>> 39590dc6030c405acdde9f8d28ae04929e4a50db

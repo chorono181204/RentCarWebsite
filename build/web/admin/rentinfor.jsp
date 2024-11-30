@@ -265,7 +265,7 @@
                                 status = "Processing";
                             }
                             else {
-                                status = "Complete";
+                                status = "Completed";
                             }
                         %>
                         <td><%= status%></td>

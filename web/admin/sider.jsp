@@ -44,7 +44,7 @@
                     <li>
                         <a href="admin-rentinfor" class="<%= currentPage.contains("admin/rentinfor") ? "active" : "" %>">
                             <span class="las la-user-alt"></span>
-                            <span>Rent Info</span>
+                            <span>Rent Information</span>
                         </a>
                     </li>
                     <li>
