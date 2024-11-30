@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.User;
 
 /**
  *
@@ -61,8 +62,13 @@ public class AdminDeleteUserController extends HttpServlet {
         try{
             id = Integer.parseInt(id_raw);
             UserDao u = new UserDao();
+            User existUser = u.getUserById(id);
+            if(existUser.getRole()!=0){
             u.delete(id);
             response.sendRedirect("admin-user");
+            }else{
+                response.sendRedirect("error403.jsp");
+            }
         }catch(NumberFormatException e) {
             System.out.println(e);
         }
