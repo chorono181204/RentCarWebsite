@@ -1,19 +1,15 @@
 
 package model;
 
-/**
- *
- * @author developer
- */
 public class District {
-    Long id;
+    long id;
     String name;
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -24,6 +20,5 @@ public class District {
     public void setName(String name) {
         this.name = name;
     }
-    
     
 }

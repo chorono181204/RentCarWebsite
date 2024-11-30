@@ -1,24 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package model;
 
-import java.sql.Date;
-
-/**
- *
- * @author Hacom
- */
 public class User {
-    private int id_user, role, status;
+    private long id_user, role, status;
     private String  name, username, password,email;
     private String date_of_bird;
 
     public User() {
     }
 
-    public User(int id_user, String username, String password, String name, String date_of_bird, int role, int status) {
+    public User(long id_user, String username, String password, String name, String date_of_bird, long role, long status) {
         this.id_user = id_user;
         this.username = username;
         this.password = password;
@@ -27,7 +18,16 @@ public class User {
         this.role = role;
         this.status = status;
     }
-
+    public User(long id_user, String username, String password, String name, String date_of_bird, long role, long status,String email) {
+        this.id_user = id_user;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.date_of_bird = date_of_bird;
+        this.role = role;
+        this.status = status;
+        this.email=email;
+    }
     public User(String name, String username, String password, String email, String date_of_bird) {
         this.name = name;
         this.username = username;
@@ -35,29 +35,27 @@ public class User {
         this.email = email;
         this.date_of_bird = date_of_bird;
     }
-    
-
-    public int getId_user() {
+    public long getId_user() {
         return id_user;
     }
 
-    public void setId_user(int id_user) {
+    public void setId_user(long id_user) {
         this.id_user = id_user;
     }
 
-    public int getRole() {
+    public long getRole() {
         return role;
     }
 
-    public void setRole(int role) {
+    public void setRole(long role) {
         this.role = role;
     }
 
-    public int getStatus() {
-        return status;
+    public long getStatus() {
+        return this.status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(long status) {
         this.status = status;
     }
 
@@ -108,7 +106,6 @@ public class User {
     public void setDate_of_bird(String date_of_bird) {
         this.date_of_bird = date_of_bird;
     }
-    
 
     @Override
     public String toString() {

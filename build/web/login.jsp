@@ -111,6 +111,13 @@ String username = (String) session.getAttribute("username");
                 <strong> <%= message  %> </strong>
                 </div>
                 <% }%>
+                  <% String active=(String) request.getAttribute("UserNotActive");               
+                %>
+                <% if(active!=null){ %>
+                <div class="alert alert-danger">
+                <strong> <%= active  %> </strong>
+                </div>
+                <% }%>
                 <span>Username : </span>
                 <div class="text-content-wrapper">
                     <input name="username" type="text" placeholder="Enter your username..." class="form-control" value="<%=username%>">
@@ -139,7 +146,7 @@ String username = (String) session.getAttribute("username");
                 <a href="forgottenpassword" class="forget-password">Forgotten password?</a>
                 <div class="hr"></div>               
                 <div class="create-new-account-btn-container">                
-                     <a href="register" class="create-new-account-btn">Register Now</a>
+                     <a href="register" class="create-new-account-btn">Register</a>
                 </div>
                 
             </div>
